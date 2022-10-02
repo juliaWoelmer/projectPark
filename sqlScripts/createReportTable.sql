@@ -1,7 +1,7 @@
-USE sys;
+USE arborParkerDB;
 
 CREATE TABLE Report (
-	ReportId INTEGER,
+	ReportId INTEGER auto_increment,
     UserId INTEGER,
     SpotId INTEGER,
     isIllegalVehicle BOOLEAN DEFAULT 0,

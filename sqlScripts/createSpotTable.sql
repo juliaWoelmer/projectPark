@@ -1,7 +1,7 @@
-USE sys;
+USE arborParkerDB;
 
 CREATE TABLE Spot (
-	SpotId INTEGER,
+	SpotId INTEGER auto_increment,
     UserId INTEGER,
     ParkingLotId INTEGER,
     IsIllegallyOccupied BOOLEAN DEFAULT 0,
