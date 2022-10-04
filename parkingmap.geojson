@@ -2915,7 +2915,7 @@
         "Spot": 5,
         "Tier": "Yellow",
         "Van_access": "no",
-        "UofM_permit_req": "yes"
+        "UofM_permit_req": "no"
       },
       "geometry": {
         "type": "Point",
