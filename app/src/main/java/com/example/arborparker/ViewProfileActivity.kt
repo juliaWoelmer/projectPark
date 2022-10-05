@@ -1,4 +1,4 @@
-package com.example.handyopinion.ProfileActivity
+package com.example.arborparker
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
