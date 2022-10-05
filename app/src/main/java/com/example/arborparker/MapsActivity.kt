@@ -1,15 +1,14 @@
 package com.example.arborparker
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-
+import androidx.appcompat.app.AppCompatActivity
+import com.example.arborparker.databinding.ActivityMapsBinding
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
-import com.example.arborparker.databinding.ActivityMapsBinding
 
 class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
@@ -42,7 +41,8 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
         // Add a marker in Sydney and move the camera
         val arbor = LatLng(42.279594, -83.732124)
+        val zoomLevel = 12.0f
         mMap.addMarker(MarkerOptions().position(arbor).title("Ann Arbor"))
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(arbor))
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(arbor, zoomLevel))
     }
 }
