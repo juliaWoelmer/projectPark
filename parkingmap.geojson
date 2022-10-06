@@ -1,1 +1,3558 @@
-{"type":"FeatureCollection","features":[{"type":"Feature","properties":{"Lot":"NC9","Spot":1,"Tier":"Yellow","Van_access":"no","UofM_permit_req":"yes"},"geometry":{"type":"Point","coordinates":[-83.70189361274242,42.2978778606789]}},{"type":"Feature","properties":{"Lot":"NC9","Spot":2,"Tier":"Yellow","Van_access":"yes","UofM_permit_req":"yes"},"geometry":{"type":"Point","coordinates":[-83.70182789862156,42.29787934861294]}},{"type":"Feature","properties":{"Lot":"NC9","Spot":3,"Tier":"Yellow","Van_access":"yes","UofM_permit_req":"yes"},"geometry":{"type":"Point","coordinates":[-83.70242804288864,42.297831734706875]}},{"type":"Feature","properties":{"Lot":"NC9","Spot":4,"Tier":"Yellow","Van_access":"no","UofM_permit_req":"yes"},"geometry":{"type":"Point","coordinates":[-83.70243072509766,42.2978719089425]}},{"type":"Feature","properties":{"Lot":"NC9","Spot":5,"Tier":"Yellow","Van_access":"no","UofM_permit_req":"yes"},"geometry":{"type":"Point","coordinates":[-83.70243139564991,42.29791109119699]}},{"type":"Feature","properties":{"Lot":"NC34","Spot":1,"Tier":"Yellow","Van_access":"yes","UofM_permit_req":"yes"},"geometry":{"type":"Point","coordinates":[-83.7029718607664,42.29747264533909]}},{"type":"Feature","properties":{"Lot":"NC34","Spot":2,"Tier":"Yellow","Van_access":"no","UofM_permit_req":"yes"},"geometry":{"type":"Point","coordinates":[-83.70290614664555,42.297471157395464]}},{"type":"Feature","properties":{"Lot":"NC34","Spot":3,"Tier":"Yellow","Van_access":"yes","UofM_permit_req":"yes"},"geometry":{"type":"Point","coordinates":[-83.7029792368412,42.29736154545142]}},{"type":"Feature","properties":{"Lot":"NC65","Spot":1,"Tier":"Yellow","Van_access":"no","UofM_permit_req":"yes"},"geometry":{"type":"Point","coordinates":[-83.70225101709366,42.2968615935313]}},{"type":"Feature","properties":{"Lot":"NC65","Spot":2,"Tier":"Yellow","Van_access":"no","UofM_permit_req":"yes"},"geometry":{"type":"Point","coordinates":[-83.70221614837645,42.29686556141931]}},{"type":"Feature","properties":{"Lot":"NC65","Spot":3,"Tier":"Yellow","Van_access":"no","UofM_permit_req":"yes"},"geometry":{"type":"Point","coordinates":[-83.70215713977812,42.29686556141931]}},{"type":"Feature","properties":{"Lot":"NC65","Spot":4,"Tier":"Yellow","Van_access":"no","UofM_permit_req":"yes"},"geometry":{"type":"Point","coordinates":[-83.70272845029831,42.29686556141931]}},{"type":"Feature","properties":{"Lot":"NC65","Spot":5,"Tier":"Yellow","Van_access":"no","UofM_permit_req":"yes"},"geometry":{"type":"Point","coordinates":[-83.70277773588896,42.29686754536321]}},{"type":"Feature","properties":{"Lot":"NC65","Spot":6,"Tier":"Yellow","Van_access":"no","UofM_permit_req":"yes"},"geometry":{"type":"Point","coordinates":[-83.7028119340539,42.29686655339126]}},{"type":"Feature","properties":{"Lot":"NC85","Spot":5,"Tier":"Blue","Van_access":"no","UofM_permit_req":"yes"},"geometry":{"type":"Point","coordinates":[-83.70305433869362,42.2993682569685]}},{"type":"Feature","properties":{"Lot":"NC85","Spot":4,"Tier":"Blue","Van_access":"no","UofM_permit_req":"yes"},"geometry":{"type":"Point","coordinates":[-83.70298594236374,42.29936726503593]}},{"type":"Feature","properties":{"Lot":"NC85","Spot":3,"Tier":"Blue","Van_access":"no","UofM_permit_req":"yes"},"geometry":{"type":"Point","coordinates":[-83.70295241475105,42.29937123276606]}},{"type":"Feature","properties":{"Lot":"NC85","Spot":2,"Tier":"Blue","Van_access":"yes","UofM_permit_req":"yes"},"geometry":{"type":"Point","coordinates":[-83.70289072394371,42.29937817629318]}},{"type":"Feature","properties":{"Lot":"NC85","Spot":1,"Tier":"Blue","Van_access":"yes","UofM_permit_req":"yes"},"geometry":{"type":"Point","coordinates":[-83.70285451412201,42.29937718436079]}},{"type":"Feature","properties":{"Lot":"NC86","Spot":1,"Tier":"Yellow","Van_access":"no","UofM_permit_req":"yes"},"geometry":{"type":"Point","coordinates":[-83.70248302817345,42.299375200495945]}},{"type":"Feature","properties":{"Lot":"NC86","Spot":2,"Tier":"Yellow","Van_access":"no","UofM_permit_req":"yes"},"geometry":{"type":"Point","coordinates":[-83.70242938399315,42.29937817629318]}},{"type":"Feature","properties":{"Lot":"NC86","Spot":3,"Tier":"Yellow","Van_access":"no","UofM_permit_req":"yes"},"geometry":{"type":"Point","coordinates":[-83.70239317417145,42.29937916822557]}},{"type":"Feature","properties":{"Lot":"NC86","Spot":4,"Tier":"Yellow","Van_access":"yes","UofM_permit_req":"yes"},"geometry":{"type":"Point","coordinates":[-83.70234087109566,42.29938115209029]}},{"type":"Feature","properties":{"Lot":"NC86","Spot":5,"Tier":"Yellow","Van_access":"no","UofM_permit_req":"yes"},"geometry":{"type":"Point","coordinates":[-83.70227649807929,42.29938313595494]}},{"type":"Feature","properties":{"Lot":"NC82","Spot":1,"Tier":"Yellow","Van_access":"no","UofM_permit_req":"yes"},"geometry":{"type":"Point","coordinates":[-83.70212897658348,42.30107039021311]}},{"type":"Feature","properties":{"Lot":"NC82","Spot":2,"Tier":"Yellow","Van_access":"no","UofM_permit_req":"yes"},"geometry":{"type":"Point","coordinates":[-83.70213031768799,42.301107586667115]}},{"type":"Feature","properties":{"Lot":"NC82","Spot":3,"Tier":"Yellow","Van_access":"no","UofM_permit_req":"yes"},"geometry":{"type":"Point","coordinates":[-83.70212897658348,42.3011343681004]}},{"type":"Feature","properties":{"Lot":"NC82","Spot":4,"Tier":"Yellow","Van_access":"no","UofM_permit_req":"yes"},"geometry":{"type":"Point","coordinates":[-83.70212897658348,42.301163629283]}},{"type":"Feature","properties":{"Lot":"NC82","Spot":5,"Tier":"Yellow","Van_access":"no","UofM_permit_req":"yes"},"geometry":{"type":"Point","coordinates":[-83.70213031768799,42.30118892283667]}},{"type":"Feature","properties":{"Lot":"NC82","Spot":6,"Tier":"Yellow","Van_access":"yes","UofM_permit_req":"yes"},"geometry":{"type":"Point","coordinates":[-83.70212696492672,42.30123455039797]}},{"type":"Feature","properties":{"Lot":"NC82","Spot":7,"Tier":"Yellow","Van_access":"no","UofM_permit_req":"yes"},"geometry":{"type":"Point","coordinates":[-83.70212830603123,42.30126926699855]}},{"type":"Feature","properties":{"Lot":"NC82","Spot":8,"Tier":"Yellow","Van_access":"no","UofM_permit_req":"yes"},"geometry":{"type":"Point","coordinates":[-83.70212964713573,42.301292576705336]}},{"type":"Feature","properties":{"Lot":"NC82","Spot":9,"Tier":"Yellow","Van_access":"no","UofM_permit_req":"yes"},"geometry":{"type":"Point","coordinates":[-83.70213031768799,42.30133126088056]}},{"type":"Feature","properties":{"Lot":"NC83","Spot":1,"Tier":"Yellow","Van_access":"yes","UofM_permit_req":"yes"},"geometry":{"type":"Point","coordinates":[-83.70363838970661,42.30125290060353]}},{"type":"Feature","properties":{"Lot":"NC83","Spot":2,"Tier":"Yellow","Van_access":"no","UofM_permit_req":"yes"},"geometry":{"type":"Point","coordinates":[-83.70370209217072,42.30125736416623]}},{"type":"Feature","properties":{"Lot":"NC83","Spot":3,"Tier":"Yellow","Van_access":"no","UofM_permit_req":"yes"},"geometry":{"type":"Point","coordinates":[-83.70373159646988,42.30126033987452]}},{"type":"Feature","properties":{"Lot":"NC83","Spot":4,"Tier":"Yellow","Van_access":"no","UofM_permit_req":"yes"},"geometry":{"type":"Point","coordinates":[-83.7037906050682,42.3012548844092]}},{"type":"Feature","properties":{"Lot":"NC84","Spot":1,"Tier":"Blue","Van_access":"yes","UofM_permit_req":"yes"},"geometry":{"type":"Point","coordinates":[-83.70332524180411,42.30074157260393]}},{"type":"Feature","properties":{"Lot":"NC84","Spot":2,"Tier":"Blue","Van_access":"no","UofM_permit_req":"yes"},"geometry":{"type":"Point","coordinates":[-83.70332524180411,42.30071131931383]}},{"type":"Feature","properties":{"Lot":"NC84","Spot":3,"Tier":"None","Van_access":"no","UofM_permit_req":"no"},"geometry":{"type":"Point","coordinates":[-83.70352037250996,42.300672634757724]}},{"type":"Feature","properties":{"Lot":"NC99","Spot":1,"Tier":"None","Van_access":"yes","UofM_permit_req":"no"},"geometry":{"type":"Point","coordinates":[-83.70634272694588,42.30132134186354]}},{"type":"Feature","properties":{"Lot":"NC99","Spot":2,"Tier":"None","Van_access":"no","UofM_permit_req":"no"},"geometry":{"type":"Point","coordinates":[-83.70634339749813,42.3013674652794]}},{"type":"Feature","properties":{"Lot":"NC99","Spot":3,"Tier":"None","Van_access":"no","UofM_permit_req":"no"},"geometry":{"type":"Point","coordinates":[-83.70634272694588,42.30138680734699]}},{"type":"Feature","properties":{"Lot":"NC46","Spot":1,"Tier":"Orange","Van_access":"no","UofM_permit_req":"yes"},"geometry":{"type":"Point","coordinates":[-83.70784543454646,42.295735199214164]}},{"type":"Feature","properties":{"Lot":"NC46","Spot":2,"Tier":"Orange","Van_access":"yes","UofM_permit_req":"yes"},"geometry":{"type":"Point","coordinates":[-83.70789639651775,42.295715855410585]}},{"type":"Feature","properties":{"Lot":"NC46","Spot":3,"Tier":"Orange","Van_access":"yes","UofM_permit_req":"yes"},"geometry":{"type":"Point","coordinates":[-83.7077073007822,42.29565931195059]}},{"type":"Feature","properties":{"Lot":"NC46","Spot":4,"Tier":"Orange","Van_access":"no","UofM_permit_req":"yes"},"geometry":{"type":"Point","coordinates":[-83.70776228606701,42.295639968123695]}},{"type":"Feature","properties":{"Lot":"NC46","Spot":5,"Tier":"Orange","Van_access":"no","UofM_permit_req":"yes"},"geometry":{"type":"Point","coordinates":[-83.70779179036617,42.2956260802443]}},{"type":"Feature","properties":{"Lot":"NC46","Spot":6,"Tier":"Orange","Van_access":"no","UofM_permit_req":"yes"},"geometry":{"type":"Point","coordinates":[-83.70784610509872,42.295601280452026]}},{"type":"Feature","properties":{"Lot":"NC46","Spot":7,"Tier":"Orange","Van_access":"no","UofM_permit_req":"yes"},"geometry":{"type":"Point","coordinates":[-83.70787024497986,42.295775374787276]}},{"type":"Feature","properties":{"Lot":"NC46","Spot":8,"Tier":"Orange","Van_access":"yes","UofM_permit_req":"yes"},"geometry":{"type":"Point","coordinates":[-83.70792858302593,42.29575503900657]}},{"type":"Feature","properties":{"Lot":"NC53","Spot":1,"Tier":"Orange","Van_access":"no","UofM_permit_req":"yes"},"geometry":{"type":"Point","coordinates":[-83.70746925473213,42.29542272165951]}},{"type":"Feature","properties":{"Lot":"NC53","Spot":2,"Tier":"Orange","Van_access":"no","UofM_permit_req":"yes"},"geometry":{"type":"Point","coordinates":[-83.7074987590313,42.295410817722015]}},{"type":"Feature","properties":{"Lot":"NC53","Spot":3,"Tier":"Orange","Van_access":"no","UofM_permit_req":"yes"},"geometry":{"type":"Point","coordinates":[-83.70754234492779,42.295393953806716]}},{"type":"Feature","properties":{"Lot":"NC53","Spot":4,"Tier":"Orange","Van_access":"yes","UofM_permit_req":"yes"},"geometry":{"type":"Point","coordinates":[-83.7071943283081,42.29550257718207]}},{"type":"Feature","properties":{"Lot":"NC53","Spot":5,"Tier":"Orange","Van_access":"no","UofM_permit_req":"yes"},"geometry":{"type":"Point","coordinates":[-83.70713599026203,42.29551844907511]}},{"type":"Feature","properties":{"Lot":"NC53","Spot":6,"Tier":"Orange","Van_access":"no","UofM_permit_req":"yes"},"geometry":{"type":"Point","coordinates":[-83.70710380375385,42.295527377013194]}},{"type":"Feature","properties":{"Lot":"NC53","Spot":7,"Tier":"Orange","Van_access":"no","UofM_permit_req":"yes"},"geometry":{"type":"Point","coordinates":[-83.70704747736454,42.29553580895357]}},{"type":"Feature","properties":{"Lot":"NC53","Spot":8,"Tier":"Orange","Van_access":"no","UofM_permit_req":"yes"},"geometry":{"type":"Point","coordinates":[-83.70851062238215,42.29446345548096]}},{"type":"Feature","properties":{"Lot":"NC53","Spot":9,"Tier":"Orange","Van_access":"no","UofM_permit_req":"yes"},"geometry":{"type":"Point","coordinates":[-83.70849318802357,42.29448875172596]}},{"type":"Feature","properties":{"Lot":"NC53","Spot":10,"Tier":"Orange","Van_access":"no","UofM_permit_req":"yes"},"geometry":{"type":"Point","coordinates":[-83.70847173035143,42.29451801599673]}},{"type":"Feature","properties":{"Lot":"NC28","Spot":1,"Tier":"Blue","Van_access":"no","UofM_permit_req":"yes"},"geometry":{"type":"Point","coordinates":[-83.71170982718468,42.294875634207315]}},{"type":"Feature","properties":{"Lot":"NC28","Spot":2,"Tier":"Blue","Van_access":"yes","UofM_permit_req":"yes"},"geometry":{"type":"Point","coordinates":[-83.71170245110989,42.294824050013794]}},{"type":"Feature","properties":{"Lot":"NC28","Spot":3,"Tier":"Blue","Van_access":"no","UofM_permit_req":"yes"},"geometry":{"type":"Point","coordinates":[-83.71164008975029,42.294879106218815]}},{"type":"Feature","properties":{"Lot":"NC28","Spot":4,"Tier":"Blue","Van_access":"no","UofM_permit_req":"yes"},"geometry":{"type":"Point","coordinates":[-83.71164076030254,42.294826034022]}},{"type":"Feature","properties":{"Lot":"NC28","Spot":5,"Tier":"Blue","Van_access":"no","UofM_permit_req":"yes"},"geometry":{"type":"Point","coordinates":[-83.71158108115196,42.294881586226914]}},{"type":"Feature","properties":{"Lot":"NC28","Spot":6,"Tier":"Blue","Van_access":"no","UofM_permit_req":"yes"},"geometry":{"type":"Point","coordinates":[-83.71158108115196,42.2948314900443]}},{"type":"Feature","properties":{"Lot":"NC28","Spot":7,"Tier":"Blue","Van_access":"no","UofM_permit_req":"yes"},"geometry":{"type":"Point","coordinates":[-83.71082402765751,42.29482752202812]}},{"type":"Feature","properties":{"Lot":"NC22","Spot":1,"Tier":"Blue","Van_access":"yes","UofM_permit_req":"yes"},"geometry":{"type":"Point","coordinates":[-83.70987318456173,42.293059249944044]}},{"type":"Feature","properties":{"Lot":"NC32","Spot":1,"Tier":"Orange","Van_access":"no","UofM_permit_req":"yes"},"geometry":{"type":"Point","coordinates":[-83.72331507503986,42.2918122534691]}},{"type":"Feature","properties":{"Lot":"NC32","Spot":2,"Tier":"Orange","Van_access":"yes","UofM_permit_req":"yes"},"geometry":{"type":"Point","coordinates":[-83.72326008975506,42.291835566676596]}},{"type":"Feature","properties":{"Lot":"NC32","Spot":3,"Tier":"Orange","Van_access":"no","UofM_permit_req":"yes"},"geometry":{"type":"Point","coordinates":[-83.7234840542078,42.29235440731696]}},{"type":"Feature","properties":{"Lot":"NC32","Spot":4,"Tier":"Orange","Van_access":"yes","UofM_permit_req":"yes"},"geometry":{"type":"Point","coordinates":[-83.72346058487892,42.29232117386676]}},{"type":"Feature","properties":{"Lot":"NC10","Spot":1,"Tier":"None","Van_access":"no","UofM_permit_req":"no"},"geometry":{"type":"Point","coordinates":[-83.72180230915546,42.29004488880764]}},{"type":"Feature","properties":{"Lot":"NC10","Spot":2,"Tier":"None","Van_access":"no","UofM_permit_req":"no"},"geometry":{"type":"Point","coordinates":[-83.72180297970772,42.28999974917863]}},{"type":"Feature","properties":{"Lot":"NC10","Spot":3,"Tier":"Blue","Van_access":"no","UofM_permit_req":"yes"},"geometry":{"type":"Point","coordinates":[-83.72180700302124,42.28997693133185]}},{"type":"Feature","properties":{"Lot":"NC10","Spot":4,"Tier":"Blue","Van_access":"no","UofM_permit_req":"yes"},"geometry":{"type":"Point","coordinates":[-83.72180968523026,42.289940720384166]}},{"type":"Feature","properties":{"Lot":"NC10","Spot":5,"Tier":"Blue","Van_access":"yes","UofM_permit_req":"yes"},"geometry":{"type":"Point","coordinates":[-83.72172988951206,42.29004687296641]}},{"type":"Feature","properties":{"Lot":"NC10","Spot":6,"Tier":"Blue","Van_access":"no","UofM_permit_req":"yes"},"geometry":{"type":"Point","coordinates":[-83.72173123061657,42.29000322145892]}},{"type":"Feature","properties":{"Lot":"NC10","Spot":7,"Tier":"Blue","Van_access":"no","UofM_permit_req":"yes"},"geometry":{"type":"Point","coordinates":[-83.7217379361391,42.28997593925138]}},{"type":"Feature","properties":{"Lot":"NC10","Spot":8,"Tier":"Blue","Van_access":"no","UofM_permit_req":"yes"},"geometry":{"type":"Point","coordinates":[-83.72174397110939,42.289941216424694]}},{"type":"Feature","properties":{"Lot":"NC10","Spot":9,"Tier":"None","Van_access":"no","UofM_permit_req":"no"},"geometry":{"type":"Point","coordinates":[-83.72143685817719,42.28886380720544]}},{"type":"Feature","properties":{"Lot":"NC10","Spot":10,"Tier":"None","Van_access":"yes","UofM_permit_req":"no"},"geometry":{"type":"Point","coordinates":[-83.72150257229805,42.288891585943446]}},{"type":"Feature","properties":{"Lot":"NC10","Spot":11,"Tier":"Blue","Van_access":"yes","UofM_permit_req":"yes"},"geometry":{"type":"Point","coordinates":[-83.72168093919754,42.28963565472446]}},{"type":"Feature","properties":{"Lot":"NC10","Spot":12,"Tier":"Blue","Van_access":"no","UofM_permit_req":"yes"},"geometry":{"type":"Point","coordinates":[-83.72170239686966,42.289592002932]}},{"type":"Feature","properties":{"Lot":"NC16","Spot":1,"Tier":"Blue","Van_access":"yes","UofM_permit_req":"yes"},"geometry":{"type":"Point","coordinates":[-83.71414326131344,42.28934844521652]}},{"type":"Feature","properties":{"Lot":"NC16","Spot":2,"Tier":"None","Van_access":"yes","UofM_permit_req":"no"},"geometry":{"type":"Point","coordinates":[-83.71414594352245,42.28939209717778]}},{"type":"Feature","properties":{"Lot":"NC16","Spot":3,"Tier":"None","Van_access":"no","UofM_permit_req":"no"},"geometry":{"type":"Point","coordinates":[-83.71414192020893,42.2894278123963]}},{"type":"Feature","properties":{"Lot":"NC16","Spot":4,"Tier":"None","Van_access":"no","UofM_permit_req":"no"},"geometry":{"type":"Point","coordinates":[-83.71414057910442,42.28945063044197]}},{"type":"Feature","properties":{"Lot":"NC16","Spot":5,"Tier":"None","Van_access":"no","UofM_permit_req":"no"},"geometry":{"type":"Point","coordinates":[-83.71414393186569,42.28948634562731]}},{"type":"Feature","properties":{"Lot":"NC16","Spot":6,"Tier":"Blue","Van_access":"no","UofM_permit_req":"yes"},"geometry":{"type":"Point","coordinates":[-83.71414259076118,42.289528509361695]}},{"type":"Feature","properties":{"Lot":"NC16","Spot":7,"Tier":"Blue","Van_access":"no","UofM_permit_req":"yes"},"geometry":{"type":"Point","coordinates":[-83.71414192020893,42.289548847152915]}},{"type":"Feature","properties":{"Lot":"NC16","Spot":8,"Tier":"Blue","Van_access":"no","UofM_permit_req":"yes"},"geometry":{"type":"Point","coordinates":[-83.71414057910442,42.28958357019587]}},{"type":"Feature","properties":{"Lot":"NC16","Spot":9,"Tier":"Blue","Van_access":"no","UofM_permit_req":"yes"},"geometry":{"type":"Point","coordinates":[-83.71414259076118,42.28960986048713]}},{"type":"Feature","properties":{"Lot":"NC16","Spot":10,"Tier":"Blue","Van_access":"no","UofM_permit_req":"yes"},"geometry":{"type":"Point","coordinates":[-83.71414057910442,42.28964755975352]}},{"type":"Feature","properties":{"Lot":"NC20","Spot":1,"Tier":"Blue","Van_access":"no","UofM_permit_req":"yes"},"geometry":{"type":"Point","coordinates":[-83.71355585753918,42.29367083465681]}},{"type":"Feature","properties":{"Lot":"NC20","Spot":2,"Tier":"Blue","Van_access":"no","UofM_permit_req":"yes"},"geometry":{"type":"Point","coordinates":[-83.71355652809142,42.29363214577553]}},{"type":"Feature","properties":{"Lot":"NC20","Spot":3,"Tier":"Blue","Van_access":"yes","UofM_permit_req":"yes"},"geometry":{"type":"Point","coordinates":[-83.71355921030045,42.29360585716312]}},{"type":"Feature","properties":{"Lot":"NC21","Spot":1,"Tier":"Blue","Van_access":"no","UofM_permit_req":"yes"},"geometry":{"type":"Point","coordinates":[-83.71631249785423,42.29364950617392]}},{"type":"Feature","properties":{"Lot":"NC21","Spot":2,"Tier":"Blue","Van_access":"no","UofM_permit_req":"yes"},"geometry":{"type":"Point","coordinates":[-83.71620319783688,42.29366488252278]}},{"type":"Feature","properties":{"Lot":"NC21","Spot":3,"Tier":"Blue","Van_access":"no","UofM_permit_req":"yes"},"geometry":{"type":"Point","coordinates":[-83.7161535769701,42.29366488252278]}},{"type":"Feature","properties":{"Lot":"NC27","Spot":1,"Tier":"None","Van_access":"yes","UofM_permit_req":"no"},"geometry":{"type":"Point","coordinates":[-83.71786817908286,42.29225718702522]}},{"type":"Feature","properties":{"Lot":"NC27","Spot":2,"Tier":"None","Van_access":"no","UofM_permit_req":"no"},"geometry":{"type":"Point","coordinates":[-83.71780648827551,42.292260659181096]}},{"type":"Feature","properties":{"Lot":"NC27","Spot":3,"Tier":"Blue","Van_access":"yes","UofM_permit_req":"yes"},"geometry":{"type":"Point","coordinates":[-83.71771194040775,42.29225917111432]}},{"type":"Feature","properties":{"Lot":"NC27","Spot":4,"Tier":"Blue","Van_access":"no","UofM_permit_req":"yes"},"geometry":{"type":"Point","coordinates":[-83.71764957904816,42.29225817906977]}},{"type":"Feature","properties":{"Lot":"NC27","Spot":5,"Tier":"Blue","Van_access":"no","UofM_permit_req":"yes"},"geometry":{"type":"Point","coordinates":[-83.71681340038776,42.29222196943354]}},{"type":"Feature","properties":{"Lot":"NC27","Spot":6,"Tier":"Blue","Van_access":"no","UofM_permit_req":"yes"},"geometry":{"type":"Point","coordinates":[-83.71681205928326,42.29226611542563]}},{"type":"Feature","properties":{"Lot":"NC40","Spot":1,"Tier":"Yellow","Van_access":"yes","UofM_permit_req":"yes"},"geometry":{"type":"Point","coordinates":[-83.7257833778858,42.29550406517224]}},{"type":"Feature","properties":{"Lot":"NC40","Spot":2,"Tier":"Yellow","Van_access":"no","UofM_permit_req":"yes"},"geometry":{"type":"Point","coordinates":[-83.72580215334892,42.29554572888195]}},{"type":"Feature","properties":{"Lot":"NC44","Spot":1,"Tier":"Visitor","Van_access":"no","UofM_permit_req":"yes"},"geometry":{"type":"Point","coordinates":[-83.72014202177525,42.29513801853767]}},{"type":"Feature","properties":{"Lot":"NC44","Spot":2,"Tier":"None","Van_access":"no","UofM_permit_req":"no"},"geometry":{"type":"Point","coordinates":[-83.72020103037357,42.29513801853767]}},{"type":"Feature","properties":{"Lot":"NC44","Spot":3,"Tier":"None","Van_access":"yes","UofM_permit_req":"no"},"geometry":{"type":"Point","coordinates":[-83.72024528682232,42.29514000253601]}},{"type":"Feature","properties":{"Lot":"NC42","Spot":1,"Tier":"Restricted","Van_access":"no","UofM_permit_req":"no"},"geometry":{"type":"Point","coordinates":[-83.71263183653355,42.28937523165088]}},{"type":"Feature","properties":{"Lot":"NC47","Spot":1,"Tier":"Restricted","Van_access":"no","UofM_permit_req":"no"},"geometry":{"type":"Point","coordinates":[-83.7125962972641,42.28804928947736]}},{"type":"Feature","properties":{"Lot":"NC47","Spot":2,"Tier":"Restricted","Van_access":"no","UofM_permit_req":"no"},"geometry":{"type":"Point","coordinates":[-83.7125962972641,42.28800464447403]}},{"type":"Feature","properties":{"Lot":"NC43","Spot":1,"Tier":"None","Van_access":"no","UofM_permit_req":"no"},"geometry":{"type":"Point","coordinates":[-83.71667325496674,42.28862719138686]}},{"type":"Feature","properties":{"Lot":"NC43","Spot":2,"Tier":"None","Van_access":"no","UofM_permit_req":"no"},"geometry":{"type":"Point","coordinates":[-83.71667861938475,42.28858155469067]}},{"type":"Feature","properties":{"Lot":"NC43","Spot":3,"Tier":"None","Van_access":"no","UofM_permit_req":"no"},"geometry":{"type":"Point","coordinates":[-83.71673494577408,42.288628183488576]}},{"type":"Feature","properties":{"Lot":"NC43","Spot":4,"Tier":"None","Van_access":"no","UofM_permit_req":"no"},"geometry":{"type":"Point","coordinates":[-83.71673896908759,42.28858205074189]}},{"type":"Feature","properties":{"Lot":"NC51","Spot":1,"Tier":"Orange","Van_access":"yes","UofM_permit_req":"yes"},"geometry":{"type":"Point","coordinates":[-83.70623409748077,42.28917185288275]}},{"type":"Feature","properties":{"Lot":"NC51","Spot":2,"Tier":"Orange","Van_access":"yes","UofM_permit_req":"yes"},"geometry":{"type":"Point","coordinates":[-83.70617173612118,42.28917334102248]}},{"type":"Feature","properties":{"Lot":"NC51","Spot":3,"Tier":"Orange","Van_access":"yes","UofM_permit_req":"yes"},"geometry":{"type":"Point","coordinates":[-83.70613485574722,42.289176317301795]}},{"type":"Feature","properties":{"Lot":"NC51","Spot":4,"Tier":"Orange","Van_access":"yes","UofM_permit_req":"yes"},"geometry":{"type":"Point","coordinates":[-83.70606914162636,42.28917929358097]}},{"type":"Feature","properties":{"Lot":"NC51","Spot":5,"Tier":"Orange","Van_access":"yes","UofM_permit_req":"yes"},"geometry":{"type":"Point","coordinates":[-83.7061757594347,42.28927503048622]}},{"type":"Feature","properties":{"Lot":"NC51","Spot":6,"Tier":"Orange","Van_access":"yes","UofM_permit_req":"yes"},"geometry":{"type":"Point","coordinates":[-83.70611004531384,42.28927850280647]}},{"type":"Feature","properties":{"Lot":"NC51","Spot":7,"Tier":"Orange","Van_access":"no","UofM_permit_req":"yes"},"geometry":{"type":"Point","coordinates":[-83.70518267154694,42.28979438826025]}},{"type":"Feature","properties":{"Lot":"NC51","Spot":8,"Tier":"Orange","Van_access":"no","UofM_permit_req":"yes"},"geometry":{"type":"Point","coordinates":[-83.70523363351822,42.28979686846854]}},{"type":"Feature","properties":{"Lot":"NC51","Spot":9,"Tier":"Orange","Van_access":"no","UofM_permit_req":"yes"},"geometry":{"type":"Point","coordinates":[-83.70526984333992,42.289798356593515]}},{"type":"Feature","properties":{"Lot":"NC51","Spot":10,"Tier":"Orange","Van_access":"no","UofM_permit_req":"yes"},"geometry":{"type":"Point","coordinates":[-83.70533153414726,42.28979438826025]}},{"type":"Feature","properties":{"Lot":"NC52","Spot":1,"Tier":"None","Van_access":"yes","UofM_permit_req":"no"},"geometry":{"type":"Point","coordinates":[-83.70736598968506,42.28852252456723]}},{"type":"Feature","properties":{"Lot":"NC52","Spot":2,"Tier":"Orange","Van_access":"yes","UofM_permit_req":"yes"},"geometry":{"type":"Point","coordinates":[-83.70737269520758,42.288552287661595]}},{"type":"Feature","properties":{"Lot":"NC52","Spot":3,"Tier":"Orange","Van_access":"no","UofM_permit_req":"yes"},"geometry":{"type":"Point","coordinates":[-83.70737403631209,42.28858998756091]}},{"type":"Feature","properties":{"Lot":"NC60","Spot":1,"Tier":"Blue","Van_access":"no","UofM_permit_req":"yes"},"geometry":{"type":"Point","coordinates":[-83.71317230165005,42.290933289648066]}},{"type":"Feature","properties":{"Lot":"NC60","Spot":2,"Tier":"Blue","Van_access":"no","UofM_permit_req":"yes"},"geometry":{"type":"Point","coordinates":[-83.7131729722023,42.29096106747343]}},{"type":"Feature","properties":{"Lot":"NC60","Spot":3,"Tier":"Blue","Van_access":"no","UofM_permit_req":"yes"},"geometry":{"type":"Point","coordinates":[-83.7131743133068,42.29099678180236]}},{"type":"Feature","properties":{"Lot":"NC60","Spot":4,"Tier":"Blue","Van_access":"no","UofM_permit_req":"yes"},"geometry":{"type":"Point","coordinates":[-83.71317364275455,42.291021087375725]}},{"type":"Feature","properties":{"Lot":"NC60","Spot":5,"Tier":"Blue","Van_access":"no","UofM_permit_req":"yes"},"geometry":{"type":"Point","coordinates":[-83.71317096054554,42.291055313575406]}},{"type":"Feature","properties":{"Lot":"NC60","Spot":6,"Tier":"Blue","Van_access":"yes","UofM_permit_req":"yes"},"geometry":{"type":"Point","coordinates":[-83.71317028999329,42.29108259531543]}},{"type":"Feature","properties":{"Lot":"NC70","Spot":1,"Tier":"Blue","Van_access":"no","UofM_permit_req":"yes"},"geometry":{"type":"Point","coordinates":[-83.7169897556305,42.290417413521936]}},{"type":"Feature","properties":{"Lot":"NC70","Spot":2,"Tier":"Blue","Van_access":"no","UofM_permit_req":"yes"},"geometry":{"type":"Point","coordinates":[-83.71427938342094,42.29021701434892]}},{"type":"Feature","properties":{"Lot":"NC70","Spot":3,"Tier":"Blue","Van_access":"yes","UofM_permit_req":"yes"},"geometry":{"type":"Point","coordinates":[-83.71661022305489,42.2902259430385]}},{"type":"Feature","properties":{"Lot":"NC70","Spot":4,"Tier":"Blue","Van_access":"no","UofM_permit_req":"yes"},"geometry":{"type":"Point","coordinates":[-83.71644124388695,42.29022197473218]}},{"type":"Feature","properties":{"Lot":"NC105","Spot":1,"Tier":"Blue","Van_access":"no","UofM_permit_req":"yes"},"geometry":{"type":"Point","coordinates":[-83.70828196406364,42.29968567458355]}},{"type":"Feature","properties":{"Lot":"NC105","Spot":2,"Tier":"Blue","Van_access":"yes","UofM_permit_req":"yes"},"geometry":{"type":"Point","coordinates":[-83.70834767818451,42.29968865036611]}},{"type":"Feature","properties":{"Lot":"NC105","Spot":3,"Tier":"None","Van_access":"yes","UofM_permit_req":"no"},"geometry":{"type":"Point","coordinates":[-83.70841071009636,42.29968765843861]}},{"type":"Feature","properties":{"Lot":"NC81","Spot":1,"Tier":"Yellow","Van_access":"yes","UofM_permit_req":"yes"},"geometry":{"type":"Point","coordinates":[-83.7068972736597,42.292070682372064]}},{"type":"Feature","properties":{"Lot":"NC105","Spot":4,"Tier":"None","Van_access":"no","UofM_permit_req":"no"},"geometry":{"type":"Point","coordinates":[-83.70869904756546,42.29997531676105]}},{"type":"Feature","properties":{"Lot":"NC78","Spot":1,"Tier":"Orange","Van_access":"yes","UofM_permit_req":"yes"},"geometry":{"type":"Point","coordinates":[-83.72238770127296,42.28739895746928]}},{"type":"Feature","properties":{"Lot":"NC78","Spot":2,"Tier":"Orange","Van_access":"yes","UofM_permit_req":"yes"},"geometry":{"type":"Point","coordinates":[-83.72233003377914,42.2874014377719]}},{"type":"Feature","properties":{"Lot":"NC78","Spot":3,"Tier":"Orange","Van_access":"no","UofM_permit_req":"yes"},"geometry":{"type":"Point","coordinates":[-83.7222958356142,42.28740242989293]}},{"type":"Feature","properties":{"Lot":"NC78","Spot":4,"Tier":"Orange","Van_access":"no","UofM_permit_req":"yes"},"geometry":{"type":"Point","coordinates":[-83.72223682701588,42.2874014377719]}},{"type":"Feature","properties":{"Lot":"NC78","Spot":5,"Tier":"Orange","Van_access":"no","UofM_permit_req":"yes"},"geometry":{"type":"Point","coordinates":[-83.72257880866528,42.28739598110598]}},{"type":"Feature","properties":{"Lot":"NC78","Spot":6,"Tier":"Orange","Van_access":"no","UofM_permit_req":"yes"},"geometry":{"type":"Point","coordinates":[-83.72263714671135,42.28739300474255]}},{"type":"Feature","properties":{"Lot":"NC78","Spot":7,"Tier":"Orange","Van_access":"no","UofM_permit_req":"yes"},"geometry":{"type":"Point","coordinates":[-83.7226740270853,42.2873954850454]}},{"type":"Feature","properties":{"Lot":"NC78","Spot":8,"Tier":"Orange","Van_access":"no","UofM_permit_req":"yes"},"geometry":{"type":"Point","coordinates":[-83.72273303568362,42.28739201262137]}}]}
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "Lot": "NC9",
+        "Spot": 1,
+        "Tier": "Yellow",
+        "Van_access": "no",
+        "UofM_permit_req": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.70189361274242,
+          42.2978778606789
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Lot": "NC9",
+        "Spot": 2,
+        "Tier": "Yellow",
+        "Van_access": "yes",
+        "UofM_permit_req": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.70182789862156,
+          42.29787934861294
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Lot": "NC9",
+        "Spot": 3,
+        "Tier": "Yellow",
+        "Van_access": "yes",
+        "UofM_permit_req": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.70242804288864,
+          42.297831734706875
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Lot": "NC9",
+        "Spot": 4,
+        "Tier": "Yellow",
+        "Van_access": "no",
+        "UofM_permit_req": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.70243072509766,
+          42.2978719089425
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Lot": "NC9",
+        "Spot": 5,
+        "Tier": "Yellow",
+        "Van_access": "no",
+        "UofM_permit_req": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.70243139564991,
+          42.29791109119699
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Lot": "NC34",
+        "Spot": 1,
+        "Tier": "Yellow",
+        "Van_access": "yes",
+        "UofM_permit_req": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.7029718607664,
+          42.29747264533909
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Lot": "NC34",
+        "Spot": 2,
+        "Tier": "Yellow",
+        "Van_access": "no",
+        "UofM_permit_req": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.70290614664555,
+          42.297471157395464
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Lot": "NC34",
+        "Spot": 3,
+        "Tier": "Yellow",
+        "Van_access": "yes",
+        "UofM_permit_req": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.7029792368412,
+          42.29736154545142
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Lot": "NC65",
+        "Spot": 1,
+        "Tier": "Yellow",
+        "Van_access": "no",
+        "UofM_permit_req": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.70225101709366,
+          42.2968615935313
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Lot": "NC65",
+        "Spot": 2,
+        "Tier": "Yellow",
+        "Van_access": "no",
+        "UofM_permit_req": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.70221614837645,
+          42.29686556141931
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Lot": "NC65",
+        "Spot": 3,
+        "Tier": "Yellow",
+        "Van_access": "no",
+        "UofM_permit_req": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.70215713977812,
+          42.29686556141931
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Lot": "NC65",
+        "Spot": 4,
+        "Tier": "Yellow",
+        "Van_access": "no",
+        "UofM_permit_req": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.70272845029831,
+          42.29686556141931
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Lot": "NC65",
+        "Spot": 5,
+        "Tier": "Yellow",
+        "Van_access": "no",
+        "UofM_permit_req": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.70277773588896,
+          42.29686754536321
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Lot": "NC65",
+        "Spot": 6,
+        "Tier": "Yellow",
+        "Van_access": "no",
+        "UofM_permit_req": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.7028119340539,
+          42.29686655339126
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Lot": "NC85",
+        "Spot": 5,
+        "Tier": "Blue",
+        "Van_access": "no",
+        "UofM_permit_req": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.70305433869362,
+          42.2993682569685
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Lot": "NC85",
+        "Spot": 4,
+        "Tier": "Blue",
+        "Van_access": "no",
+        "UofM_permit_req": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.70298594236374,
+          42.29936726503593
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Lot": "NC85",
+        "Spot": 3,
+        "Tier": "Blue",
+        "Van_access": "no",
+        "UofM_permit_req": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.70295241475105,
+          42.29937123276606
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Lot": "NC85",
+        "Spot": 2,
+        "Tier": "Blue",
+        "Van_access": "yes",
+        "UofM_permit_req": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.70289072394371,
+          42.29937817629318
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Lot": "NC85",
+        "Spot": 1,
+        "Tier": "Blue",
+        "Van_access": "yes",
+        "UofM_permit_req": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.70285451412201,
+          42.29937718436079
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Lot": "NC86",
+        "Spot": 1,
+        "Tier": "Yellow",
+        "Van_access": "no",
+        "UofM_permit_req": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.70248302817345,
+          42.299375200495945
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Lot": "NC86",
+        "Spot": 2,
+        "Tier": "Yellow",
+        "Van_access": "no",
+        "UofM_permit_req": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.70242938399315,
+          42.29937817629318
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Lot": "NC86",
+        "Spot": 3,
+        "Tier": "Yellow",
+        "Van_access": "no",
+        "UofM_permit_req": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.70239317417145,
+          42.29937916822557
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Lot": "NC86",
+        "Spot": 4,
+        "Tier": "Yellow",
+        "Van_access": "yes",
+        "UofM_permit_req": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.70234087109566,
+          42.29938115209029
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Lot": "NC86",
+        "Spot": 5,
+        "Tier": "Yellow",
+        "Van_access": "no",
+        "UofM_permit_req": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.70227649807929,
+          42.29938313595494
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Lot": "NC82",
+        "Spot": 1,
+        "Tier": "Yellow",
+        "Van_access": "no",
+        "UofM_permit_req": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.70212897658348,
+          42.30107039021311
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Lot": "NC82",
+        "Spot": 2,
+        "Tier": "Yellow",
+        "Van_access": "no",
+        "UofM_permit_req": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.70213031768799,
+          42.301107586667115
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Lot": "NC82",
+        "Spot": 3,
+        "Tier": "Yellow",
+        "Van_access": "no",
+        "UofM_permit_req": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.70212897658348,
+          42.3011343681004
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Lot": "NC82",
+        "Spot": 4,
+        "Tier": "Yellow",
+        "Van_access": "no",
+        "UofM_permit_req": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.70212897658348,
+          42.301163629283
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Lot": "NC82",
+        "Spot": 5,
+        "Tier": "Yellow",
+        "Van_access": "no",
+        "UofM_permit_req": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.70213031768799,
+          42.30118892283667
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Lot": "NC82",
+        "Spot": 6,
+        "Tier": "Yellow",
+        "Van_access": "yes",
+        "UofM_permit_req": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.70212696492672,
+          42.30123455039797
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Lot": "NC82",
+        "Spot": 7,
+        "Tier": "Yellow",
+        "Van_access": "no",
+        "UofM_permit_req": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.70212830603123,
+          42.30126926699855
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Lot": "NC82",
+        "Spot": 8,
+        "Tier": "Yellow",
+        "Van_access": "no",
+        "UofM_permit_req": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.70212964713573,
+          42.301292576705336
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Lot": "NC82",
+        "Spot": 9,
+        "Tier": "Yellow",
+        "Van_access": "no",
+        "UofM_permit_req": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.70213031768799,
+          42.30133126088056
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Lot": "NC83",
+        "Spot": 1,
+        "Tier": "Yellow",
+        "Van_access": "yes",
+        "UofM_permit_req": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.70363838970661,
+          42.30125290060353
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Lot": "NC83",
+        "Spot": 2,
+        "Tier": "Yellow",
+        "Van_access": "no",
+        "UofM_permit_req": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.70370209217072,
+          42.30125736416623
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Lot": "NC83",
+        "Spot": 3,
+        "Tier": "Yellow",
+        "Van_access": "no",
+        "UofM_permit_req": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.70373159646988,
+          42.30126033987452
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Lot": "NC83",
+        "Spot": 4,
+        "Tier": "Yellow",
+        "Van_access": "no",
+        "UofM_permit_req": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.7037906050682,
+          42.3012548844092
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Lot": "NC84",
+        "Spot": 1,
+        "Tier": "Blue",
+        "Van_access": "yes",
+        "UofM_permit_req": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.70332524180411,
+          42.30074157260393
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Lot": "NC84",
+        "Spot": 2,
+        "Tier": "Blue",
+        "Van_access": "no",
+        "UofM_permit_req": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.70332524180411,
+          42.30071131931383
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Lot": "NC84",
+        "Spot": 3,
+        "Tier": "None",
+        "Van_access": "no",
+        "UofM_permit_req": "no"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.70352037250996,
+          42.300672634757724
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Lot": "NC99",
+        "Spot": 1,
+        "Tier": "None",
+        "Van_access": "yes",
+        "UofM_permit_req": "no"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.70634272694588,
+          42.30132134186354
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Lot": "NC99",
+        "Spot": 2,
+        "Tier": "None",
+        "Van_access": "no",
+        "UofM_permit_req": "no"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.70634339749813,
+          42.3013674652794
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Lot": "NC99",
+        "Spot": 3,
+        "Tier": "None",
+        "Van_access": "no",
+        "UofM_permit_req": "no"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.70634272694588,
+          42.30138680734699
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Lot": "NC46",
+        "Spot": 1,
+        "Tier": "Orange",
+        "Van_access": "no",
+        "UofM_permit_req": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.70784543454646,
+          42.295735199214164
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Lot": "NC46",
+        "Spot": 2,
+        "Tier": "Orange",
+        "Van_access": "yes",
+        "UofM_permit_req": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.70789639651775,
+          42.295715855410585
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Lot": "NC46",
+        "Spot": 3,
+        "Tier": "Orange",
+        "Van_access": "yes",
+        "UofM_permit_req": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.7077073007822,
+          42.29565931195059
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Lot": "NC46",
+        "Spot": 4,
+        "Tier": "Orange",
+        "Van_access": "no",
+        "UofM_permit_req": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.70776228606701,
+          42.295639968123695
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Lot": "NC46",
+        "Spot": 5,
+        "Tier": "Orange",
+        "Van_access": "no",
+        "UofM_permit_req": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.70779179036617,
+          42.2956260802443
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Lot": "NC46",
+        "Spot": 6,
+        "Tier": "Orange",
+        "Van_access": "no",
+        "UofM_permit_req": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.70784610509872,
+          42.295601280452026
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Lot": "NC46",
+        "Spot": 7,
+        "Tier": "Orange",
+        "Van_access": "no",
+        "UofM_permit_req": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.70787024497986,
+          42.295775374787276
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Lot": "NC46",
+        "Spot": 8,
+        "Tier": "Orange",
+        "Van_access": "yes",
+        "UofM_permit_req": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.70792858302593,
+          42.29575503900657
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Lot": "NC53",
+        "Spot": 1,
+        "Tier": "Orange",
+        "Van_access": "no",
+        "UofM_permit_req": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.70746925473213,
+          42.29542272165951
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Lot": "NC53",
+        "Spot": 2,
+        "Tier": "Orange",
+        "Van_access": "no",
+        "UofM_permit_req": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.7074987590313,
+          42.295410817722015
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Lot": "NC53",
+        "Spot": 3,
+        "Tier": "Orange",
+        "Van_access": "no",
+        "UofM_permit_req": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.70754234492779,
+          42.295393953806716
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Lot": "NC53",
+        "Spot": 4,
+        "Tier": "Orange",
+        "Van_access": "yes",
+        "UofM_permit_req": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.7071943283081,
+          42.29550257718207
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Lot": "NC53",
+        "Spot": 5,
+        "Tier": "Orange",
+        "Van_access": "no",
+        "UofM_permit_req": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.70713599026203,
+          42.29551844907511
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Lot": "NC53",
+        "Spot": 6,
+        "Tier": "Orange",
+        "Van_access": "no",
+        "UofM_permit_req": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.70710380375385,
+          42.295527377013194
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Lot": "NC53",
+        "Spot": 7,
+        "Tier": "Orange",
+        "Van_access": "no",
+        "UofM_permit_req": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.70704747736454,
+          42.29553580895357
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Lot": "NC53",
+        "Spot": 8,
+        "Tier": "Orange",
+        "Van_access": "no",
+        "UofM_permit_req": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.70851062238215,
+          42.29446345548096
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Lot": "NC53",
+        "Spot": 9,
+        "Tier": "Orange",
+        "Van_access": "no",
+        "UofM_permit_req": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.70849318802357,
+          42.29448875172596
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Lot": "NC53",
+        "Spot": 10,
+        "Tier": "Orange",
+        "Van_access": "no",
+        "UofM_permit_req": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.70847173035143,
+          42.29451801599673
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Lot": "NC28",
+        "Spot": 1,
+        "Tier": "Blue",
+        "Van_access": "no",
+        "UofM_permit_req": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.71170982718468,
+          42.294875634207315
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Lot": "NC28",
+        "Spot": 2,
+        "Tier": "Blue",
+        "Van_access": "yes",
+        "UofM_permit_req": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.71170245110989,
+          42.294824050013794
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Lot": "NC28",
+        "Spot": 3,
+        "Tier": "Blue",
+        "Van_access": "no",
+        "UofM_permit_req": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.71164008975029,
+          42.294879106218815
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Lot": "NC28",
+        "Spot": 4,
+        "Tier": "Blue",
+        "Van_access": "no",
+        "UofM_permit_req": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.71164076030254,
+          42.294826034022
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Lot": "NC28",
+        "Spot": 5,
+        "Tier": "Blue",
+        "Van_access": "no",
+        "UofM_permit_req": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.71158108115196,
+          42.294881586226914
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Lot": "NC28",
+        "Spot": 6,
+        "Tier": "Blue",
+        "Van_access": "no",
+        "UofM_permit_req": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.71158108115196,
+          42.2948314900443
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Lot": "NC28",
+        "Spot": 7,
+        "Tier": "Blue",
+        "Van_access": "no",
+        "UofM_permit_req": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.71082402765751,
+          42.29482752202812
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Lot": "NC22",
+        "Spot": 1,
+        "Tier": "Blue",
+        "Van_access": "yes",
+        "UofM_permit_req": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.70987318456173,
+          42.293059249944044
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Lot": "NC32",
+        "Spot": 1,
+        "Tier": "Orange",
+        "Van_access": "no",
+        "UofM_permit_req": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.72331507503986,
+          42.2918122534691
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Lot": "NC32",
+        "Spot": 2,
+        "Tier": "Orange",
+        "Van_access": "yes",
+        "UofM_permit_req": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.72326008975506,
+          42.291835566676596
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Lot": "NC32",
+        "Spot": 3,
+        "Tier": "Orange",
+        "Van_access": "no",
+        "UofM_permit_req": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.7234840542078,
+          42.29235440731696
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Lot": "NC32",
+        "Spot": 4,
+        "Tier": "Orange",
+        "Van_access": "yes",
+        "UofM_permit_req": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.72346058487892,
+          42.29232117386676
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Lot": "NC10",
+        "Spot": 1,
+        "Tier": "None",
+        "Van_access": "no",
+        "UofM_permit_req": "no"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.72180230915546,
+          42.29004488880764
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Lot": "NC10",
+        "Spot": 2,
+        "Tier": "None",
+        "Van_access": "no",
+        "UofM_permit_req": "no"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.72180297970772,
+          42.28999974917863
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Lot": "NC10",
+        "Spot": 3,
+        "Tier": "Blue",
+        "Van_access": "no",
+        "UofM_permit_req": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.72180700302124,
+          42.28997693133185
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Lot": "NC10",
+        "Spot": 4,
+        "Tier": "Blue",
+        "Van_access": "no",
+        "UofM_permit_req": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.72180968523026,
+          42.289940720384166
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Lot": "NC10",
+        "Spot": 5,
+        "Tier": "Blue",
+        "Van_access": "yes",
+        "UofM_permit_req": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.72172988951206,
+          42.29004687296641
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Lot": "NC10",
+        "Spot": 6,
+        "Tier": "Blue",
+        "Van_access": "no",
+        "UofM_permit_req": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.72173123061657,
+          42.29000322145892
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Lot": "NC10",
+        "Spot": 7,
+        "Tier": "Blue",
+        "Van_access": "no",
+        "UofM_permit_req": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.7217379361391,
+          42.28997593925138
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Lot": "NC10",
+        "Spot": 8,
+        "Tier": "Blue",
+        "Van_access": "no",
+        "UofM_permit_req": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.72174397110939,
+          42.289941216424694
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Lot": "NC10",
+        "Spot": 9,
+        "Tier": "None",
+        "Van_access": "no",
+        "UofM_permit_req": "no"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.72143685817719,
+          42.28886380720544
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Lot": "NC10",
+        "Spot": 10,
+        "Tier": "None",
+        "Van_access": "yes",
+        "UofM_permit_req": "no"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.72150257229805,
+          42.288891585943446
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Lot": "NC10",
+        "Spot": 11,
+        "Tier": "Blue",
+        "Van_access": "yes",
+        "UofM_permit_req": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.72168093919754,
+          42.28963565472446
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Lot": "NC10",
+        "Spot": 12,
+        "Tier": "Blue",
+        "Van_access": "no",
+        "UofM_permit_req": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.72170239686966,
+          42.289592002932
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Lot": "NC16",
+        "Spot": 1,
+        "Tier": "Blue",
+        "Van_access": "yes",
+        "UofM_permit_req": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.71414326131344,
+          42.28934844521652
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Lot": "NC16",
+        "Spot": 2,
+        "Tier": "None",
+        "Van_access": "yes",
+        "UofM_permit_req": "no"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.71414594352245,
+          42.28939209717778
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Lot": "NC16",
+        "Spot": 3,
+        "Tier": "None",
+        "Van_access": "no",
+        "UofM_permit_req": "no"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.71414192020893,
+          42.2894278123963
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Lot": "NC16",
+        "Spot": 4,
+        "Tier": "None",
+        "Van_access": "no",
+        "UofM_permit_req": "no"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.71414057910442,
+          42.28945063044197
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Lot": "NC16",
+        "Spot": 5,
+        "Tier": "None",
+        "Van_access": "no",
+        "UofM_permit_req": "no"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.71414393186569,
+          42.28948634562731
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Lot": "NC16",
+        "Spot": 6,
+        "Tier": "Blue",
+        "Van_access": "no",
+        "UofM_permit_req": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.71414259076118,
+          42.289528509361695
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Lot": "NC16",
+        "Spot": 7,
+        "Tier": "Blue",
+        "Van_access": "no",
+        "UofM_permit_req": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.71414192020893,
+          42.289548847152915
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Lot": "NC16",
+        "Spot": 8,
+        "Tier": "Blue",
+        "Van_access": "no",
+        "UofM_permit_req": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.71414057910442,
+          42.28958357019587
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Lot": "NC16",
+        "Spot": 9,
+        "Tier": "Blue",
+        "Van_access": "no",
+        "UofM_permit_req": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.71414259076118,
+          42.28960986048713
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Lot": "NC16",
+        "Spot": 10,
+        "Tier": "Blue",
+        "Van_access": "no",
+        "UofM_permit_req": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.71414057910442,
+          42.28964755975352
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Lot": "NC20",
+        "Spot": 1,
+        "Tier": "Blue",
+        "Van_access": "no",
+        "UofM_permit_req": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.71355585753918,
+          42.29367083465681
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Lot": "NC20",
+        "Spot": 2,
+        "Tier": "Blue",
+        "Van_access": "no",
+        "UofM_permit_req": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.71355652809142,
+          42.29363214577553
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Lot": "NC20",
+        "Spot": 3,
+        "Tier": "Blue",
+        "Van_access": "yes",
+        "UofM_permit_req": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.71355921030045,
+          42.29360585716312
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Lot": "NC21",
+        "Spot": 1,
+        "Tier": "Blue",
+        "Van_access": "no",
+        "UofM_permit_req": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.71631249785423,
+          42.29364950617392
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Lot": "NC21",
+        "Spot": 2,
+        "Tier": "Blue",
+        "Van_access": "no",
+        "UofM_permit_req": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.71620319783688,
+          42.29366488252278
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Lot": "NC21",
+        "Spot": 3,
+        "Tier": "Blue",
+        "Van_access": "no",
+        "UofM_permit_req": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.7161535769701,
+          42.29366488252278
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Lot": "NC27",
+        "Spot": 1,
+        "Tier": "None",
+        "Van_access": "yes",
+        "UofM_permit_req": "no"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.71786817908286,
+          42.29225718702522
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Lot": "NC27",
+        "Spot": 2,
+        "Tier": "None",
+        "Van_access": "no",
+        "UofM_permit_req": "no"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.71780648827551,
+          42.292260659181096
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Lot": "NC27",
+        "Spot": 3,
+        "Tier": "Blue",
+        "Van_access": "yes",
+        "UofM_permit_req": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.71771194040775,
+          42.29225917111432
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Lot": "NC27",
+        "Spot": 4,
+        "Tier": "Blue",
+        "Van_access": "no",
+        "UofM_permit_req": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.71764957904816,
+          42.29225817906977
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Lot": "NC27",
+        "Spot": 5,
+        "Tier": "Blue",
+        "Van_access": "no",
+        "UofM_permit_req": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.71681340038776,
+          42.29222196943354
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Lot": "NC27",
+        "Spot": 6,
+        "Tier": "Blue",
+        "Van_access": "no",
+        "UofM_permit_req": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.71681205928326,
+          42.29226611542563
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Lot": "NC40",
+        "Spot": 1,
+        "Tier": "Yellow",
+        "Van_access": "yes",
+        "UofM_permit_req": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.7257833778858,
+          42.29550406517224
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Lot": "NC40",
+        "Spot": 2,
+        "Tier": "Yellow",
+        "Van_access": "no",
+        "UofM_permit_req": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.72580215334892,
+          42.29554572888195
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Lot": "NC44",
+        "Spot": 1,
+        "Tier": "Visitor",
+        "Van_access": "no",
+        "UofM_permit_req": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.72014202177525,
+          42.29513801853767
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Lot": "NC44",
+        "Spot": 2,
+        "Tier": "None",
+        "Van_access": "no",
+        "UofM_permit_req": "no"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.72020103037357,
+          42.29513801853767
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Lot": "NC44",
+        "Spot": 3,
+        "Tier": "None",
+        "Van_access": "yes",
+        "UofM_permit_req": "no"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.72024528682232,
+          42.29514000253601
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Lot": "NC42",
+        "Spot": 1,
+        "Tier": "Restricted",
+        "Van_access": "no",
+        "UofM_permit_req": "no"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.71263183653355,
+          42.28937523165088
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Lot": "NC47",
+        "Spot": 1,
+        "Tier": "Restricted",
+        "Van_access": "no",
+        "UofM_permit_req": "no"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.7125962972641,
+          42.28804928947736
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Lot": "NC47",
+        "Spot": 2,
+        "Tier": "Restricted",
+        "Van_access": "no",
+        "UofM_permit_req": "no"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.7125962972641,
+          42.28800464447403
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Lot": "NC43",
+        "Spot": 1,
+        "Tier": "None",
+        "Van_access": "no",
+        "UofM_permit_req": "no"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.71667325496674,
+          42.28862719138686
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Lot": "NC43",
+        "Spot": 2,
+        "Tier": "None",
+        "Van_access": "no",
+        "UofM_permit_req": "no"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.71667861938475,
+          42.28858155469067
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Lot": "NC43",
+        "Spot": 3,
+        "Tier": "None",
+        "Van_access": "no",
+        "UofM_permit_req": "no"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.71673494577408,
+          42.288628183488576
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Lot": "NC43",
+        "Spot": 4,
+        "Tier": "None",
+        "Van_access": "no",
+        "UofM_permit_req": "no"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.71673896908759,
+          42.28858205074189
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Lot": "NC51",
+        "Spot": 1,
+        "Tier": "Orange",
+        "Van_access": "yes",
+        "UofM_permit_req": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.70623409748077,
+          42.28917185288275
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Lot": "NC51",
+        "Spot": 2,
+        "Tier": "Orange",
+        "Van_access": "yes",
+        "UofM_permit_req": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.70617173612118,
+          42.28917334102248
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Lot": "NC51",
+        "Spot": 3,
+        "Tier": "Orange",
+        "Van_access": "yes",
+        "UofM_permit_req": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.70613485574722,
+          42.289176317301795
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Lot": "NC51",
+        "Spot": 4,
+        "Tier": "Orange",
+        "Van_access": "yes",
+        "UofM_permit_req": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.70606914162636,
+          42.28917929358097
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Lot": "NC51",
+        "Spot": 5,
+        "Tier": "Orange",
+        "Van_access": "yes",
+        "UofM_permit_req": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.7061757594347,
+          42.28927503048622
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Lot": "NC51",
+        "Spot": 6,
+        "Tier": "Orange",
+        "Van_access": "yes",
+        "UofM_permit_req": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.70611004531384,
+          42.28927850280647
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Lot": "NC51",
+        "Spot": 7,
+        "Tier": "Orange",
+        "Van_access": "no",
+        "UofM_permit_req": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.70518267154694,
+          42.28979438826025
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Lot": "NC51",
+        "Spot": 8,
+        "Tier": "Orange",
+        "Van_access": "no",
+        "UofM_permit_req": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.70523363351822,
+          42.28979686846854
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Lot": "NC51",
+        "Spot": 9,
+        "Tier": "Orange",
+        "Van_access": "no",
+        "UofM_permit_req": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.70526984333992,
+          42.289798356593515
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Lot": "NC51",
+        "Spot": 10,
+        "Tier": "Orange",
+        "Van_access": "no",
+        "UofM_permit_req": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.70533153414726,
+          42.28979438826025
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Lot": "NC52",
+        "Spot": 1,
+        "Tier": "None",
+        "Van_access": "yes",
+        "UofM_permit_req": "no"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.70736598968506,
+          42.28852252456723
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Lot": "NC52",
+        "Spot": 2,
+        "Tier": "Orange",
+        "Van_access": "yes",
+        "UofM_permit_req": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.70737269520758,
+          42.288552287661595
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Lot": "NC52",
+        "Spot": 3,
+        "Tier": "Orange",
+        "Van_access": "no",
+        "UofM_permit_req": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.70737403631209,
+          42.28858998756091
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Lot": "NC60",
+        "Spot": 1,
+        "Tier": "Blue",
+        "Van_access": "no",
+        "UofM_permit_req": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.71317230165005,
+          42.290933289648066
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Lot": "NC60",
+        "Spot": 2,
+        "Tier": "Blue",
+        "Van_access": "no",
+        "UofM_permit_req": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.7131729722023,
+          42.29096106747343
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Lot": "NC60",
+        "Spot": 3,
+        "Tier": "Blue",
+        "Van_access": "no",
+        "UofM_permit_req": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.7131743133068,
+          42.29099678180236
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Lot": "NC60",
+        "Spot": 4,
+        "Tier": "Blue",
+        "Van_access": "no",
+        "UofM_permit_req": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.71317364275455,
+          42.291021087375725
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Lot": "NC60",
+        "Spot": 5,
+        "Tier": "Blue",
+        "Van_access": "no",
+        "UofM_permit_req": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.71317096054554,
+          42.291055313575406
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Lot": "NC60",
+        "Spot": 6,
+        "Tier": "Blue",
+        "Van_access": "yes",
+        "UofM_permit_req": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.71317028999329,
+          42.29108259531543
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Lot": "NC70",
+        "Spot": 1,
+        "Tier": "Blue",
+        "Van_access": "no",
+        "UofM_permit_req": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.7169897556305,
+          42.290417413521936
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Lot": "NC70",
+        "Spot": 2,
+        "Tier": "Blue",
+        "Van_access": "no",
+        "UofM_permit_req": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.71427938342094,
+          42.29021701434892
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Lot": "NC70",
+        "Spot": 3,
+        "Tier": "Blue",
+        "Van_access": "yes",
+        "UofM_permit_req": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.71661022305489,
+          42.2902259430385
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Lot": "NC70",
+        "Spot": 4,
+        "Tier": "Blue",
+        "Van_access": "no",
+        "UofM_permit_req": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.71644124388695,
+          42.29022197473218
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Lot": "NC105",
+        "Spot": 1,
+        "Tier": "Blue",
+        "Van_access": "no",
+        "UofM_permit_req": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.70828196406364,
+          42.29968567458355
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Lot": "NC105",
+        "Spot": 2,
+        "Tier": "Blue",
+        "Van_access": "yes",
+        "UofM_permit_req": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.70834767818451,
+          42.29968865036611
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Lot": "NC105",
+        "Spot": 3,
+        "Tier": "None",
+        "Van_access": "yes",
+        "UofM_permit_req": "no"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.70841071009636,
+          42.29968765843861
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Lot": "NC81",
+        "Spot": 1,
+        "Tier": "Yellow",
+        "Van_access": "yes",
+        "UofM_permit_req": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.7068972736597,
+          42.292070682372064
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Lot": "NC105",
+        "Spot": 4,
+        "Tier": "None",
+        "Van_access": "no",
+        "UofM_permit_req": "no"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.70869904756546,
+          42.29997531676105
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Lot": "NC78",
+        "Spot": 1,
+        "Tier": "Orange",
+        "Van_access": "yes",
+        "UofM_permit_req": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.72238770127296,
+          42.28739895746928
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Lot": "NC78",
+        "Spot": 2,
+        "Tier": "Orange",
+        "Van_access": "yes",
+        "UofM_permit_req": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.72233003377914,
+          42.2874014377719
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Lot": "NC78",
+        "Spot": 3,
+        "Tier": "Orange",
+        "Van_access": "no",
+        "UofM_permit_req": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.7222958356142,
+          42.28740242989293
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Lot": "NC78",
+        "Spot": 4,
+        "Tier": "Orange",
+        "Van_access": "no",
+        "UofM_permit_req": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.72223682701588,
+          42.2874014377719
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Lot": "NC78",
+        "Spot": 5,
+        "Tier": "Orange",
+        "Van_access": "no",
+        "UofM_permit_req": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.72257880866528,
+          42.28739598110598
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Lot": "NC78",
+        "Spot": 6,
+        "Tier": "Orange",
+        "Van_access": "no",
+        "UofM_permit_req": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.72263714671135,
+          42.28739300474255
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Lot": "NC78",
+        "Spot": 7,
+        "Tier": "Orange",
+        "Van_access": "no",
+        "UofM_permit_req": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.7226740270853,
+          42.2873954850454
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Lot": "NC78",
+        "Spot": 8,
+        "Tier": "Orange",
+        "Van_access": "no",
+        "UofM_permit_req": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.72273303568362,
+          42.28739201262137
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Lot": "NC37",
+        "Spot": 1,
+        "Tier": "None",
+        "Van_access": "no",
+        "UofM_permit_req": "no"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.6934158205986,
+          42.300033840189926
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Lot": "NC37",
+        "Spot": 2,
+        "Tier": "None",
+        "Van_access": "no",
+        "UofM_permit_req": "no"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.69346410036087,
+          42.300027888657276
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Lot": "NC37",
+        "Spot": 3,
+        "Tier": "None",
+        "Van_access": "no",
+        "UofM_permit_req": "no"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.69341649115086,
+          42.300149894964264
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Lot": "NC37",
+        "Spot": 4,
+        "Tier": "None",
+        "Van_access": "no",
+        "UofM_permit_req": "no"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.69346544146538,
+          42.300149894964264
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Lot": "NC37",
+        "Spot": 5,
+        "Tier": "None",
+        "Van_access": "no",
+        "UofM_permit_req": "no"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.69349427521229,
+          42.300149894964264
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Lot": "NC37",
+        "Spot": 6,
+        "Tier": "None",
+        "Van_access": "no",
+        "UofM_permit_req": "no"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.693712875247,
+          42.29970625707678
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Lot": "NC37",
+        "Spot": 7,
+        "Tier": "None",
+        "Van_access": "no",
+        "UofM_permit_req": "no"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.69469121098518,
+          42.299646989397324
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Lot": "NC103",
+        "Spot": 1,
+        "Tier": "Yellow",
+        "Van_access": "yes",
+        "UofM_permit_req": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.69563668966293,
+          42.298131304933214
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Lot": "NC103",
+        "Spot": 2,
+        "Tier": "Yellow",
+        "Van_access": "no",
+        "UofM_permit_req": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.69563668966293,
+          42.29818487032017
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Lot": "NC62",
+        "Spot": 1,
+        "Tier": "Yellow",
+        "Van_access": "no",
+        "UofM_permit_req": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.69762554764748,
+          42.298277121713134
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Lot": "NC62",
+        "Spot": 2,
+        "Tier": "Yellow",
+        "Van_access": "no",
+        "UofM_permit_req": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.69764164090157,
+          42.2988460023167
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Lot": "NC61",
+        "Spot": 1,
+        "Tier": "Yellow",
+        "Van_access": "no",
+        "UofM_permit_req": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.69819283485413,
+          42.29831878358822
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Lot": "NC63",
+        "Spot": 1,
+        "Tier": "Yellow",
+        "Van_access": "no",
+        "UofM_permit_req": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.70259836316107,
+          42.295642448101816
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Lot": "NC63",
+        "Spot": 2,
+        "Tier": "Yellow",
+        "Van_access": "yes",
+        "UofM_permit_req": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.7025648355484,
+          42.29564592007106
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Lot": "NC63",
+        "Spot": 3,
+        "Tier": "Yellow",
+        "Van_access": "no",
+        "UofM_permit_req": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.70250783860682,
+          42.295657823964106
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Lot": "NC63",
+        "Spot": 4,
+        "Tier": "Yellow",
+        "Van_access": "no",
+        "UofM_permit_req": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.7024776637554,
+          42.29565980794608
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Lot": "NC63",
+        "Spot": 5,
+        "Tier": "Yellow",
+        "Van_access": "no",
+        "UofM_permit_req": "no"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.70243072509766,
+          42.295672703827286
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Lot": "NC90",
+        "Spot": 1,
+        "Tier": "Yellow",
+        "Van_access": "no",
+        "UofM_permit_req": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.70672829449177,
+          42.29631501456905
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Lot": "NC90",
+        "Spot": 2,
+        "Tier": "Yellow",
+        "Van_access": "yes",
+        "UofM_permit_req": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.7067276239395,
+          42.296341798040736
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Spot": 3,
+        "Tier": "Yellow",
+        "Lot": "NC90",
+        "Van_access": "no",
+        "UofM_permit_req": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.70672963559628,
+          42.29636858150099
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "UofM_permit_req": "yes",
+        "Lot": "NC90",
+        "Spot": 7,
+        "Tier": "Yellow",
+        "Van_access": "no"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.7068147957325,
+          42.29731690704848
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Spot": 6,
+        "Lot": "NC90",
+        "Tier": "Yellow",
+        "Van_access": "yes",
+        "UofM_permit_req": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.70680540800095,
+          42.29728417219957
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Lot": "NC90",
+        "Spot": 5,
+        "Tier": "Yellow",
+        "Van_access": "no",
+        "UofM_permit_req": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.70680674910545,
+          42.2972643328889
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Lot": "NC90",
+        "Spot": 4,
+        "Tier": "Yellow",
+        "Van_access": "no",
+        "UofM_permit_req": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.70680540800095,
+          42.297237549809616
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Lot": "NC92",
+        "Spot": 1,
+        "Tier": "Blue",
+        "Van_access": "yes",
+        "UofM_permit_req": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.70697036385535,
+          42.29798747172424
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Lot": "NC92",
+        "Spot": 2,
+        "Tier": "Blue",
+        "Van_access": "yes",
+        "UofM_permit_req": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.70684899389744,
+          42.29825430686509
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Lot": "NC92",
+        "Spot": 3,
+        "Tier": "Blue",
+        "Van_access": "no",
+        "UofM_permit_req": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.70682083070278,
+          42.29825529881516
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Lot": "NC92",
+        "Spot": 4,
+        "Tier": "Blue",
+        "Van_access": "no",
+        "UofM_permit_req": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.70678931474684,
+          42.298253810890024
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Lot": "NC92",
+        "Spot": 5,
+        "Tier": "Blue",
+        "Van_access": "no",
+        "UofM_permit_req": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.70675578713417,
+          42.29825529881516
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Lot": "NC92",
+        "Spot": 6,
+        "Tier": "Blue",
+        "Van_access": "no",
+        "UofM_permit_req": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.70672293007374,
+          42.29825430686509
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Lot": "NC92",
+        "Spot": 7,
+        "Tier": "Blue",
+        "Van_access": "no",
+        "UofM_permit_req": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.70669208467007,
+          42.298253314914966
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Lot": "NC92",
+        "Spot": 8,
+        "Tier": "Blue",
+        "Van_access": "no",
+        "UofM_permit_req": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.70665989816189,
+          42.29825480284012
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Van_access": "no",
+        "Lot": "NC91",
+        "Spot": 1,
+        "Tier": "Yellow",
+        "UofM_permit_req": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.70704144239426,
+          42.29637155744034
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Lot": "NC91",
+        "Spot": 2,
+        "Tier": "Yellow",
+        "Van_access": "yes",
+        "UofM_permit_req": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.70704144239426,
+          42.296403300784384
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Lot": "NC91",
+        "Spot": 3,
+        "Van_access": "no",
+        "Tier": "Yellow",
+        "UofM_permit_req": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.70704144239426,
+          42.296437028069946
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Lot": "NC91",
+        "Spot": 4,
+        "Tier": "Yellow",
+        "Van_access": "no",
+        "UofM_permit_req": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.70705753564835,
+          42.2972187024507
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Spot": 5,
+        "Lot": "NC91",
+        "Tier": "Yellow",
+        "Van_access": "no",
+        "UofM_permit_req": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.70706290006638,
+          42.29724250963997
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Spot": 6,
+        "Lot": "NC91",
+        "Van_access": "yes",
+        "Tier": "Yellow",
+        "UofM_permit_req": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.70705753564835,
+          42.297290123991544
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Spot": 7,
+        "Lot": "NC91",
+        "Tier": "Yellow",
+        "Van_access": "no",
+        "UofM_permit_req": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.70704680681229,
+          42.29732583473161
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Lot": "NC95",
+        "Spot": 1,
+        "Van_access": "no",
+        "Tier": "Blue",
+        "UofM_permit_req": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.70810359716415,
+          42.298720521683784
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Lot": "NC95",
+        "Spot": 2,
+        "Tier": "Blue",
+        "Van_access": "no",
+        "UofM_permit_req": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.70810225605965,
+          42.29869373922382
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Lot": "NC95",
+        "Spot": 3,
+        "Tier": "Blue",
+        "Van_access": "no",
+        "UofM_permit_req": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.70810762047768,
+          42.298668940639594
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Spot": 4,
+        "Lot": "NC95",
+        "Tier": "Blue",
+        "Van_access": "yes",
+        "UofM_permit_req": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.70810762047768,
+          42.29864612593353
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Spot": 5,
+        "Lot": "NC95",
+        "Tier": "Blue",
+        "Van_access": "no",
+        "UofM_permit_req": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.7078595161438,
+          42.29885641769397
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Spot": 6,
+        "Lot": "NC95",
+        "Tier": "Blue",
+        "Van_access": "no",
+        "UofM_permit_req": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.70781391859055,
+          42.298855425753366
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Lot": "NC96",
+        "Spot": 1,
+        "Tier": "Blue",
+        "UofM_permit_req": "yes",
+        "Van_access": "no"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.70837315917015,
+          42.2991232491527
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Lot": "NC96",
+        "Spot": 2,
+        "Tier": "Blue",
+        "UofM_permit_req": "yes",
+        "Van_access": "no"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.70833829045296,
+          42.29912027334343
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Lot": "NC96",
+        "Spot": 3,
+        "Tier": "Blue",
+        "Van_access": "yes",
+        "UofM_permit_req": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.70830476284027,
+          42.29912176124808
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Lot": "NC96",
+        "Spot": 4,
+        "Tier": "Blue",
+        "UofM_permit_req": "yes",
+        "Van_access": "no"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.70827525854111,
+          42.2991222572163
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Lot": "NC96",
+        "Spot": 5,
+        "Tier": "Blue",
+        "UofM_permit_req": "yes",
+        "Van_access": "no"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.70826318860054,
+          42.29917185401788
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Lot": "NC96",
+        "Spot": 6,
+        "Tier": "Blue",
+        "UofM_permit_req": "yes",
+        "Van_access": "no"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.7082926928997,
+          42.299171358050046
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Lot": "NC96",
+        "Spot": 7,
+        "Tier": "Blue",
+        "Van_access": "yes",
+        "UofM_permit_req": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.70832957327364,
+          42.29917234998569
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Lot": "NC96",
+        "Spot": 8,
+        "Tier": "Blue",
+        "Van_access": "yes",
+        "UofM_permit_req": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.70835572481155,
+          42.29917532579252
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Lot": "NC96",
+        "Spot": 9,
+        "Tier": "Blue",
+        "UofM_permit_req": "yes",
+        "Van_access": "no"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.70869904756546,
+          42.29937916822557
+        ]
+      }
+    }
+  ]
+}
