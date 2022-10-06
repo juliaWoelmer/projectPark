@@ -1,5 +1,7 @@
 package com.example.arborparker
 
+import android.app.Activity
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -12,9 +14,14 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import com.example.arborparker.databinding.ActivityMapsBinding
 import com.google.android.gms.common.api.Status
+import com.google.android.libraries.places.api.Places
 import com.google.android.libraries.places.api.model.Place
+import com.google.android.libraries.places.widget.Autocomplete
+import com.google.android.libraries.places.widget.AutocompleteActivity
 import com.google.android.libraries.places.widget.AutocompleteSupportFragment
 import com.google.android.libraries.places.widget.listener.PlaceSelectionListener
+import com.google.android.libraries.places.widget.model.AutocompleteActivityMode
+import java.util.*
 
 private const val TAG = "MyLogTag"
 
@@ -22,6 +29,10 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
     private lateinit var mMap: GoogleMap
     private lateinit var binding: ActivityMapsBinding
+
+
+    private val AUTOCOMPLETE_REQUEST_CODE = 1
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -35,7 +46,12 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
                 .findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
 
-/**
+
+
+        // sets up the autocomplete places search
+        // Initialize the SDK with the Google Maps Platform API key
+        Places.initialize(this, BuildConfig.MAPS_API_KEY)
+
         // Initialize the AutocompleteSupportFragment.
         val autocompleteFragment =
             supportFragmentManager.findFragmentById(R.id.autocomplete_fragment)
@@ -56,7 +72,6 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
                 Log.i(TAG, "An error occurred: $status")
             }
         })
-        */
 
     }
 
@@ -77,4 +92,6 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         mMap.addMarker(MarkerOptions().position(arbor).title("Ann Arbor"))
         mMap.moveCamera(CameraUpdateFactory.newLatLng(arbor))
     }
+
+
 }
