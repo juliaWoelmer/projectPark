@@ -3,6 +3,7 @@ USE arborParkerDB;
 CREATE TABLE Spot (
 	SpotId INTEGER auto_increment,
     UserId INTEGER,
+    Open BOOLEAN DEFAULT 1,
     LotName VARCHAR(50),
     NumberInLot INTEGER,
     Tier VARCHAR(50),

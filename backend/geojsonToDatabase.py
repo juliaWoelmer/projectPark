@@ -1,5 +1,6 @@
 import mysql.connector
 import geojson
+from geojson import FeatureCollection
 
 
 
@@ -20,10 +21,16 @@ def readInGeoJSON():
             tier = spotInfo['Tier']
             vanAccessible = 0 if spotInfo['Van_access'] == "no" else 1
             UofMPermitRequired = 0 if spotInfo['UofM_permit_req'] == "no" else 1
-            val = (lotName, numberInLot, tier, vanAccessible, UofMPermitRequired)
-            sql = "INSERT INTO Spot (LotName, NumberInLot, Tier, VanAccessible, UofMPermitRequired) VALUES (%s, %s, %s, %s, %s)"
+            val = (1, lotName, numberInLot, tier, vanAccessible, UofMPermitRequired)
+            sql = "INSERT INTO Spot (Open, LotName, NumberInLot, Tier, VanAccessible, UofMPermitRequired) VALUES (%s, %s, %s, %s, %s, %s)"
             mycursor.execute(sql, val)
             mydb.commit()
+            spotId = mycursor.lastrowid
+            spotInfo['SpotId'] = spotId
+            spotInfo['Open'] = 1
+    
+    with open("parkingmap.geojson", "w") as parkingSpotsFile:
+        geojson.dump(parkingSpots, parkingSpotsFile, indent=2)  
     return
 
 readInGeoJSON()
