@@ -1,6 +1,7 @@
 package com.example.arborparker
 
 import android.app.Activity
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -20,7 +21,10 @@ import com.google.android.libraries.places.widget.AutocompleteActivity
 import com.google.android.libraries.places.widget.AutocompleteSupportFragment
 import com.google.android.libraries.places.widget.listener.PlaceSelectionListener
 import com.google.android.libraries.places.widget.model.AutocompleteActivityMode
+import com.google.maps.android.data.geojson.GeoJsonLayer
+import java.io.File
 import java.util.*
+import javax.sql.DataSource
 
 private const val TAG = "MyLogTag"
 
@@ -73,7 +77,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         })
 
     }
-
+    
     /**
      * Manipulates the map once available.
      * This callback is triggered when the map is ready to be used.
@@ -86,11 +90,15 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
 
-        // Add a marker in Sydney and move the camera
+        // Add a marker in Ann Arbor and move the camera
         val arbor = LatLng(42.279594, -83.732124)
         val zoomLevel = 12.0f
         mMap.addMarker(MarkerOptions().position(arbor).title("Ann Arbor"))
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(arbor, zoomLevel))
+        // Add GeoJson Layer containing parking spots
+        val context: Context = applicationContext
+        val layer = GeoJsonLayer(mMap, R.raw.parkingmap, context)
+        layer.addLayerToMap()
     }
 
 
