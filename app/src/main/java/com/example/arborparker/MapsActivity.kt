@@ -1,30 +1,26 @@
 package com.example.arborparker
 
-import android.app.Activity
 import android.content.Context
-import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import androidx.appcompat.app.AppCompatActivity
 import com.example.arborparker.databinding.ActivityMapsBinding
+import com.google.android.gms.common.api.Status
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
-import com.google.android.gms.common.api.Status
 import com.google.android.libraries.places.api.Places
 import com.google.android.libraries.places.api.model.Place
-import com.google.android.libraries.places.widget.Autocomplete
-import com.google.android.libraries.places.widget.AutocompleteActivity
 import com.google.android.libraries.places.widget.AutocompleteSupportFragment
 import com.google.android.libraries.places.widget.listener.PlaceSelectionListener
-import com.google.android.libraries.places.widget.model.AutocompleteActivityMode
 import com.google.maps.android.data.geojson.GeoJsonLayer
 import java.io.File
 import java.util.*
 import javax.sql.DataSource
+
 
 private const val TAG = "MyLogTag"
 
@@ -99,6 +95,12 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         val context: Context = applicationContext
         val layer = GeoJsonLayer(mMap, R.raw.parkingmap, context)
         layer.addLayerToMap()
+        for (feature in layer.features) {
+            val isOpen = feature.getProperty("Open")
+            if (isOpen == "0") {
+                layer.removeFeature(feature)
+            }
+        }
     }
 
 
