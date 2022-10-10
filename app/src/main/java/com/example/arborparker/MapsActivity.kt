@@ -4,7 +4,11 @@ import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import com.example.arborparker.databinding.ActivityMapsBinding
+import com.example.arborparker.network.RetrofitClient
+import com.example.arborparker.network.SpotApi
 import com.google.android.gms.common.api.Status
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
@@ -17,9 +21,6 @@ import com.google.android.libraries.places.api.model.Place
 import com.google.android.libraries.places.widget.AutocompleteSupportFragment
 import com.google.android.libraries.places.widget.listener.PlaceSelectionListener
 import com.google.maps.android.data.geojson.GeoJsonLayer
-import java.io.File
-import java.util.*
-import javax.sql.DataSource
 
 
 private const val TAG = "MyLogTag"
@@ -89,18 +90,26 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         // Add a marker in Ann Arbor and move the camera
         val arbor = LatLng(42.279594, -83.732124)
         val zoomLevel = 12.0f
-        mMap.addMarker(MarkerOptions().position(arbor).title("Ann Arbor"))
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(arbor, zoomLevel))
-        // Add GeoJson Layer containing parking spots
-        val context: Context = applicationContext
-        val layer = GeoJsonLayer(mMap, R.raw.parkingmap, context)
-        layer.addLayerToMap()
-        for (feature in layer.features) {
-            val isOpen = feature.getProperty("Open")
-            if (isOpen == "0") {
-                layer.removeFeature(feature)
+        getCurrentMapSpots()
+    }
+
+    fun getCurrentMapSpots() {
+        val viewModel = ViewModelProvider(this).get(MainActivityViewModel::class.java)
+        viewModel.getSpots()
+        viewModel.spotList.observe(this, Observer {
+            val spotHash = it.map{it.id to it.isOpen}.toMap()
+            val context: Context = applicationContext
+            val layer = GeoJsonLayer(mMap, R.raw.parkingmap, context)
+            val closedSpots = layer.features.filter { feature ->
+                val spotId = feature.getProperty("SpotId").toInt()
+                !(spotHash[spotId] ?: false)
             }
-        }
+            for (closedSpot in closedSpots) {
+                layer.removeFeature(closedSpot)
+            }
+            layer.addLayerToMap()
+        })
     }
 
 

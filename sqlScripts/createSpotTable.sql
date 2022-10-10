@@ -1,7 +1,7 @@
-USE arborParkerDB;
+USE heroku_a69b82598923256;
 
 CREATE TABLE Spot (
-	SpotId INTEGER auto_increment,
+	SpotId INTEGER,
     UserId INTEGER,
     Open BOOLEAN DEFAULT 1,
     LotName VARCHAR(50),
