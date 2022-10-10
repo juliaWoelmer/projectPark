@@ -20,10 +20,7 @@ import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
-import com.google.android.gms.maps.model.LatLng
-import com.google.android.gms.maps.model.LatLngBounds
-import com.google.android.gms.maps.model.MarkerOptions
-import com.google.android.gms.maps.model.PolylineOptions
+import com.google.android.gms.maps.model.*
 import com.google.android.libraries.places.api.Places
 import com.google.android.libraries.places.api.model.Place
 import com.google.android.libraries.places.widget.AutocompleteSupportFragment
@@ -37,8 +34,6 @@ import com.google.maps.android.collections.MarkerManager
 import com.google.maps.android.collections.PolygonManager
 import com.google.maps.android.collections.PolylineManager
 import com.google.maps.android.data.geojson.GeoJsonLayer
-import okhttp3.OkHttpClient
-import okhttp3.Request
 import java.net.URL
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
@@ -52,6 +47,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
     private lateinit var mMap: GoogleMap
     private lateinit var binding: ActivityMapsBinding
     private lateinit var col: MutableSet<MyItem>
+    private lateinit var lines: Pair<Polyline, Polyline>
     private lateinit var destination: Place
     // FusedLocationProviderClient - Main class for receiving location updates.
     private lateinit var fusedLocationProviderClient: FusedLocationProviderClient
@@ -168,7 +164,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         return result
     }
 
-    private fun drawPolyLine(nodes: ArrayList<List<LatLng>>, color: Int) {
+    private fun drawPolyLine(nodes: ArrayList<List<LatLng>>, color: Int): Polyline {
         val lineoption = PolylineOptions()
         for (i in nodes.indices){
             lineoption.addAll(nodes[i])
@@ -176,7 +172,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
             lineoption.color(color)
             lineoption.geodesic(true)
         }
-        mMap.addPolyline(lineoption)
+        return mMap.addPolyline(lineoption)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -221,12 +217,13 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
                         spot = item
                     }
                 }
-
+                lines.first.remove()
+                lines.second.remove()
                 // Get Directions From API
-                var res2 = (getDirections(currentLocation, spot.position, "driving"))
-                var res1 = getDirections(destination.latLng, spot.position, "walking")
-                drawPolyLine(res1, Color.RED)
-                drawPolyLine(res2, Color.BLUE)
+                var res_driv = (getDirections(currentLocation, spot.position, "driving"))
+                //Thread.sleep(0.01.toLong())
+                var res_walk = getDirections(destination.latLng, spot.position, "walking")
+                lines = Pair(drawPolyLine(res_walk, Color.RED), drawPolyLine(res_driv, Color.BLUE))
                 val builder = LatLngBounds.Builder()
                 builder.include(currentLocation)
                 builder.include(destination.latLng)
@@ -258,7 +255,9 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
      */
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
-
+        lines = Pair(mMap.addPolyline(PolylineOptions()), mMap.addPolyline(PolylineOptions()))
+        lines.first.remove()
+        lines.second.remove()
         // Add a marker in Ann Arbor and move the camera
         val arbor = LatLng(42.279594, -83.732124)
         val zoomLevel = 12.0f
