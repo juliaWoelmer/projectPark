@@ -3,6 +3,7 @@ package com.example.arborparker
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.*
+import android.content.Intent
 
 /**
  * A Login Form Example in Kotlin Android
@@ -27,6 +28,7 @@ class LoginActivity : AppCompatActivity() {
             // your code to validate the user_name and password combination
             // and verify the same
 
+            startActivity(Intent(this, MapsActivity::class.java));
         }
     }
 }
