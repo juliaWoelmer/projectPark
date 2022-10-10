@@ -28,7 +28,7 @@ class LoginActivity : AppCompatActivity() {
             // your code to validate the user_name and password combination
             // and verify the same
 
-            startActivity(Intent(this, ViewProfileActivity::class.java));
+            startActivity(Intent(this, MapsActivity::class.java));
         }
     }
 }
