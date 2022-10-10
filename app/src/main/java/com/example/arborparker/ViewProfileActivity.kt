@@ -1,19 +1,12 @@
-package com.example.arborparker
+package com.example.handyopinion.ProfileActivity
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Button
 import com.example.arborparker.R
 
 class ViewProfileActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_view_profile)
-        var btn_edit = findViewById(R.id.btn_edit) as Button
-
-        btn_edit.setOnClickListener {
-            startActivity(Intent(this, EditProfileActivity::class.java));
-        }
     }
 }
