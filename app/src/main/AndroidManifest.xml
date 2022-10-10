@@ -33,7 +33,7 @@
             android:value="@integer/google_play_services_version" />
 
         <activity
-            android:name=".MapsActivity"
+            android:name=".LoginActivity"
             android:exported="true"
             android:label="@string/title_activity_maps">
             <intent-filter>
@@ -42,6 +42,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".ViewProfileActivity"></activity>
     </application>
 
 </manifest>

@@ -21,14 +21,14 @@ class LoginActivity : AppCompatActivity() {
 
         // set on-click listener
         btn_submit.setOnClickListener {
-            val user_name = et_user_name.text;
-            val password = et_password.text;
-            Toast.makeText(this@LoginActivity, user_name, Toast.LENGTH_LONG).show()
+            //val user_name = et_user_name.text;
+            //val password = et_password.text;
+            //Toast.makeText(this@LoginActivity, user_name, Toast.LENGTH_LONG).show()
 
             // your code to validate the user_name and password combination
             // and verify the same
 
-            startActivity(Intent(this, MapsActivity::class.java));
+            startActivity(Intent(this, ViewProfileActivity::class.java));
         }
     }
 }
