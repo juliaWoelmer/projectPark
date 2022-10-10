@@ -91,10 +91,10 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         val arbor = LatLng(42.279594, -83.732124)
         val zoomLevel = 12.0f
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(arbor, zoomLevel))
-        getCurrentMapSpots()
+        filterMapSpotsAndDisplay()
     }
 
-    fun getCurrentMapSpots() {
+    fun filterMapSpotsAndDisplay() {
         val viewModel = ViewModelProvider(this).get(MainActivityViewModel::class.java)
         viewModel.getSpots()
         viewModel.spotList.observe(this, Observer {
