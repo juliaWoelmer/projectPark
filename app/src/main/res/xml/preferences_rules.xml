@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory android:title="General">
+
+        <SwitchPreference
+            android:defaultValue="false"
+            android:key="@string/stairs"
+            android:title="@string/stairs" />
+
+        <ListPreference
+            android:defaultValue="1"
+            android:dialogTitle="@string/themes"
+            android:entries="@array/pref_themes"
+            android:summary="Choose a color theme"
+            android:title="Themes" />
+
+
+    </PreferenceCategory>
+
+</PreferenceScreen>
