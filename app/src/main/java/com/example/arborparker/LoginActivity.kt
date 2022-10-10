@@ -2,10 +2,7 @@ package com.example.arborparker
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log.v
-import android.view.View
 import android.widget.*
-import com.example.arborparker.R
 
 /**
  * A Login Form Example in Kotlin Android
@@ -14,7 +11,7 @@ class LoginActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_login)
 
         // get reference to all views
         var et_user_name = findViewById(R.id.et_user_name) as EditText

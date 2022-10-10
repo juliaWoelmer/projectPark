@@ -1,12 +1,11 @@
 package com.example.arborparker
 
-import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 
-class MainActivity : AppCompatActivity() {
+class PreferenceActivity : AppCompatActivity() {
 
     // on below line we are creating
     // a variable for our button
@@ -14,7 +13,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_preferences)
 
         // on below line we are initializing
         // our views with their ids.
