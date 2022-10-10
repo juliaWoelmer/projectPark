@@ -1,4 +1,4 @@
-USE arborParkerDB;
+USE heroku_a69b82598923256;
 
 CREATE TABLE Report (
 	ReportId INTEGER auto_increment,

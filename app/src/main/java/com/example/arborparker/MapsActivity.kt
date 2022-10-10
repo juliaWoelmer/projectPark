@@ -9,7 +9,11 @@ import android.os.Handler
 import android.os.Looper
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import com.example.arborparker.databinding.ActivityMapsBinding
+import com.example.arborparker.network.RetrofitClient
+import com.example.arborparker.network.SpotApi
 import com.google.android.gms.common.api.Status
 import com.google.android.gms.location.*
 import com.google.android.gms.maps.CameraUpdateFactory
@@ -47,7 +51,6 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
     private lateinit var mMap: GoogleMap
     private lateinit var binding: ActivityMapsBinding
-    private lateinit var layer: GeoJsonLayer
     private lateinit var col: MutableSet<MyItem>
     private lateinit var destination: Place
     // FusedLocationProviderClient - Main class for receiving location updates.
@@ -259,41 +262,41 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         // Add a marker in Ann Arbor and move the camera
         val arbor = LatLng(42.279594, -83.732124)
         val zoomLevel = 12.0f
-        mMap.addMarker(MarkerOptions().position(arbor).title("Ann Arbor"))
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(arbor, zoomLevel))
         // Add GeoJson Layer containing parking spots
         setUpClusterer()
+        filterMapSpotsAndDisplay()
+    }
+
+    fun filterMapSpotsAndDisplay() {
         val context: Context = applicationContext
-        val markerManager = MarkerManager(mMap)
-        val groundOverlayManager = GroundOverlayManager(mMap!!)
-        val polygonManager = PolygonManager(mMap)
-        val polylineManager = PolylineManager(mMap)
-        val clmgr =
-            ClusterManager<MyItem>(context, mMap, markerManager)
-        layer = GeoJsonLayer(mMap, R.raw.parkingmap, context, markerManager, polygonManager,
-            polylineManager,
-            groundOverlayManager)
-        layer.addLayerToMap()
+        val layer = GeoJsonLayer(mMap, R.raw.parkingmap, context)
+        val viewModel = ViewModelProvider(this).get(MainActivityViewModel::class.java)
+        viewModel.getSpots()
+        viewModel.spotList.observe(this, Observer {
+            val spotHash = it.map{it.id to it.isOpen}.toMap()
+            val closedSpots = layer.features.filter { feature ->
+                val spotId = feature.getProperty("SpotId").toInt()
+                !(spotHash[spotId] ?: false)
+            }
+            for (closedSpot in closedSpots) {
+                layer.removeFeature(closedSpot)
+            }
+            //layer.addLayerToMap()
+        })
         col = mutableSetOf<MyItem>()
         for (feature in layer.features) {
-            val isOpen = feature.getProperty("Open")
-            if (isOpen == "0") {
-                layer.removeFeature(feature)
-            }
-            else {
-                val geo = feature.geometry.geometryObject.toString()
-                val latlong = geo.substring(10).dropLast(1).split(",".toRegex()).toTypedArray()
-                val lat = latlong[0].toDouble()
-                val lng = latlong[1].toDouble()
-                val id = feature.getProperty("SpotId")
-                val offsetItem =
-                    MyItem(lat, lng, id, "Snippet")
-                //col.addItem(offsetItem)
-                col.add(offsetItem)
-            }
+            val geo = feature.geometry.geometryObject.toString()
+            val latlong = geo.substring(10).dropLast(1).split(",".toRegex()).toTypedArray()
+            val lat = latlong[0].toDouble()
+            val lng = latlong[1].toDouble()
+            val id = feature.getProperty("SpotId")
+            val offsetItem =
+                MyItem(lat, lng, id, "Snippet")
+            //col.addItem(offsetItem)
+            col.add(offsetItem)
         }
         clusterManager.addItems(col)
-        layer.removeLayerFromMap()
     }
 
 
