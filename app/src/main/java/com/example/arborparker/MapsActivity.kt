@@ -1,7 +1,9 @@
 package com.example.arborparker
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Button
 
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
@@ -20,12 +22,22 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         super.onCreate(savedInstanceState)
 
         binding = ActivityMapsBinding.inflate(layoutInflater)
-        setContentView(R.layout.activity_maps)
+        setContentView(binding.root)
 
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         val mapFragment = supportFragmentManager
                 .findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
+
+        var btn_profile = findViewById(R.id.btn_profile) as Button
+        btn_profile.setOnClickListener {
+            startActivity(Intent(this, ViewProfileActivity::class.java));
+        }
+
+        var btn_settings = findViewById(R.id.btn_settings) as Button
+        btn_settings.setOnClickListener {
+            startActivity(Intent(this, PreferenceActivity::class.java));
+        }
     }
 
     /**

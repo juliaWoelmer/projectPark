@@ -1,5 +1,6 @@
 package com.example.arborparker
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.view.View
@@ -15,16 +16,10 @@ class PreferenceActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_preferences)
 
-        // on below line we are initializing
-        // our views with their ids.
-        settingsBtn = findViewById(R.id.idBtnSettings)
+        var btn_map = findViewById(R.id.btn_map) as Button
 
-        // on below line we are adding click listener
-        // for our settings button
-        settingsBtn.setOnClickListener {
-            // opening a new intent to open settings activity.
-            // opening a new intent to open settings activity.
-
+        btn_map.setOnClickListener {
+            startActivity(Intent(this, MapsActivity::class.java));
         }
 
         if (findViewById<View?>(R.id.idFrameLayout) != null) {

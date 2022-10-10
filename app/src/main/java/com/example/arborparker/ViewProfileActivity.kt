@@ -15,5 +15,11 @@ class ViewProfileActivity : AppCompatActivity() {
         btn_edit.setOnClickListener {
             startActivity(Intent(this, EditProfileActivity::class.java));
         }
+
+        var btn_map = findViewById(R.id.btn_map) as Button
+
+        btn_map.setOnClickListener {
+            startActivity(Intent(this, MapsActivity::class.java));
+        }
     }
 }
