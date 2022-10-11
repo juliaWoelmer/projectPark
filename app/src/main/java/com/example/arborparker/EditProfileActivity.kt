@@ -1,12 +1,13 @@
 package com.example.arborparker
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Patterns
 import android.view.View
+import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
-import com.example.arborparker.R.drawable
 
 
 class EditProfileActivity : AppCompatActivity() {
@@ -15,12 +16,23 @@ class EditProfileActivity : AppCompatActivity() {
     lateinit var etLastName:EditText
     lateinit var etEmail: EditText
     lateinit var etContactNo:EditText
-    lateinit var etDes:EditText
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_edit_profile)
         viewInitializations()
+
+        var btn_update = findViewById(R.id.btn_update) as Button
+
+        btn_update.setOnClickListener {
+            startActivity(Intent(this, ViewProfileActivity::class.java));
+        }
+
+        var btn_backtoprofile = findViewById(R.id.btn_backtoprofile) as Button
+
+        btn_backtoprofile.setOnClickListener {
+            startActivity(Intent(this, ViewProfileActivity::class.java));
+        }
     }
 
 
@@ -30,7 +42,6 @@ class EditProfileActivity : AppCompatActivity() {
         etLastName = findViewById(R.id.et_last_name)
         etEmail  = findViewById(R.id.et_email)
         etContactNo = findViewById(R.id.et_contact_no)
-        etDes = findViewById(R.id.et_des)
 
 
         // To show back button in actionbar
@@ -50,15 +61,6 @@ class EditProfileActivity : AppCompatActivity() {
         }
         if (etEmail.text.toString().equals("")) {
             etEmail.setError("Please Enter Email")
-            return false
-        }
-
-        if (etContactNo.text.toString().equals("")) {
-            etContactNo.setError("Please Enter Contact No")
-            return false
-        }
-        if (etDes.text.toString().equals("")) {
-            etDes.setError("Please Enter Designation")
             return false
         }
         // checking the proper email format
@@ -85,7 +87,6 @@ class EditProfileActivity : AppCompatActivity() {
             val lastName = etLastName.text.toString()
             val email = etEmail.text.toString()
             val contactNo = etContactNo.text.toString()
-            val etDes = etDes.text.toString()
 
             Toast.makeText(this,"Profile Update Successfully",Toast.LENGTH_SHORT).show()
             // Here you can call you API
