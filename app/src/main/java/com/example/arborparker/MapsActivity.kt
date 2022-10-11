@@ -299,21 +299,21 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
             for (closedSpot in closedSpots) {
                 layer.removeFeature(closedSpot)
             }
-            //layer.addLayerToMap()
+            col = mutableSetOf<MyItem>()
+            for (feature in layer.features) {
+                val geo = feature.geometry.geometryObject.toString()
+                val latlong = geo.substring(10).dropLast(1).split(",".toRegex()).toTypedArray()
+                val lat = latlong[0].toDouble()
+                val lng = latlong[1].toDouble()
+                val id = feature.getProperty("SpotId")
+                val offsetItem =
+                    MyItem(lat, lng, id, "Snippet")
+                //col.addItem(offsetItem)
+                col.add(offsetItem)
+            }
+            clusterManager.addItems(col)
         })
-        col = mutableSetOf<MyItem>()
-        for (feature in layer.features) {
-            val geo = feature.geometry.geometryObject.toString()
-            val latlong = geo.substring(10).dropLast(1).split(",".toRegex()).toTypedArray()
-            val lat = latlong[0].toDouble()
-            val lng = latlong[1].toDouble()
-            val id = feature.getProperty("SpotId")
-            val offsetItem =
-                MyItem(lat, lng, id, "Snippet")
-            //col.addItem(offsetItem)
-            col.add(offsetItem)
-        }
-        clusterManager.addItems(col)
+
     }
 
 
