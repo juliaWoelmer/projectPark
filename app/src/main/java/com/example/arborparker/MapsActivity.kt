@@ -138,20 +138,20 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         return poly
     }
     fun shutdownAndAwaitTermination(pool: ExecutorService) {
-        pool.shutdown(); // Disable new tasks from being submitted
+        pool.shutdown() // Disable new tasks from being submitted
         try {
             // Wait a while for existing tasks to terminate
             if (!pool.awaitTermination(5, TimeUnit.SECONDS)) {
-                pool.shutdownNow(); // Cancel currently executing tasks
+                pool.shutdownNow() // Cancel currently executing tasks
                 // Wait a while for tasks to respond to being cancelled
                 if (!pool.awaitTermination(5, TimeUnit.SECONDS))
-                    System.err.println("Pool did not terminate");
+                    System.err.println("Pool did not terminate")
             }
         } catch (ie: InterruptedException) {
             // (Re-)Cancel if current thread also interrupted
-            pool.shutdownNow();
+            pool.shutdownNow()
             // Preserve interrupt status
-            Thread.currentThread().interrupt();
+            Thread.currentThread().interrupt()
         }
     }
     // Get Directions
@@ -207,12 +207,12 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
         var btn_profile = findViewById(R.id.btn_profile) as Button
         btn_profile.setOnClickListener {
-            startActivity(Intent(this, ViewProfileActivity::class.java));
+            startActivity(Intent(this, ViewProfileActivity::class.java))
         }
 
         var btn_settings = findViewById(R.id.btn_settings) as Button
         btn_settings.setOnClickListener {
-            startActivity(Intent(this, PreferenceActivity::class.java));
+            startActivity(Intent(this, PreferenceActivity::class.java))
         }
 
         // sets up the autocomplete places search
@@ -324,10 +324,10 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
                 col.add(offsetItem)
             }
             clusterManager.addItems(col)
-            val zoom = mMap.cameraPosition.zoom;
-            val latLng = mMap.cameraPosition.target;
-            val newZoom = zoom + 0.0001f;
-            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng,newZoom));
+            val zoom = mMap.cameraPosition.zoom
+            val latLng = mMap.cameraPosition.target
+            val newZoom = zoom + 0.0001f
+            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng,newZoom))
         })
 
     }
