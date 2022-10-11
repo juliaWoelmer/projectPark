@@ -28,10 +28,3 @@ requirement. The parking spot will usually not have additional writing if there
 is no requirement.
 Marker: Each spot is marked with one marker.
 
-
-Heroku Database information:
-    Url: mysql://b6f903096096fe:7a0c4b01@us-cdbr-east-06.cleardb.net/heroku_a69b82598923256?reconnect=true
-    Host: us-cdbr-east-06.cleardb.net
-    Username: b6f903096096fe
-    Password: 7a0c4b01
-    Database name: heroku_a69b82598923256
