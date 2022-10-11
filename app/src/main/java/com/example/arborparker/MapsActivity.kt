@@ -30,6 +30,8 @@ import com.google.android.gms.maps.model.LatLngBounds
 import com.google.android.gms.maps.model.Polyline
 import com.google.android.gms.maps.model.PolylineOptions
 import com.google.android.gms.tasks.OnCompleteListener
+import com.google.android.gms.maps.*
+import com.google.android.gms.maps.model.*
 import com.google.android.libraries.places.api.Places
 import com.google.android.libraries.places.api.model.Place
 import com.google.android.libraries.places.widget.AutocompleteSupportFragment
@@ -419,6 +421,9 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         // Add GeoJson Layer containing parking spots
         setUpClusterer()
         filterMapSpotsAndDisplay()
+
+        //allow zoom widget
+        mMap.uiSettings.isZoomControlsEnabled = true
     }
 
     fun filterMapSpotsAndDisplay() {
@@ -435,21 +440,21 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
             for (closedSpot in closedSpots) {
                 layer.removeFeature(closedSpot)
             }
-            //layer.addLayerToMap()
+            col = mutableSetOf<MyItem>()
+            for (feature in layer.features) {
+                val geo = feature.geometry.geometryObject.toString()
+                val latlong = geo.substring(10).dropLast(1).split(",".toRegex()).toTypedArray()
+                val lat = latlong[0].toDouble()
+                val lng = latlong[1].toDouble()
+                val id = feature.getProperty("SpotId")
+                val offsetItem =
+                    MyItem(lat, lng, id, "Snippet")
+                //col.addItem(offsetItem)
+                col.add(offsetItem)
+            }
+            clusterManager.addItems(col)
         })
-        col = mutableSetOf<MyItem>()
-        for (feature in layer.features) {
-            val geo = feature.geometry.geometryObject.toString()
-            val latlong = geo.substring(10).dropLast(1).split(",".toRegex()).toTypedArray()
-            val lat = latlong[0].toDouble()
-            val lng = latlong[1].toDouble()
-            val id = feature.getProperty("SpotId")
-            val offsetItem =
-                MyItem(lat, lng, id, "Snippet")
-            //col.addItem(offsetItem)
-            col.add(offsetItem)
-        }
-        clusterManager.addItems(col)
+
     }
 
 
