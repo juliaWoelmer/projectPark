@@ -45,6 +45,10 @@ import java.net.URL
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
 import java.util.concurrent.TimeUnit
+import android.content.Intent
+import android.widget.Button
+import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.MarkerOptions
 
 
 private const val TAG = "MyLogTag"
@@ -338,10 +342,18 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         val mapFragment = supportFragmentManager
-                .findFragmentById(R.id.map) as SupportMapFragment
+            .findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
 
+        var btn_profile = findViewById(R.id.btn_profile) as Button
+        btn_profile.setOnClickListener {
+            startActivity(Intent(this, ViewProfileActivity::class.java));
+        }
 
+        var btn_settings = findViewById(R.id.btn_settings) as Button
+        btn_settings.setOnClickListener {
+            startActivity(Intent(this, PreferenceActivity::class.java));
+        }
 
         // sets up the autocomplete places search
         // Initialize the SDK with the Google Maps Platform API key
