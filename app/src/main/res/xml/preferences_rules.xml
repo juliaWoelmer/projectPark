@@ -12,6 +12,7 @@
             android:defaultValue="1"
             android:dialogTitle="@string/themes"
             android:entries="@array/pref_themes"
+            android:entryValues="@array/pref_themes"
             android:summary="Choose a color theme"
             android:title="Themes" />
 
