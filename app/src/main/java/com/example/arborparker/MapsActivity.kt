@@ -324,6 +324,10 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
                 col.add(offsetItem)
             }
             clusterManager.addItems(col)
+            val zoom = mMap.cameraPosition.zoom;
+            val latLng = mMap.cameraPosition.target;
+            val newZoom = zoom + 0.0001f;
+            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng,newZoom));
         })
 
     }
