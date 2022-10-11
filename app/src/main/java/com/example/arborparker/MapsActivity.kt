@@ -136,7 +136,23 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         }
         return poly
     }
-
+    fun shutdownAndAwaitTermination(pool: ExecutorService) {
+        pool.shutdown(); // Disable new tasks from being submitted
+        try {
+            // Wait a while for existing tasks to terminate
+            if (!pool.awaitTermination(5, TimeUnit.SECONDS)) {
+                pool.shutdownNow(); // Cancel currently executing tasks
+                // Wait a while for tasks to respond to being cancelled
+                if (!pool.awaitTermination(5, TimeUnit.SECONDS))
+                    System.err.println("Pool did not terminate");
+            }
+        } catch (ie: InterruptedException) {
+            // (Re-)Cancel if current thread also interrupted
+            pool.shutdownNow();
+            // Preserve interrupt status
+            Thread.currentThread().interrupt();
+        }
+    }
     // Get Directions
     private fun getDirections(origin: LatLng, dest: LatLng, mode: String): ArrayList<List<LatLng>> {
         // Get Directions From API
@@ -160,6 +176,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
             }
             handler.post {}
         }
+        shutdownAndAwaitTermination(executor)
         Log.i(TAG, "Spot: ${result}")
         return result
     }
@@ -172,7 +189,8 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
             lineoption.color(color)
             lineoption.geodesic(true)
         }
-        return mMap.addPolyline(lineoption)
+        val line = mMap.addPolyline(lineoption)
+        return line
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -223,7 +241,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
                 var res_driv = (getDirections(currentLocation, spot.position, "driving"))
                 //Thread.sleep(0.01.toLong())
                 var res_walk = getDirections(destination.latLng, spot.position, "walking")
-                lines = Pair(drawPolyLine(res_walk, Color.RED), drawPolyLine(res_driv, Color.BLUE))
+                lines = Pair(drawPolyLine(res_driv, Color.BLUE), drawPolyLine(res_walk, Color.RED))
                 val builder = LatLngBounds.Builder()
                 builder.include(currentLocation)
                 builder.include(destination.latLng)
