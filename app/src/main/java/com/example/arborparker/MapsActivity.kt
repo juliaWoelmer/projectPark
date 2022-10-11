@@ -1,21 +1,33 @@
 package com.example.arborparker
 
+import android.Manifest
 import android.annotation.SuppressLint
 import android.content.Context
+import android.content.pm.PackageManager
 import android.graphics.Color
-import android.os.AsyncTask
+import android.location.LocationManager
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.provider.Settings
 import android.util.Log
+import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.arborparker.databinding.ActivityMapsBinding
-import com.example.arborparker.network.RetrofitClient
-import com.example.arborparker.network.SpotApi
 import com.google.android.gms.common.api.Status
 import com.google.android.gms.location.*
+import com.google.android.gms.maps.CameraUpdateFactory
+import com.google.android.gms.maps.GoogleMap
+import com.google.android.gms.maps.OnMapReadyCallback
+import com.google.android.gms.maps.SupportMapFragment
+import com.google.android.gms.maps.model.LatLngBounds
+import com.google.android.gms.maps.model.Polyline
+import com.google.android.gms.maps.model.PolylineOptions
+import com.google.android.gms.tasks.OnCompleteListener
 import com.google.android.gms.maps.*
 import com.google.android.gms.maps.model.*
 import com.google.android.libraries.places.api.Places
@@ -26,10 +38,6 @@ import com.google.gson.Gson
 import com.google.maps.android.SphericalUtil
 import com.google.maps.android.clustering.ClusterItem
 import com.google.maps.android.clustering.ClusterManager
-import com.google.maps.android.collections.GroundOverlayManager
-import com.google.maps.android.collections.MarkerManager
-import com.google.maps.android.collections.PolygonManager
-import com.google.maps.android.collections.PolylineManager
 import com.google.maps.android.data.geojson.GeoJsonLayer
 import java.net.URL
 import java.util.concurrent.ExecutorService
@@ -51,7 +59,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
     private lateinit var lines: Pair<Polyline, Polyline>
     private lateinit var destination: Place
     // FusedLocationProviderClient - Main class for receiving location updates.
-    private lateinit var fusedLocationProviderClient: FusedLocationProviderClient
+    private lateinit var mFusedLocationClient: FusedLocationProviderClient
 
     // LocationRequest - Requirements for the location updates, i.e.,
     // how often you should receive updates, the priority, etc.
@@ -62,7 +70,16 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
     private lateinit var locationCallback: LocationCallback
 
     // This will store current location info
-    private var currentLocation: LatLng = LatLng(42.279594, -83.732124)
+    //private var currentLocation: LatLng = LatLng(42.279594, -83.732124)
+    private var userLocation: LatLng = LatLng(42.279594, -83.732124)
+    // Initializing other items
+    // from layout file
+    var latitudeTextView: TextView? = null
+    var longitTextView: TextView? = null
+    // Initializing other items
+    // from layout file
+
+    var PERMISSION_ID = 44
 
     private val AUTOCOMPLETE_REQUEST_CODE = 1
 
@@ -93,6 +110,125 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
             position = LatLng(lat, lng)
             this.title = title
             this.snippet = snippet
+        }
+    }
+
+    // geo loc
+    @SuppressLint("MissingPermission")
+    private fun getLastLocation() {
+        // check if permissions are given
+        if (checkPermissions()) {
+
+            // check if location is enabled
+            if (isLocationEnabled()) {
+
+                // getting last
+                // location from
+                // FusedLocationClient
+                // object
+                mFusedLocationClient.lastLocation.addOnCompleteListener{ task ->
+                    val location = task.result
+                    if (location == null) {
+                        requestNewLocationData()
+                    } else {
+                        userLocation = LatLng(location.getLatitude(),location.getLongitude())
+                    }
+                }
+            } else {
+                Toast.makeText(this, "Please turn on" + " your location...", Toast.LENGTH_LONG)
+                    .show()
+                val intent = Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS)
+                startActivity(intent)
+            }
+        } else {
+            // if permissions aren't available,
+            // request for permissions
+            requestPermissions()
+        }
+    }
+
+    @SuppressLint("MissingPermission")
+    private fun requestNewLocationData() {
+
+        // Initializing LocationRequest
+        // object with appropriate methods
+        val mLocationRequest = LocationRequest()
+        mLocationRequest.priority = LocationRequest.PRIORITY_HIGH_ACCURACY
+        mLocationRequest.interval = 5
+        mLocationRequest.fastestInterval = 0
+        mLocationRequest.numUpdates = 1
+
+        // setting LocationRequest
+        // on FusedLocationClient
+        mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
+        mFusedLocationClient.requestLocationUpdates(
+            mLocationRequest,
+            mLocationCallback,
+            Looper.myLooper()
+        )
+    }
+
+    private val mLocationCallback: LocationCallback = object : LocationCallback() {
+        override fun onLocationResult(locationResult: LocationResult) {
+            val mLastLocation: android.location.Location = locationResult.lastLocation
+            userLocation = LatLng(mLastLocation.getLatitude(),mLastLocation.getLongitude())
+
+        }
+    }
+
+    // method to check for permissions
+    private fun checkPermissions(): Boolean {
+        return ActivityCompat.checkSelfPermission(
+            this,
+            Manifest.permission.ACCESS_COARSE_LOCATION
+        ) == PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
+            this,
+            Manifest.permission.ACCESS_FINE_LOCATION
+        ) == PackageManager.PERMISSION_GRANTED
+
+        // If we want background location
+        // on Android 10.0 and higher,
+        // use:
+        // ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_BACKGROUND_LOCATION) == PackageManager.PERMISSION_GRANTED
+    }
+
+    // method to request for permissions
+    private fun requestPermissions() {
+        ActivityCompat.requestPermissions(
+            this, arrayOf(
+                Manifest.permission.ACCESS_COARSE_LOCATION,
+                Manifest.permission.ACCESS_FINE_LOCATION
+            ), PERMISSION_ID
+        )
+    }
+
+    // method to check
+    // if location is enabled
+    private fun isLocationEnabled(): Boolean {
+        val locationManager = getSystemService(LOCATION_SERVICE) as LocationManager
+        return locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER) || locationManager.isProviderEnabled(
+            LocationManager.NETWORK_PROVIDER
+        )
+    }
+
+    // If everything is alright then
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<String?>,
+        grantResults: IntArray
+    ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        if (requestCode == PERMISSION_ID) {
+            if (grantResults.size > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                getLastLocation()
+            }
+        }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        if (checkPermissions()) {
+            getLastLocation()
         }
     }
 
@@ -137,6 +273,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         }
         return poly
     }
+
     fun shutdownAndAwaitTermination(pool: ExecutorService) {
         pool.shutdown() // Disable new tasks from being submitted
         try {
@@ -154,6 +291,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
             Thread.currentThread().interrupt()
         }
     }
+
     // Get Directions
     private fun getDirections(origin: LatLng, dest: LatLng, mode: String): ArrayList<List<LatLng>> {
         // Get Directions From API
@@ -218,7 +356,8 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         // sets up the autocomplete places search
         // Initialize the SDK with the Google Maps Platform API key
         Places.initialize(this, BuildConfig.MAPS_API_KEY)
-
+        mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
+        getLastLocation()
         // Initialize the AutocompleteSupportFragment.
         val autocompleteFragment =
             supportFragmentManager.findFragmentById(R.id.autocomplete_fragment)
@@ -247,12 +386,12 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
                 lines.first.remove()
                 lines.second.remove()
                 // Get Directions From API
-                var res_driv = (getDirections(currentLocation, spot.position, "driving"))
+                var res_driv = (getDirections(userLocation, spot.position, "driving"))
                 //Thread.sleep(0.01.toLong())
                 var res_walk = getDirections(destination.latLng, spot.position, "walking")
                 lines = Pair(drawPolyLine(res_driv, Color.BLUE), drawPolyLine(res_walk, Color.RED))
                 val builder = LatLngBounds.Builder()
-                builder.include(currentLocation)
+                builder.include(userLocation)
                 builder.include(destination.latLng)
                 builder.include(spot.position)
                 // Position Map
