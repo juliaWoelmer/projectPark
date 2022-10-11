@@ -16,10 +16,7 @@ import com.example.arborparker.network.RetrofitClient
 import com.example.arborparker.network.SpotApi
 import com.google.android.gms.common.api.Status
 import com.google.android.gms.location.*
-import com.google.android.gms.maps.CameraUpdateFactory
-import com.google.android.gms.maps.GoogleMap
-import com.google.android.gms.maps.OnMapReadyCallback
-import com.google.android.gms.maps.SupportMapFragment
+import com.google.android.gms.maps.*
 import com.google.android.gms.maps.model.*
 import com.google.android.libraries.places.api.Places
 import com.google.android.libraries.places.api.model.Place
@@ -283,6 +280,9 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         // Add GeoJson Layer containing parking spots
         setUpClusterer()
         filterMapSpotsAndDisplay()
+
+        //allow zoom widget
+        mMap.uiSettings.isZoomControlsEnabled = true
     }
 
     fun filterMapSpotsAndDisplay() {
