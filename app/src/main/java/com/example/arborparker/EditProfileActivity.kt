@@ -21,18 +21,6 @@ class EditProfileActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_edit_profile)
         viewInitializations()
-
-        var btn_update = findViewById(R.id.btn_update) as Button
-
-        btn_update.setOnClickListener {
-            startActivity(Intent(this, ViewProfileActivity::class.java));
-        }
-
-        var btn_backtoprofile = findViewById(R.id.btn_backtoprofile) as Button
-
-        btn_backtoprofile.setOnClickListener {
-            startActivity(Intent(this, ViewProfileActivity::class.java));
-        }
     }
 
 

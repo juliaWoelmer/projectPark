@@ -1,6 +1,5 @@
 package com.example.arborparker
 
-import android.content.Intent
 import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.Color
@@ -16,8 +15,7 @@ import com.example.arborparker.databinding.ActivityMapsBinding
 import com.example.arborparker.network.RetrofitClient
 import com.example.arborparker.network.SpotApi
 import com.google.android.gms.common.api.Status
-import com.google.android.gms.location.*import android.widget.Button
-
+import com.google.android.gms.location.*
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
@@ -187,16 +185,6 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         val mapFragment = supportFragmentManager
                 .findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
-
-        var btn_profile = findViewById(R.id.btn_profile) as Button
-        btn_profile.setOnClickListener {
-            startActivity(Intent(this, ViewProfileActivity::class.java));
-        }
-
-        var btn_settings = findViewById(R.id.btn_settings) as Button
-        btn_settings.setOnClickListener {
-            startActivity(Intent(this, PreferenceActivity::class.java));
-        }
 
 
 
