@@ -6,7 +6,7 @@ This program runs an app that will allow users to search for their destination w
 ```
 git clone https://github.com/juliaWoelmer/projectPark.git
 ```
-2. Open projectPark folder in Android Studio and build gradle scripts  
+2. Open projectPark folder in Android Studio
 3. Add line to local.properties to set up Maps API Key:  
 ```
 MAPS_API_KEY=AIza....
