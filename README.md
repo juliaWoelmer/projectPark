@@ -37,3 +37,13 @@ requirement. The parking spot will usually not have additional writing if there
 is no requirement.  
 Marker: Each spot is marked with one marker.  
 
+## Server Repository
+The repo that stores the code we wrote for the server is linked below.
+https://github.com/juliaWoelmer/arborParkerBackend
+
+The code in the repo is pushed up to Heroku so you do not need to do anything with this repo 
+in order to run the app. It is simply linked here to show the code
+
+The server API endpoints can be reached using this base url
+https://arbor-parker-heroku.herokuapp.com
+
