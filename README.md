@@ -2,22 +2,28 @@
 This program runs an app that will allow users to search for their destination with accessible parking.
 
 ## SetUp:  
-1. Use this tutorial link to setup and clone the GitHub repository on VS Code
-   https://code.visualstudio.com/docs/sourcecontrol/github
-
-2. Use this tutorial to set up the live share collaboration feature.
-   https://code.visualstudio.com/learn/collaboration/live-share
-   
-3. Add line to local.properties to set up Maps API Key:
-
+1. Clone git repository
+```
+git clone https://github.com/juliaWoelmer/projectPark.git
+```
+2. Open projectPark folder in Android Studio and build gradle scripts  
+3. Add line to local.properties to set up Maps API Key:  
+```
+MAPS_API_KEY=AIza....
+```
 
 ## Resources:  
-1. North Campus Parking Lots for Permits and Visitors
+1. Use this tutorial link to setup and clone the GitHub repository on VS Code  
+   https://code.visualstudio.com/docs/sourcecontrol/github
+
+2. Use this tutorial to set up the live share collaboration feature.  
+   https://code.visualstudio.com/learn/collaboration/live-share
+
+3. North Campus Parking Lots for Permits and Visitors  
   https://ltp.umich.edu/parking/locations-and-enforcement/north-campus/
 
 ## How to edit the GeoJson Map:  
 Upload the most up to date map from the GitHub.  
-
 
 Lot: What is the lot number  
 Spot: Label each spot with their own number starting from 1.  
