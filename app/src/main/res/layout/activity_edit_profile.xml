@@ -171,21 +171,4 @@
 
     </ScrollView>
 
-    <Button
-        android:id="@+id/btn_backtoprofile"
-        style="?android:attr/borderlessButtonStyle"
-        android:layout_width="90dp"
-        android:layout_height="45dp"
-        android:layout_marginEnd="160dp"
-        android:layout_marginBottom="28dp"
-        android:background="@color/design_default_color_primary"
-        android:elevation="2dp"
-        android:text="Back"
-        android:textAllCaps="false"
-        android:textColor="#FFFFFF"
-        android:textSize="15sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintWidth_percent="0.7" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>
