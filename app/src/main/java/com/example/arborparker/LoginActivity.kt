@@ -16,6 +16,7 @@ class LoginActivity : AppCompatActivity() {
         var et_user_name = findViewById(R.id.et_user_name) as EditText
         var et_password = findViewById(R.id.et_password) as EditText
         var btn_submit = findViewById(R.id.btn_submit) as Button
+        var btn_create = findViewById(R.id.btn_create) as Button
 
         // set on-click listener
         btn_submit.setOnClickListener {
@@ -27,6 +28,18 @@ class LoginActivity : AppCompatActivity() {
             // and verify the same
 
             startActivity(Intent(this, MapsActivity::class.java));
+        }
+
+        // takes user to create profile page if they click create account
+        btn_create.setOnClickListener {
+            //val user_name = et_user_name.text;
+            //val password = et_password.text;
+            //Toast.makeText(this@LoginActivity, user_name, Toast.LENGTH_LONG).show()
+
+            // your code to validate the user_name and password combination
+            // and verify the same
+
+            startActivity(Intent(this, CreateProfileActivity::class.java));
         }
     }
 }
