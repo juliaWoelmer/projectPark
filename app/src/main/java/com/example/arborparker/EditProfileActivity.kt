@@ -27,12 +27,6 @@ class EditProfileActivity : AppCompatActivity() {
         btn_update.setOnClickListener {
             startActivity(Intent(this, ViewProfileActivity::class.java));
         }
-
-        var btn_backtoprofile = findViewById(R.id.btn_backtoprofile) as Button
-
-        btn_backtoprofile.setOnClickListener {
-            startActivity(Intent(this, ViewProfileActivity::class.java));
-        }
     }
 
 
