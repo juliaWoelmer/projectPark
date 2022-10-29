@@ -10,7 +10,7 @@ object RetrofitClient {
             .baseUrl("https://arbor-parker-heroku.herokuapp.com")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
-            .create(SpotApi::class.java)
+            .create(NetworkApi::class.java)
     }
 
 }
