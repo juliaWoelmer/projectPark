@@ -72,6 +72,9 @@ dependencies {
     implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
     implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
 
+    //timber used for output
+    implementation 'com.jakewharton.timber:timber:5.0.1'
+
     // Coroutines
     def coroutines_version = "1.4.2"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutines_version"
