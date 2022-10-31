@@ -35,6 +35,19 @@ class CreateProfileActivity : AppCompatActivity() {
             val usernametxt = get_user_name.text.toString()
             val passwordtxt = get_password.text.toString()
 
+            // error handling for empty text boxes
+            if (usernametxt.isEmpty()) {
+            get_user_name.error = "username is required"
+            // get_user_name.error.requestFocus()
+            return@setOnClickListener
+            }
+
+            if (passwordtxt.isEmpty()) {
+                get_password.error = "password is required"
+                // get_user_name.error.requestFocus()
+                return@setOnClickListener
+            }
+
             val userInfo = User(//id = null,
                                 username = usernametxt,
                                 password = passwordtxt)
@@ -42,18 +55,21 @@ class CreateProfileActivity : AppCompatActivity() {
             // adds user
             val apiNetwork = MainActivityViewModel()
             apiNetwork.addUser(userInfo) {
-                if (it?.username != null) {
+                if (it != null) {
                     // it = newly added user parsed as response
                     // it?.id = newly added user ID
+
+                    // takes user to map screen
+                    startActivity(Intent(this, MapsActivity::class.java))
 
                 } else {
                     Timber.d("Error registering new user")
 
                     // error handling for when user already exists
                     // still fixing errors
-                    /**
+
                     val alertDialogBuilder = AlertDialog.Builder(this)
-                    alertDialogBuilder.setTitle("Android user alert")
+                    alertDialogBuilder.setTitle("Username Taken")
                     alertDialogBuilder.setMessage("That username is already taken. Please choose another.")
                     alertDialogBuilder.setCancelable(true)
 
@@ -64,11 +80,9 @@ class CreateProfileActivity : AppCompatActivity() {
 
                     val alert1: AlertDialog = alertDialogBuilder.create()
                     alert1.show()
-                    **/
+
                 }
 
-                // takes user to map screen
-                startActivity(Intent(this, MapsActivity::class.java))
             }
 
         }
