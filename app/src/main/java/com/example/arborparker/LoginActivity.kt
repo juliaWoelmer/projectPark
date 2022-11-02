@@ -52,32 +52,35 @@ class LoginActivity : AppCompatActivity() {
                 return@setOnClickListener
             }
 
-            //val userInfo = UserName(
-            //    username = usernametxt)
 
             Timber.d("Testing")
             Log.d("DEBUG", "Testing")
             // gets user
             val apiNetwork = MainActivityViewModel()
-            Log.d("DEBUG", "Username " + //userInfo.username)
-                    usernametxt)
+            Log.d("DEBUG", "Username " + usernametxt)
             apiNetwork.getUserId(usernametxt) {
                 Timber.d("UserID " + it)
                 Log.d("DEBUG", "UserId " + it)
+
+                // makes sure there are no errors
                 if (it != null) {
-                    if (it.isNotEmpty()) {
+
+                    // makes sure the username exists
+                    // makes sure the password entered is the same password stored
+                    if (it.isNotEmpty() && it[0].password == passwordtxt) {
                         // it = newly added user parsed as response
                         // it[x]?.id = newly added user ID
-
 
                         val alertDialogBuilder = AlertDialog.Builder(this)
                         alertDialogBuilder.setTitle("Welcome")
                         alertDialogBuilder.setMessage("Welcome " + it[0].username)
                         alertDialogBuilder.setCancelable(true)
 
-                        alertDialogBuilder.setPositiveButton(android.R.string.ok) { _,_ ->
-                            Toast.makeText(applicationContext,
-                                android.R.string.ok, Toast.LENGTH_SHORT).show()
+                        alertDialogBuilder.setPositiveButton(android.R.string.ok) { _, _ ->
+                            Toast.makeText(
+                                applicationContext,
+                                android.R.string.ok, Toast.LENGTH_SHORT
+                            ).show()
                         }
 
                         val alert1: AlertDialog = alertDialogBuilder.create()
@@ -85,9 +88,8 @@ class LoginActivity : AppCompatActivity() {
 
                         // takes user to map screen
                         startActivity(Intent(this, MapsActivity::class.java))
-
                     } else {
-                        Log.d("DEBGUG", "Error getting user information")
+                        Log.d("DEBUG", "Error getting user information")
 
                         // error handling for when user doesnt exist
 
@@ -96,17 +98,17 @@ class LoginActivity : AppCompatActivity() {
                         alertDialogBuilder.setMessage("User does not exist. Please check the username and password are correct or create an account.")
                         alertDialogBuilder.setCancelable(true)
 
-                        alertDialogBuilder.setPositiveButton(android.R.string.ok) { _,_ ->
-                            Toast.makeText(applicationContext,
-                                android.R.string.ok, Toast.LENGTH_SHORT).show()
+                        alertDialogBuilder.setPositiveButton(android.R.string.ok) { _, _ ->
+                            Toast.makeText(
+                                applicationContext,
+                                android.R.string.ok, Toast.LENGTH_SHORT
+                            ).show()
                         }
 
                         val alert1: AlertDialog = alertDialogBuilder.create()
                         alert1.show()
-
                     }
                 }
-
             }
         }
 
