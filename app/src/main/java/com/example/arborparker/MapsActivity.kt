@@ -161,11 +161,13 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         // setting LocationRequest
         // on FusedLocationClient
         mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
-        mFusedLocationClient.requestLocationUpdates(
-            mLocationRequest,
-            mLocationCallback,
-            Looper.myLooper()
-        )
+        Looper.myLooper()?.let {
+            mFusedLocationClient.requestLocationUpdates(
+                mLocationRequest,
+                mLocationCallback,
+                it
+            )
+        }
     }
 
     private val mLocationCallback: LocationCallback = object : LocationCallback() {
