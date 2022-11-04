@@ -35,7 +35,6 @@ class EditProfileActivity : AppCompatActivity() {
         etFirstName = findViewById(R.id.et_first_name)
         etLastName = findViewById(R.id.et_last_name)
         etEmail  = findViewById(R.id.et_email)
-        etContactNo = findViewById(R.id.et_contact_no)
 
 
         // To show back button in actionbar
