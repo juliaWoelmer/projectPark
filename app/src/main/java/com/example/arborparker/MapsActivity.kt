@@ -45,8 +45,11 @@ import java.util.concurrent.Executors
 import java.util.concurrent.TimeUnit
 import android.content.Intent
 import android.widget.Button
+import com.example.arborparker.dropinui.NavigationViewActivity
+import com.example.arborparker.dropinui.RequestRouteWithNavigationViewActivity
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
+import com.mapbox.geojson.Point
 
 
 private const val TAG = "MyLogTag"
@@ -58,6 +61,10 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
     private lateinit var col: MutableSet<MyItem>
     private lateinit var lines: Pair<Polyline, Polyline>
     private lateinit var destination: Place
+    companion object {
+        var DestPoint = Point.fromLngLat(0.0, 0.0) as Point
+        var SpotPoint = Point.fromLngLat(0.0, 0.0) as Point
+    }
     // FusedLocationProviderClient - Main class for receiving location updates.
     private lateinit var mFusedLocationClient: FusedLocationProviderClient
 
@@ -355,6 +362,11 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
             startActivity(Intent(this, PreferenceActivity::class.java))
         }
 
+        var btn_nav = findViewById(R.id.btn_nav) as Button
+        btn_nav.setOnClickListener {
+            startActivity(Intent(this, RequestRouteWithNavigationViewActivity::class.java))
+        }
+
         // sets up the autocomplete places search
         // Initialize the SDK with the Google Maps Platform API key
         Places.initialize(this, BuildConfig.MAPS_API_KEY)
@@ -374,6 +386,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
                 // TODO: Get info about the selected place.
                 Log.i(TAG, "Place: ${place.name}, ${place.id}, ${place.latLng}")
                 destination = place
+                DestPoint = Point.fromLngLat(place.latLng.longitude, place.latLng.latitude) as Point
                 var min: Double
                 var spot: MyItem
                 min = SphericalUtil.computeDistanceBetween(place.latLng, col.elementAt(0).getPosition())
@@ -387,6 +400,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
                 }
                 lines.first.remove()
                 lines.second.remove()
+                SpotPoint = Point.fromLngLat(spot.position.longitude, spot.position.latitude) as Point
                 // Get Directions From API
                 var res_driv = (getDirections(userLocation, spot.position, "driving"))
                 //Thread.sleep(0.01.toLong())

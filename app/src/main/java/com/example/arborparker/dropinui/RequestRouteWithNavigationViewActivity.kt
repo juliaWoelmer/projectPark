@@ -3,6 +3,7 @@ package com.example.arborparker.dropinui
 import android.location.Location
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.example.arborparker.MapsActivity
 import com.mapbox.api.directions.v5.models.RouteOptions
 import com.mapbox.geojson.Point
 import com.mapbox.maps.MapView
@@ -22,6 +23,7 @@ import com.mapbox.navigation.dropin.NavigationView
 import com.mapbox.navigation.dropin.map.MapViewObserver
 import com.example.arborparker.databinding.MapboxActivityRequestRouteNavigationViewBinding
 import com.mapbox.navigation.utils.internal.ifNonNull
+import com.mapbox.turf.TurfMeasurement.destination
 
 /**
  * The example demonstrates how to use [MapboxNavigationApp] to request routes outside [NavigationView]
@@ -95,6 +97,9 @@ class RequestRouteWithNavigationViewActivity : AppCompatActivity(), OnMapLongCli
 
         binding.navigationView.registerMapObserver(mapViewObserver)
         MapboxNavigationApp.current()?.registerLocationObserver(locationObserver)
+        ifNonNull(lastLocation) {
+            requestRoutes(Point.fromLngLat(it.longitude, it.latitude), MapsActivity.SpotPoint)
+        }
     }
 
     override fun onDestroy() {
@@ -105,7 +110,7 @@ class RequestRouteWithNavigationViewActivity : AppCompatActivity(), OnMapLongCli
 
     override fun onMapLongClick(point: Point): Boolean {
         ifNonNull(lastLocation) {
-            requestRoutes(Point.fromLngLat(it.longitude, it.latitude), point)
+            requestRoutes(Point.fromLngLat(it.longitude, it.latitude), MapsActivity.SpotPoint)
         }
         return false
     }
