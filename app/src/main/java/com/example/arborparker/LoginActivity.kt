@@ -58,7 +58,7 @@ class LoginActivity : AppCompatActivity() {
             // gets user
             val apiNetwork = MainActivityViewModel()
             Log.d("DEBUG", "Username " + usernametxt)
-            apiNetwork.getUserId(usernametxt) {
+            apiNetwork.getUserInfoByUsername(usernametxt) {
                 Timber.d("UserID " + it)
                 Log.d("DEBUG", "UserId " + it)
 

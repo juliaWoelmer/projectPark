@@ -1,5 +1,5 @@
 package com.example.arborparker.network
 
-data class UserID(
+data class UserId(
     var id: Int
 )

@@ -14,9 +14,6 @@ import timber.log.Timber
 
 class CreateProfileActivity : AppCompatActivity() {
 
-    //lateinit var etUserName: EditText
-    //lateinit var etPassword: EditText
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -73,9 +70,9 @@ class CreateProfileActivity : AppCompatActivity() {
                     alertDialogBuilder.setMessage("That username is already taken. Please choose another.")
                     alertDialogBuilder.setCancelable(true)
 
-                    alertDialogBuilder.setPositiveButton(android.R.string.yes) { _,_ ->
+                    alertDialogBuilder.setPositiveButton(android.R.string.ok) { _,_ ->
                         Toast.makeText(applicationContext,
-                            android.R.string.yes, Toast.LENGTH_SHORT).show()
+                            android.R.string.ok, Toast.LENGTH_SHORT).show()
                     }
 
                     val alert1: AlertDialog = alertDialogBuilder.create()

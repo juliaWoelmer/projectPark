@@ -23,14 +23,15 @@ class MainActivityViewModel : ViewModel() {
     }
 
     // adds user to database
-    fun addUser(userData: User, onResult: (User?) -> Unit){
+    fun addUser(userData: User, onResult: (UserId?) -> Unit){
         retrofit.addUser(userData).enqueue(
-            object : Callback<User> {
-                override fun onFailure(call: Call<User>, t: Throwable) {
+            object : Callback<UserId> {
+                override fun onFailure(call: Call<UserId>, t: Throwable) {
                     onResult(null)
                 }
-                override fun onResponse( call: Call<User>, response: Response<User>) {
+                override fun onResponse( call: Call<UserId>, response: Response<UserId>) {
                     val addedUser = response.body()
+                    Log.d("DEBUG", "Response body " + response.body())
                     onResult(addedUser)
                 }
             }
@@ -63,7 +64,7 @@ class MainActivityViewModel : ViewModel() {
     }
 
     // gets user id by username
-    fun getUserId(username: String, onResult: (List<UserInfo>?) -> Unit) {
+    fun getUserInfoByUsername(username: String, onResult: (List<UserInfo>?) -> Unit) {
         Log.d("DEBUG", "UserId function called")
         retrofit.getUserInfoByUsername(username).enqueue(
             object : Callback<List<UserInfo>> {
