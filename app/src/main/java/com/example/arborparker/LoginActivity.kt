@@ -6,13 +6,12 @@ import android.widget.*
 import android.content.Intent
 import android.util.Log
 import androidx.appcompat.app.AlertDialog
+import com.example.arborparker.MainActivityViewModel.Companion.user_id
 import timber.log.Timber
 
 
 class LoginActivity : AppCompatActivity() {
 
-    // public user id
-    var user_id: Int = 0
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
