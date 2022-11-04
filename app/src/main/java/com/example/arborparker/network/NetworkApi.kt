@@ -9,7 +9,7 @@ interface NetworkApi {
 
     // Get user info by id
     @GET("/user/{id}")
-    fun getUserInfoById(@Path("id") username: Int): Call<List<UserInfo>>
+    fun getUserInfoById(@Path("id") id: Int): Call<List<UserInfo>>
 
     // returns user information by the username
     @GET("/user/by-username/{username}")
@@ -18,6 +18,9 @@ interface NetworkApi {
     // adds user to database
     @POST("/user/add-new-user")
     fun addUser(@Body userdata: User): Call<UserId>
+
+    @PUT("/user/edit-user-profile/{id}")
+    fun editUserProfile(@Path("id") id: Int, @Body userProfileInfo: UserProfileInfo): Call<RowsAffected>
 
 
 }

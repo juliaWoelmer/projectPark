@@ -15,6 +15,7 @@ class ViewProfileActivity : AppCompatActivity() {
     var id: Int = user_id
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        Log.d("DEBUG", "ViewProfileActivity onCreate fxn runs")
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_view_profile)
         var btn_edit = findViewById(R.id.btn_edit) as Button

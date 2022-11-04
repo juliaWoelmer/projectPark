@@ -3,11 +3,13 @@ package com.example.arborparker
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.util.Patterns
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import com.example.arborparker.network.UserProfileInfo
 
 
 class EditProfileActivity : AppCompatActivity() {
@@ -16,6 +18,9 @@ class EditProfileActivity : AppCompatActivity() {
     lateinit var etLastName:EditText
     lateinit var etEmail: EditText
     lateinit var etContactNo:EditText
+
+    // stores the users id
+    var id: Int = MainActivityViewModel.user_id
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -72,16 +77,26 @@ class EditProfileActivity : AppCompatActivity() {
     // Hook Click Event
 
     fun performEditProfile (view: View) {
+        Log.d("DEBUG", "editUserProfile function called")
         if (validateInput()) {
-
-            // Input is valid, here send data to your server
-
             val firstName = etFirstName.text.toString()
             val lastName = etLastName.text.toString()
             val email = etEmail.text.toString()
 
             Toast.makeText(this,"Profile Update Successfully",Toast.LENGTH_SHORT).show()
-            // Here you can call you API
+            // Here you can call your API
+            val userProfileInfo = UserProfileInfo(id, firstName, lastName, email)
+            Log.d("DEBUG", "UserProfileInfo = " + userProfileInfo)
+
+            val apiNetwork = MainActivityViewModel()
+            apiNetwork.editUserProfile(id, userProfileInfo) {
+                if (it != null) {
+                    Log.d("DEBUG", "Success editing user profile")
+                    Log.d("DEBUG", "Rows affected: " + it.rowsAffected)
+                } else {
+                    Log.d("DEBUG", "Error editing user profile")
+                }
+            }
             startActivity(Intent(this, ViewProfileActivity::class.java));
         }
     }
