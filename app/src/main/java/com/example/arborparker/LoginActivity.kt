@@ -6,10 +6,13 @@ import android.widget.*
 import android.content.Intent
 import android.util.Log
 import androidx.appcompat.app.AlertDialog
+import com.example.arborparker.MainActivityViewModel.Companion.user_id
 import timber.log.Timber
 
 
 class LoginActivity : AppCompatActivity() {
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -17,8 +20,6 @@ class LoginActivity : AppCompatActivity() {
 
 
         // get reference to all views
-        var et_user_name = findViewById(R.id.et_user_name) as EditText
-        var et_password = findViewById(R.id.et_password) as EditText
         var btn_submit = findViewById(R.id.btn_submit) as Button
         var btn_create = findViewById(R.id.btn_create) as Button
 
@@ -70,6 +71,11 @@ class LoginActivity : AppCompatActivity() {
                     if (it.isNotEmpty() && it[0].password == passwordtxt) {
                         // it = newly added user parsed as response
                         // it[x]?.id = newly added user ID
+
+                        //set public variable
+                        user_id = it[0].id
+
+                        Log.d("DEBUG", "Create user id " + user_id)
 
                         val alertDialogBuilder = AlertDialog.Builder(this)
                         alertDialogBuilder.setTitle("Welcome")

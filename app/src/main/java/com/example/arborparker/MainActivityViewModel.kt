@@ -14,6 +14,11 @@ import retrofit2.Response
 
 class MainActivityViewModel : ViewModel() {
 
+    // public user id
+    companion object {
+        var user_id: Int = 0
+    }
+
     val spotList: MutableLiveData<List<Spot>> = MutableLiveData()
 
     fun getSpots() {
