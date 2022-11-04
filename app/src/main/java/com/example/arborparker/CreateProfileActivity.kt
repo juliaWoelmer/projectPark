@@ -9,14 +9,13 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import com.example.arborparker.MainActivityViewModel.Companion.user_id
 import com.example.arborparker.network.User
 import timber.log.Timber
 
 
 class CreateProfileActivity : AppCompatActivity() {
 
-    // public user id
-    var user_id: Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

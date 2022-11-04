@@ -6,14 +6,20 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Button
 import android.widget.TextView
+import com.example.arborparker.MainActivityViewModel.Companion.user_id
 
 
 class ViewProfileActivity : AppCompatActivity() {
+
+    // stores the users id
+    var id: Int = user_id
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_view_profile)
         var btn_edit = findViewById(R.id.btn_edit) as Button
+
+        Log.d("DEBUG", "Testing public user id " + id)
 
         btn_edit.setOnClickListener {
             startActivity(Intent(this, EditProfileActivity::class.java));
