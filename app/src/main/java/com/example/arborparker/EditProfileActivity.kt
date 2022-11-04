@@ -24,9 +24,9 @@ class EditProfileActivity : AppCompatActivity() {
 
         var btn_update = findViewById(R.id.btn_update) as Button
 
-        btn_update.setOnClickListener {
-            startActivity(Intent(this, ViewProfileActivity::class.java));
-        }
+        //btn_update.setOnClickListener {
+        //    startActivity(Intent(this, ViewProfileActivity::class.java));
+        //}
     }
 
 
@@ -79,11 +79,10 @@ class EditProfileActivity : AppCompatActivity() {
             val firstName = etFirstName.text.toString()
             val lastName = etLastName.text.toString()
             val email = etEmail.text.toString()
-            val contactNo = etContactNo.text.toString()
 
             Toast.makeText(this,"Profile Update Successfully",Toast.LENGTH_SHORT).show()
             // Here you can call you API
-
+            startActivity(Intent(this, ViewProfileActivity::class.java));
         }
     }
 
