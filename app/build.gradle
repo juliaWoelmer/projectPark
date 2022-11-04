@@ -6,12 +6,12 @@ plugins {
 
 android {
     namespace 'com.example.arborparker'
-    compileSdk 32
+    compileSdk 33
 
     defaultConfig {
         applicationId "com.example.arborparker"
         minSdk 21
-        targetSdk 32
+        targetSdk 33
         versionCode 1
         versionName "1.0"
 
@@ -33,7 +33,8 @@ android {
             manifestPlaceholders = [enableCrashReporting: "false"]
         }
         release {
-            minifyEnabled false
+            minifyEnabled true
+            manifestPlaceholders = [enableCrashReporting: "true"]
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
