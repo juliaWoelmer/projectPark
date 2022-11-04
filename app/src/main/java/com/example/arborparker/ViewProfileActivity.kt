@@ -3,10 +3,13 @@ package com.example.arborparker
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
-import com.example.arborparker.R
+import android.widget.TextView
+
 
 class ViewProfileActivity : AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_view_profile)
@@ -20,6 +23,28 @@ class ViewProfileActivity : AppCompatActivity() {
 
         btn_map.setOnClickListener {
             startActivity(Intent(this, MapsActivity::class.java));
+        }
+
+        val apiNetwork = MainActivityViewModel()
+        val userId = 4
+        apiNetwork.getUserInfoById(userId) {
+            val etFirstName: TextView = findViewById<TextView>(R.id.et_first_name)
+            val etLastName: TextView = findViewById<TextView>(R.id.et_last_name)
+            val etEmail: TextView  = findViewById<TextView>(R.id.et_email)
+            if (it != null && it.isNotEmpty()) {
+                val firstName = it.first().firstName ?: ""
+                val lastName = it.first().lastName ?: ""
+                val email = it.first().email ?: ""
+
+                etFirstName.text = firstName
+                etLastName.text = lastName
+                etEmail.text = email
+            } else {
+                Log.d("DEBUG", "Error getting user information")
+                etFirstName.text = "Not Available"
+                etLastName.text = "Not Available"
+                etEmail.text = "Not Available"
+            }
         }
     }
 }
