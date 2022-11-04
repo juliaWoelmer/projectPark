@@ -3,6 +3,7 @@ package com.example.arborparker
 import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
@@ -14,6 +15,8 @@ import timber.log.Timber
 
 class CreateProfileActivity : AppCompatActivity() {
 
+    // public user id
+    var user_id: Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,7 +48,7 @@ class CreateProfileActivity : AppCompatActivity() {
                 return@setOnClickListener
             }
 
-            val userInfo = User(//id = null,
+            val userInfo = User(
                                 username = usernametxt,
                                 password = passwordtxt)
 
@@ -55,6 +58,26 @@ class CreateProfileActivity : AppCompatActivity() {
                 if (it != null) {
                     // it = newly added user parsed as response
                     // it?.id = newly added user ID
+
+                    //set public variable
+                    user_id = it.id
+
+                    Log.d("DEBUG", "Create user id " + user_id)
+
+                    val alertDialogBuilder = AlertDialog.Builder(this)
+                    alertDialogBuilder.setTitle("Welcome")
+                    alertDialogBuilder.setMessage("Welcome " + userInfo.username)
+                    alertDialogBuilder.setCancelable(true)
+
+                    alertDialogBuilder.setPositiveButton(android.R.string.ok) { _, _ ->
+                        Toast.makeText(
+                            applicationContext,
+                            android.R.string.ok, Toast.LENGTH_SHORT
+                        ).show()
+                    }
+
+                    val alert1: AlertDialog = alertDialogBuilder.create()
+                    alert1.show()
 
                     // takes user to map screen
                     startActivity(Intent(this, MapsActivity::class.java))
