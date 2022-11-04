@@ -19,8 +19,6 @@ class ViewProfileActivity : AppCompatActivity() {
         setContentView(R.layout.activity_view_profile)
         var btn_edit = findViewById(R.id.btn_edit) as Button
 
-        Log.d("DEBUG", "Testing public user id " + id)
-
         btn_edit.setOnClickListener {
             startActivity(Intent(this, EditProfileActivity::class.java));
         }
@@ -32,8 +30,8 @@ class ViewProfileActivity : AppCompatActivity() {
         }
 
         val apiNetwork = MainActivityViewModel()
-        val userId = 4
-        apiNetwork.getUserInfoById(userId) {
+        apiNetwork.getUserInfoById(id) {
+            Log.d("DEBUG", "Testing public user id " + id)
             val etFirstName: TextView = findViewById<TextView>(R.id.et_first_name)
             val etLastName: TextView = findViewById<TextView>(R.id.et_last_name)
             val etEmail: TextView  = findViewById<TextView>(R.id.et_email)
