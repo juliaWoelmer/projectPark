@@ -64,6 +64,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
     companion object {
         var DestPoint = Point.fromLngLat(0.0, 0.0) as Point
         var SpotPoint = Point.fromLngLat(0.0, 0.0) as Point
+        var UserPoint = Point.fromLngLat(-83.732124, 42.279594) as Point
     }
     // FusedLocationProviderClient - Main class for receiving location updates.
     private lateinit var mFusedLocationClient: FusedLocationProviderClient
@@ -181,7 +182,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         override fun onLocationResult(locationResult: LocationResult) {
             val mLastLocation: android.location.Location = locationResult.lastLocation
             userLocation = LatLng(mLastLocation.getLatitude(),mLastLocation.getLongitude())
-
+            UserPoint = Point.fromLngLat(mLastLocation.getLongitude(), mLastLocation.getLatitude()) as Point
         }
     }
 
