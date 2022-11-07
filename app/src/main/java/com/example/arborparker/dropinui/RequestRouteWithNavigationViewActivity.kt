@@ -172,6 +172,8 @@ class RequestRouteWithNavigationViewActivity : AppCompatActivity(), OnMapLongCli
         binding.navigationView.registerMapObserver(mapViewObserver)
         MapboxNavigationApp.current()?.registerLocationObserver(locationObserver)
         MapboxNavigationApp.current()?.registerArrivalObserver(arrivalObserver)
+        requestRoutes(MapsActivity.UserPoint, MapsActivity.SpotPoint)
+
     }
 
     override fun onDestroy() {
