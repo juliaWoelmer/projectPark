@@ -86,7 +86,7 @@
                 <EditText
                     android:id="@+id/et_last_name"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="84dp"
                     android:background="#00000000"
                     android:gravity="center"
                     android:hint="Last Name"
@@ -111,7 +111,7 @@
                 <EditText
                     android:id="@+id/et_email"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="81dp"
                     android:background="#00000000"
                     android:gravity="center"
                     android:hint="Email"
@@ -121,33 +121,6 @@
                     android:textColorHint="#808080"
                     android:textSize="15sp" />
             </com.google.android.material.textfield.TextInputLayout>
-
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/layout_contact_no"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="14dp"
-                android:textColorHint="#808080"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/layout_email"
-                app:layout_constraintWidth_percent="0.7">
-
-                <EditText
-                    android:id="@+id/et_contact_no"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="#00000000"
-                    android:gravity="center"
-                    android:hint="Contact No"
-                    android:inputType="phone"
-                    android:padding="10dp"
-                    android:textColor="#000000"
-                    android:textColorHint="#808080"
-                    android:textSize="15sp" />
-            </com.google.android.material.textfield.TextInputLayout>
-
 
             <Button
                 android:id="@+id/btn_update"
@@ -164,8 +137,9 @@
                 android:textSize="15sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/layout_contact_no"
+                app:layout_constraintTop_toBottomOf="@+id/layout_email"
                 app:layout_constraintWidth_percent="0.7" />
+
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

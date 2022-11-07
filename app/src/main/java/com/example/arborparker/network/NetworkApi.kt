@@ -1,18 +1,28 @@
 package com.example.arborparker.network
 
 import retrofit2.Call
-import retrofit2.http.Body
-import retrofit2.http.GET
-import retrofit2.http.POST
+import retrofit2.http.*
 
 interface NetworkApi {
     @GET("/spots")
     suspend fun getSpots(): List<Spot>
 
-    //@GET("/user/:id/")
-    //suspend fun getSpots(): List<User>
+    // Get user info by id
+    @GET("/user/{id}")
+    fun getUserInfoById(@Path("id") id: Int): Call<List<UserInfo>>
 
+    // returns user information by the username
+    @GET("/user/by-username/{username}")
+    fun getUserInfoByUsername(@Path("username") username: String): Call<List<UserInfo>>
+
+    // adds user to database
     @POST("/user/add-new-user")
-    // fun addUser(@Body userdata: User): UserID
-    fun addUser(@Body userdata: User): Call<User>
+    fun addUser(@Body userdata: User): Call<UserId>
+
+    @PUT("/user/edit-user-profile/{id}")
+    fun editUserProfile(@Path("id") id: Int, @Body userProfileInfo: UserProfileInfo): Call<RowsAffected>
+
+    @PUT("/user/edit-user-preferences/{id}")
+    fun editUserPreferences(@Path("id") id: Int, @Body userPreferencesInfo: UserPreferencesInfo): Call<RowsAffected>
+
 }
