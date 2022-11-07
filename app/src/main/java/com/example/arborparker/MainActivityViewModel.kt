@@ -113,6 +113,26 @@ class MainActivityViewModel : ViewModel() {
         )
     }
 
+    fun editUserPreferences(id: Int, userPreferencesInfo: UserPreferencesInfo, onResult: (RowsAffected?) -> Unit) {
+        Log.d("DEBUG", "editUserPreferencees function called")
+        retrofit.editUserPreferences(id, userPreferencesInfo).enqueue(
+            object : Callback<RowsAffected> {
+                override fun onFailure(call: Call<RowsAffected>, t: Throwable) {
+                    Log.d("DEBUG", "Edit User Preferences Failed")
+                    onResult(null)
+                }
+                override fun onResponse( call: Call<RowsAffected>, response: Response<RowsAffected>) {
+                    Log.d("DEBUG", "Success editing user preferences")
+                    Log.d("DEBUG", "Response raw " + response.raw())
+                    Log.d("DEBUG", "Response error " + response.errorBody())
+                    Log.d("DEBUG", "Response success " + response.isSuccessful)
+                    Log.d("DEBUG", "Response body " + response.body())
+                    Log.d("DEBUG", "url " + response.raw().request().url())
+                }
+            }
+        )
+    }
+
 
     /**
     // gets user info by id

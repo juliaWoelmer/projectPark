@@ -22,5 +22,7 @@ interface NetworkApi {
     @PUT("/user/edit-user-profile/{id}")
     fun editUserProfile(@Path("id") id: Int, @Body userProfileInfo: UserProfileInfo): Call<RowsAffected>
 
+    @PUT("/user/edit-user-preferences/{id}")
+    fun editUserPreferences(@Path("id") id: Int, @Body userPreferencesInfo: UserPreferencesInfo): Call<RowsAffected>
 
 }
