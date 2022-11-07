@@ -60,7 +60,7 @@ class MainActivityViewModel : ViewModel() {
                     Log.d("DEBUG", "Response success " + response.isSuccessful)
                     Log.d("DEBUG", "Response body " + response.body())
                     val userInfo = response.body()
-                    Log.d("DEBUG", "url " + response.raw().request().url())
+                    Log.d("DEBUG", "url " + response.raw().request.url)
                     Log.d("DEBUG", "Response " + userInfo)
                     onResult(userInfo)
                 }
@@ -85,7 +85,7 @@ class MainActivityViewModel : ViewModel() {
                     Log.d("DEBUG", "Response success " + response.isSuccessful)
                     Log.d("DEBUG", "Response body " + response.body())
                     val getUser = response.body()
-                    Log.d("DEBUG", "url " + response.raw().request().url())
+                    Log.d("DEBUG", "url " + response.raw().request.url)
                     Log.d("DEBUG", "Response " + getUser)
                     onResult(getUser)
                 }
@@ -107,7 +107,7 @@ class MainActivityViewModel : ViewModel() {
                     Log.d("DEBUG", "Response error " + response.errorBody())
                     Log.d("DEBUG", "Response success " + response.isSuccessful)
                     Log.d("DEBUG", "Response body " + response.body())
-                    Log.d("DEBUG", "url " + response.raw().request().url())
+                    Log.d("DEBUG", "url " + response.raw().request.url)
                 }
             }
         )
@@ -127,7 +127,7 @@ class MainActivityViewModel : ViewModel() {
                     Log.d("DEBUG", "Response error " + response.errorBody())
                     Log.d("DEBUG", "Response success " + response.isSuccessful)
                     Log.d("DEBUG", "Response body " + response.body())
-                    Log.d("DEBUG", "url " + response.raw().request().url())
+                    Log.d("DEBUG", "url " + response.raw().request.url)
                 }
             }
         )
