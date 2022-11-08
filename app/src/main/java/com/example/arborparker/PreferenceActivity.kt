@@ -2,9 +2,11 @@ package com.example.arborparker
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.view.View
 import android.widget.Switch
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 
@@ -14,6 +16,9 @@ class PreferenceActivity : AppCompatActivity() {
     // a variable for our button
     lateinit var settingsBtn: Button
 
+    // stores the users id
+    var id: Int = MainActivityViewModel.user_id
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_preferences)
@@ -21,6 +26,25 @@ class PreferenceActivity : AppCompatActivity() {
         var btn_map = findViewById(R.id.btn_map) as Button
         var toggle_stairs = findViewById(R.id.switchstairs) as Switch
         var toggle_theme = findViewById(R.id.switchtheme) as Switch
+
+        val apiNetwork = MainActivityViewModel()
+        apiNetwork.getUserInfoById(id) {
+            Log.d("DEBUG", "Get user id function runs" + id)
+            var allowStairs = 0
+            var colorTheme = "Day"
+            if (it != null && it.isNotEmpty()) {
+                allowStairs = it.first().allowStairs ?: 0
+                colorTheme = it.first().colorTheme ?: "Day"
+                Log.d("DEBUG", "allowStairs: " + allowStairs)
+                Log.d("DEBUG", "colorTheme: " + colorTheme)
+                toggle_stairs.isChecked = allowStairs != 0
+                toggle_theme.isChecked = colorTheme != "Day"
+            } else {
+                Log.d("DEBUG", "Error getting user information")
+                toggle_stairs.isChecked = false
+                toggle_theme.isChecked = false
+            }
+        }
 
         btn_map.setOnClickListener {
             startActivity(Intent(this, MapsActivity::class.java));
