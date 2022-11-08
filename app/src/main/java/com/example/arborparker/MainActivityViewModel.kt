@@ -60,7 +60,7 @@ class MainActivityViewModel : ViewModel() {
                     Log.d("DEBUG", "Response success " + response.isSuccessful)
                     Log.d("DEBUG", "Response body " + response.body())
                     val userInfo = response.body()
-                    Log.d("DEBUG", "url " + response.raw().request().url())
+                    Log.d("DEBUG", "url " + response.raw().request.url)
                     Log.d("DEBUG", "Response " + userInfo)
                     onResult(userInfo)
                 }
@@ -85,13 +85,54 @@ class MainActivityViewModel : ViewModel() {
                     Log.d("DEBUG", "Response success " + response.isSuccessful)
                     Log.d("DEBUG", "Response body " + response.body())
                     val getUser = response.body()
-                    Log.d("DEBUG", "url " + response.raw().request().url())
+                    Log.d("DEBUG", "url " + response.raw().request.url)
                     Log.d("DEBUG", "Response " + getUser)
                     onResult(getUser)
                 }
             }
         )
     }
+
+    fun editUserProfile(id: Int, userProfileInfo: UserProfileInfo, onResult: (RowsAffected?) -> Unit) {
+        Log.d("DEBUG", "editUserProfile function called")
+        retrofit.editUserProfile(id, userProfileInfo).enqueue(
+            object : Callback<RowsAffected> {
+                override fun onFailure(call: Call<RowsAffected>, t: Throwable) {
+                    Log.d("DEBUG", "Edit User Profile Failed")
+                    onResult(null)
+                }
+                override fun onResponse( call: Call<RowsAffected>, response: Response<RowsAffected>) {
+                    Log.d("DEBUG", "Success editing user profile")
+                    Log.d("DEBUG", "Response raw " + response.raw())
+                    Log.d("DEBUG", "Response error " + response.errorBody())
+                    Log.d("DEBUG", "Response success " + response.isSuccessful)
+                    Log.d("DEBUG", "Response body " + response.body())
+                    Log.d("DEBUG", "url " + response.raw().request.url)
+                }
+            }
+        )
+    }
+
+    fun editUserPreferences(id: Int, userPreferencesInfo: UserPreferencesInfo, onResult: (RowsAffected?) -> Unit) {
+        Log.d("DEBUG", "editUserPreferencees function called")
+        retrofit.editUserPreferences(id, userPreferencesInfo).enqueue(
+            object : Callback<RowsAffected> {
+                override fun onFailure(call: Call<RowsAffected>, t: Throwable) {
+                    Log.d("DEBUG", "Edit User Preferences Failed")
+                    onResult(null)
+                }
+                override fun onResponse( call: Call<RowsAffected>, response: Response<RowsAffected>) {
+                    Log.d("DEBUG", "Success editing user preferences")
+                    Log.d("DEBUG", "Response raw " + response.raw())
+                    Log.d("DEBUG", "Response error " + response.errorBody())
+                    Log.d("DEBUG", "Response success " + response.isSuccessful)
+                    Log.d("DEBUG", "Response body " + response.body())
+                    Log.d("DEBUG", "url " + response.raw().request.url)
+                }
+            }
+        )
+    }
+
 
     /**
     // gets user info by id

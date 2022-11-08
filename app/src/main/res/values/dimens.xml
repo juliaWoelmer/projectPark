@@ -2,4 +2,7 @@
     <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="mapbox_custom_infopanel_marginEnd">10dp</dimen>
+    <dimen name="mapbox_custom_infopanel_marginStart">10dp</dimen>
+    <dimen name="mapbox_custom_infopanel_peekheight">90dp</dimen>
 </resources>

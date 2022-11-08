@@ -21,13 +21,5 @@ class PreferenceActivity : AppCompatActivity() {
         btn_map.setOnClickListener {
             startActivity(Intent(this, MapsActivity::class.java));
         }
-
-        if (findViewById<View?>(R.id.idFrameLayout) != null) {
-            if (savedInstanceState != null) {
-                return
-            }
-            // below line is to inflate our fragment.
-            fragmentManager.beginTransaction().add(R.id.idFrameLayout, SettingsFragment()).commit()
-        }
     }
 }

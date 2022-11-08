@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
-
+    <uses-sdk android:minSdkVersion="21"
+        android:targetSdkVersion="31"
+        android:maxSdkVersion="33" />
     <uses-permission android:name="android.permission.INTERNET" />
 
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
@@ -44,7 +46,6 @@
             android:label="@string/title_activity_maps">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -54,6 +55,75 @@
         <activity android:name=".ViewProfileActivity"></activity>
         <activity android:name=".EditProfileActivity"></activity>
 
+
+        <activity
+            android:name=".MainActivity"
+            android:exported="true">
+        </activity>
+        <activity
+            android:name=".dropinui.NavigationViewActivity"
+            android:exported="true">
+        </activity>
+
+        <activity
+            android:name=".dropinui.CustomRuntimeStylingActivity"
+            android:exported="true"/>
+
+        <activity
+            android:name=".dropinui.CustomNavigationViewOptionsActivity"
+            android:exported="true" />
+
+        <activity
+            android:name=".dropinui.CustomSpeedLimitActivity"
+            android:exported="true" />
+
+        <activity
+            android:name=".dropinui.CustomTripProgressActivity"
+            android:exported="true" />
+
+        <activity
+            android:name=".dropinui.CustomViewInjectionActivity"
+            android:exported="true" />
+
+        <activity
+            android:name=".dropinui.ToggleThemeActivity"
+            android:exported="true" />
+
+        <activity
+            android:name=".dropinui.CustomInfoPanelActivity"
+            android:exported="true" />
+
+        <activity
+            android:name=".dropinui.CustomInfoPanelAttributesActivity"
+            android:exported="true" />
+
+        <activity
+            android:name=".dropinui.RequestRouteWithNavigationViewActivity"
+            android:exported="true" />
+
+        <activity
+            android:name=".dropinui.RepositionSpeedLimitActivity"
+            android:exported="true" />
+
+        <activity
+            android:name=".dropinui.CustomLongClickActivity"
+            android:exported="true" />
+
+        <activity
+            android:name=".dropinui.HideViewsInFreeDriveActivity"
+            android:exported="true" />
+
+        <activity
+            android:name=".dropinui.CustomInfoPanelActiveGuidanceActivity"
+            android:exported="true" />
+
+        <activity
+            android:name=".dropinui.CustomActionButtonsActivity"
+            android:exported="true" />
+
+        <activity
+            android:name=".dropinui.AddActionButtonsActivity"
+            android:exported="true" />
     </application>
 
 </manifest>
