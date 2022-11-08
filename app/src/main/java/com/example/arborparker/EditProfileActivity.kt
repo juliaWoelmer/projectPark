@@ -17,7 +17,6 @@ class EditProfileActivity : AppCompatActivity() {
     lateinit var etFirstName: EditText
     lateinit var etLastName:EditText
     lateinit var etEmail: EditText
-    lateinit var etContactNo:EditText
 
     // stores the users id
     var id: Int = MainActivityViewModel.user_id
@@ -43,8 +42,7 @@ class EditProfileActivity : AppCompatActivity() {
 
 
         // To show back button in actionbar
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
-
+        // supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
 
     // Checking if the input in form is valid
