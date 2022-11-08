@@ -9,6 +9,7 @@ import android.widget.Switch
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
+import com.example.arborparker.network.UserPreferencesInfo
 
 class PreferenceActivity : AppCompatActivity() {
 
@@ -51,13 +52,13 @@ class PreferenceActivity : AppCompatActivity() {
         }
 
         toggle_stairs.setOnClickListener {
+            updateDatabase(toggle_stairs, toggle_theme, apiNetwork)
             startActivity(Intent(this, MapsActivity::class.java));
         }
 
-
         // set the switch to listen on checked change
-        toggle_theme.setOnCheckedChangeListener { _, isChecked ->
-
+        toggle_theme.setOnClickListener {
+            updateDatabase(toggle_stairs, toggle_theme, apiNetwork)
             // if the button is checked, i.e., towards the right or enabled
             // enable dark mode, change the text to disable dark mode
             // else keep the switch text to enable dark mode
@@ -67,6 +68,29 @@ class PreferenceActivity : AppCompatActivity() {
             } else {
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
                 toggle_theme.text = "Enable dark mode"
+            }
+        }
+    }
+
+    private fun updateDatabase(toggle_stairs: Switch, toggle_theme: Switch, apiNetwork: MainActivityViewModel) {
+        var allowStairs = 0
+        var colorTheme = "Day"
+        if (toggle_stairs.isChecked) {
+            allowStairs = 1
+        }
+        if (toggle_theme.isChecked) {
+            colorTheme = "Night"
+        }
+        Log.d("DEBUG", "Going to try setting preferences to following")
+        Log.d("DEBUG", "allowStairs: " + allowStairs)
+        Log.d("DEBUG", "colorTheme: " + colorTheme)
+        var userPreferencesInfo = UserPreferencesInfo(id, allowStairs, colorTheme)
+        apiNetwork.editUserPreferences(id, userPreferencesInfo) {
+            if (it != null) {
+                Log.d("DEBUG", "Success editing user preferences")
+                Log.d("DEBUG", "Rows affected: " + it.rowsAffected)
+            } else {
+                Log.d("DEBUG", "Error editing user preferences")
             }
         }
     }
