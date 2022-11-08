@@ -11,6 +11,8 @@ git clone https://github.com/juliaWoelmer/projectPark.git
 ```
 MAPS_API_KEY=AIzaSyCsSSHUihBM385wF3MPqzWtaJtmFGuk5nA
 ```
+4. On the top of Android Studio, go to Build and click Make Project. This may take a while.
+5. Once the project is done building, go to Run and click Run 'app'. If this is the first time you are using the emulator, the run may timeout. If this happens, click Run 'app' again.
 
 ## Resources:  
 1. Use this tutorial link to setup and clone the GitHub repository on VS Code  
