@@ -27,6 +27,47 @@ class MainActivityViewModel : ViewModel() {
         }
     }
 
+    fun getSpotsOccupiedByUser(id: Int, onResult: (List<SpotJustId>?) -> Unit) {
+        Log.d("DEBUG", "getSpotsOccupiedByUser function called")
+        retrofit.getSpotsOccupiedByUser(id).enqueue(
+            object : Callback<List<SpotJustId>> {
+                override fun onFailure(call: Call<List<SpotJustId>>, t: Throwable) {
+                    Log.d("DEBUG", "Failed")
+                    onResult(null)
+                }
+                override fun onResponse( call: Call<List<SpotJustId>>, response: Response<List<SpotJustId>>) {
+                    Log.d("DEBUG", "Success")
+                    Log.d("DEBUG", "id " + id)
+                    Log.d("DEBUG", "Response raw " + response.raw())
+                    Log.d("DEBUG", "Response error " + response.errorBody())
+                    Log.d("DEBUG", "Response success " + response.isSuccessful)
+                    Log.d("DEBUG", "Response body " + response.body())
+                    Log.d("DEBUG", "url " + response.raw().request.url)
+                }
+            }
+        )
+    }
+
+    fun editSpotAvailability(id: Int, spotWithUser: SpotWithUser, onResult: (RowsAffected?) -> Unit) {
+        Log.d("DEBUG", "editSpotAvailability function called")
+        retrofit.editSpotAvailability(id, spotWithUser).enqueue(
+            object : Callback<RowsAffected> {
+                override fun onFailure(call: Call<RowsAffected>, t: Throwable) {
+                    Log.d("DEBUG", "Edit Spot Availability Failed")
+                    onResult(null)
+                }
+                override fun onResponse( call: Call<RowsAffected>, response: Response<RowsAffected>) {
+                    Log.d("DEBUG", "Success editing spot availability at spotId: $id")
+                    Log.d("DEBUG", "Response raw " + response.raw())
+                    Log.d("DEBUG", "Response error " + response.errorBody())
+                    Log.d("DEBUG", "Response success " + response.isSuccessful)
+                    Log.d("DEBUG", "Response body " + response.body())
+                    Log.d("DEBUG", "url " + response.raw().request.url)
+                }
+            }
+        )
+    }
+
     // adds user to database
     fun addUser(userData: User, onResult: (UserId?) -> Unit){
         retrofit.addUser(userData).enqueue(

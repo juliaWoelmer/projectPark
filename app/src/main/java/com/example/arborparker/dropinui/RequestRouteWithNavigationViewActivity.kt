@@ -6,11 +6,13 @@ import android.content.DialogInterface
 import android.content.Intent
 import android.location.Location
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.annotation.DrawableRes
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import com.example.arborparker.MainActivityViewModel
 import com.example.arborparker.MapsActivity
 import com.example.arborparker.dropinui.CustomActionButtonsActivity
 import com.example.arborparker.R
@@ -33,6 +35,7 @@ import com.mapbox.navigation.core.trip.session.LocationObserver
 import com.mapbox.navigation.dropin.NavigationView
 import com.mapbox.navigation.dropin.map.MapViewObserver
 import com.example.arborparker.databinding.MapboxActivityRequestRouteNavigationViewBinding
+import com.example.arborparker.network.SpotWithUser
 import com.mapbox.api.directions.v5.DirectionsCriteria
 import com.mapbox.navigation.base.trip.model.RouteLegProgress
 import com.mapbox.navigation.base.trip.model.RouteProgress
@@ -69,6 +72,10 @@ class RequestRouteWithNavigationViewActivity : AppCompatActivity(), OnMapLongCli
 
     private var lastLocation: Location? = null
     private lateinit var binding: MapboxActivityRequestRouteNavigationViewBinding
+    // stores the users id
+    var user_id: Int = MainActivityViewModel.user_id
+    // stores the users id
+    var spotId: Int = MapsActivity.SpotID.toInt()
 
     /**
      * Gets notified with location updates.
@@ -150,11 +157,22 @@ class RequestRouteWithNavigationViewActivity : AppCompatActivity(), OnMapLongCli
             builder.setMessage("Are you able to park in the parking spot?")
                 .setPositiveButton("Yes",
                     DialogInterface.OnClickListener { dialog, id ->
+                        // Set spot as occupied by user in database
+                        val apiNetwork = MainActivityViewModel()
+                        val spotWithUser = SpotWithUser(false, user_id)
+                        apiNetwork.editSpotAvailability(spotId, spotWithUser) {
+                            if (it != null) {
+                                Log.d("DEBUG", "Success editing spot availability")
+                                Log.d("DEBUG", "User_id " + user_id + " occupied spot " + spotId)
+                                Log.d("DEBUG", "Rows affected: " + it.rowsAffected)
+                            } else {
+                                Log.d("DEBUG", "Error editing spot availability")
+                            }
+                        }
                         // proceed to show walking route
                         MapboxNavigationApp.current()?.unregisterArrivalObserver(arrivalObserver)
                         MapboxNavigationApp.current()?.registerArrivalObserver(arrivalObserver2)
                         requestRoutes(MapsActivity.SpotPoint, MapsActivity.DestPoint, DirectionsCriteria.PROFILE_WALKING)
-                        
                         //finish();
                     })
                 .setNegativeButton("No",

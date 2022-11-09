@@ -50,6 +50,7 @@ import android.widget.Button
 import com.example.arborparker.dropinui.NavigationViewActivity
 import com.example.arborparker.dropinui.RequestRouteWithNavigationViewActivity
 import androidx.appcompat.app.AlertDialog
+import com.example.arborparker.network.SpotWithUser
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import com.mapbox.geojson.Point
@@ -59,6 +60,7 @@ private const val TAG = "MyLogTag"
 
 class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
+    var user_id: Int = MainActivityViewModel.user_id
     private lateinit var mMap: GoogleMap
     private lateinit var binding: ActivityMapsBinding
     private lateinit var col: MutableSet<MyItem>
@@ -451,11 +453,13 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         val zoomLevel = 12.0f
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(arbor, zoomLevel))
         // Add GeoJson Layer containing parking spots
+        checkForSpotOccupied()
         setUpClusterer()
         filterMapSpotsAndDisplay()
-
         //allow zoom widget
         mMap.uiSettings.isZoomControlsEnabled = true
+
+
     }
 
     fun filterMapSpotsAndDisplay() {
@@ -490,7 +494,21 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
             val newZoom = zoom + 0.0001f
             mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng,newZoom))
         })
+    }
 
+    fun checkForSpotOccupied() {
+        Log.d("DEBUG", "CheckForSpotOccupied function runs")
+        val apiNetwork = MainActivityViewModel()
+        apiNetwork.getSpotsOccupiedByUser(user_id) {
+            Log.d("DEBUG", "Testing getSpotsOccupiedByUser with user_id $user_id")
+            if (it != null && it.isNotEmpty()) {
+                val spotId = it.first().spotId
+                val alert: AlertDialog = showAlertParkingSpotLeaving(spotId, apiNetwork) as AlertDialog
+                alert.show()
+            } else if (it == null) {
+                Log.d("DEBUG", "Error getting spots occupied by user with user_id $user_id")
+            }
+        }
     }
 
 
@@ -558,14 +576,23 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         } ?: throw IllegalStateException("Activity cannot be null")
     }
 
-    private fun showAlertParkingSpotLeaving(): Dialog {
+    private fun showAlertParkingSpotLeaving(spotId: Int, apiNetwork: MainActivityViewModel): Dialog {
         return this?.let {
             val builder = AlertDialog.Builder(this)
             builder.setTitle("Are you leaving?")
                 .setPositiveButton("Yes",
                     DialogInterface.OnClickListener { dialog, id ->
                         // set spot as open
-                        finish();
+                        val spotWithUser = SpotWithUser(true, user_id)
+                        apiNetwork.editSpotAvailability(spotId, spotWithUser) {
+                            if (it != null) {
+                                Log.d("DEBUG", "Success editing spot availability")
+                                Log.d("DEBUG", "User_id " + user_id + " occupied spot " + spotId)
+                                Log.d("DEBUG", "Rows affected: " + it.rowsAffected)
+                            } else {
+                                Log.d("DEBUG", "Error editing spot availability")
+                            }
+                        }
                     })
                 .setNegativeButton("No",
                     DialogInterface.OnClickListener { dialog, id ->
