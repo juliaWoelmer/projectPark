@@ -13,6 +13,7 @@ MAPS_API_KEY=AIzaSyCsSSHUihBM385wF3MPqzWtaJtmFGuk5nA
 ```
 4. On the top of Android Studio, go to Build and click Make Project. This may take a while.
 5. Once the project is done building, go to Run and click Run 'app'. If this is the first time you are using the emulator, the run may timeout. If this happens, click Run 'app' again.
+6. To change the emulator's location, follow this tutorial: https://stackoverflow.com/questions/47528006/how-to-set-the-location-manually-in-android-studio-emulator
 
 ## Resources:  
 1. Use this tutorial link to setup and clone the GitHub repository on VS Code  
