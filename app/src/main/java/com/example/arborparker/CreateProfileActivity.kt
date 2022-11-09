@@ -4,6 +4,7 @@ import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.WindowManager
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
@@ -65,21 +66,35 @@ class CreateProfileActivity : AppCompatActivity() {
 
                     val alertDialogBuilder = AlertDialog.Builder(this)
                     alertDialogBuilder.setTitle("Welcome")
-                    alertDialogBuilder.setMessage("Welcome " + userInfo.username)
-                    alertDialogBuilder.setCancelable(true)
+                        .setMessage("Welcome " + userInfo.username)
+                        .setCancelable(true)
+                        .setPositiveButton("Ok",
+                            DialogInterface.OnClickListener { dialog, id ->
+                                // takes user to map screen
+                                startActivity(Intent(this, MapsActivity::class.java))
 
-                    alertDialogBuilder.setPositiveButton(android.R.string.ok) { _, _ ->
-                        Toast.makeText(
-                            applicationContext,
-                            android.R.string.ok, Toast.LENGTH_SHORT
-                        ).show()
-                    }
+                            })
+                    // Create the AlertDialog object and return it
+                    alertDialogBuilder.create()
+
 
                     val alert1: AlertDialog = alertDialogBuilder.create()
                     alert1.show()
 
-                    // takes user to map screen
-                    startActivity(Intent(this, MapsActivity::class.java))
+                    // Get the current app screen width and height
+                    val mDisplayMetrics = windowManager.currentWindowMetrics
+                    val mDisplayWidth = mDisplayMetrics.bounds.width()
+                    val mDisplayHeight = mDisplayMetrics.bounds.height()
+
+                    // Generate custom width and height and
+                    // add to the dialog attributes
+                    // we multiplied the width and height by 0.5,
+                    // meaning reducing the size to 50%
+                    val mLayoutParams = WindowManager.LayoutParams()
+                    mLayoutParams.width = (mDisplayWidth * 0.7f).toInt()
+                    mLayoutParams.height = (mDisplayHeight * 0.25f).toInt()
+                    alert1.window?.attributes = mLayoutParams
+
 
                 } else {
                     Timber.d("Error registering new user")
@@ -89,16 +104,32 @@ class CreateProfileActivity : AppCompatActivity() {
 
                     val alertDialogBuilder = AlertDialog.Builder(this)
                     alertDialogBuilder.setTitle("Username Taken")
-                    alertDialogBuilder.setMessage("That username is already taken. Please choose another.")
-                    alertDialogBuilder.setCancelable(true)
+                        .setMessage("That username is already taken. Please choose another.")
+                        .setCancelable(true)
+                        .setPositiveButton("Ok",
+                            DialogInterface.OnClickListener { dialog, id ->
 
-                    alertDialogBuilder.setPositiveButton(android.R.string.ok) { _,_ ->
-                        Toast.makeText(applicationContext,
-                            android.R.string.ok, Toast.LENGTH_SHORT).show()
-                    }
+                            })
+                    // Create the AlertDialog object and return it
+                    alertDialogBuilder.create()
+
 
                     val alert1: AlertDialog = alertDialogBuilder.create()
                     alert1.show()
+
+                    // Get the current app screen width and height
+                    val mDisplayMetrics = windowManager.currentWindowMetrics
+                    val mDisplayWidth = mDisplayMetrics.bounds.width()
+                    val mDisplayHeight = mDisplayMetrics.bounds.height()
+
+                    // Generate custom width and height and
+                    // add to the dialog attributes
+                    // we multiplied the width and height by 0.5,
+                    // meaning reducing the size to 50%
+                    val mLayoutParams = WindowManager.LayoutParams()
+                    mLayoutParams.width = (mDisplayWidth * 0.8f).toInt()
+                    mLayoutParams.height = (mDisplayHeight * 0.25f).toInt()
+                    alert1.window?.attributes = mLayoutParams
 
                 }
 

@@ -1,10 +1,13 @@
 package com.example.arborparker
 
+import android.app.Dialog
+import android.content.DialogInterface
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.*
 import android.content.Intent
 import android.util.Log
+import android.view.WindowManager
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatDelegate
 import com.example.arborparker.MainActivityViewModel.Companion.user_id
@@ -78,20 +81,36 @@ class LoginActivity : AppCompatActivity() {
 
                         Log.d("DEBUG", "Create user id " + user_id)
 
-                        val alertDialogBuilder = AlertDialog.Builder(this)
+                                val alertDialogBuilder = AlertDialog.Builder(this)
                         alertDialogBuilder.setTitle("Welcome")
-                        alertDialogBuilder.setMessage("Welcome " + it[0].username)
-                        alertDialogBuilder.setCancelable(true)
+                                    .setMessage("Welcome " + it[0].username)
+                                    .setCancelable(true)
+                                    .setPositiveButton("Ok",
+                                        DialogInterface.OnClickListener { dialog, id ->
+                                            // takes user to map screen
+                                            startActivity(Intent(this, MapsActivity::class.java))
 
-                        alertDialogBuilder.setPositiveButton(android.R.string.ok) { _, _ ->
-                            Toast.makeText(
-                                applicationContext,
-                                android.R.string.ok, Toast.LENGTH_SHORT
-                            ).show()
-                        }
+                                        })
+                        // Create the AlertDialog object and return it
+                        alertDialogBuilder.create()
+
 
                         val alert1: AlertDialog = alertDialogBuilder.create()
                         alert1.show()
+
+                        // Get the current app screen width and height
+                        val mDisplayMetrics = windowManager.currentWindowMetrics
+                        val mDisplayWidth = mDisplayMetrics.bounds.width()
+                        val mDisplayHeight = mDisplayMetrics.bounds.height()
+
+                        // Generate custom width and height and
+                        // add to the dialog attributes
+                        // we multiplied the width and height by 0.5,
+                        // meaning reducing the size to 50%
+                        val mLayoutParams = WindowManager.LayoutParams()
+                        mLayoutParams.width = (mDisplayWidth * 0.7f).toInt()
+                        mLayoutParams.height = (mDisplayHeight * 0.25f).toInt()
+                        alert1.window?.attributes = mLayoutParams
 
                         // sets users theme preferences
                         if (it[0].colorTheme == "Night") {
@@ -100,8 +119,7 @@ class LoginActivity : AppCompatActivity() {
                             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
                         }
 
-                        // takes user to map screen
-                        startActivity(Intent(this, MapsActivity::class.java))
+
                     } else {
                         Log.d("DEBUG", "Error getting user information")
 
@@ -109,18 +127,32 @@ class LoginActivity : AppCompatActivity() {
 
                         val alertDialogBuilder = AlertDialog.Builder(this)
                         alertDialogBuilder.setTitle("Error")
-                        alertDialogBuilder.setMessage("User does not exist. Please check the username and password are correct or create an account.")
-                        alertDialogBuilder.setCancelable(true)
+                            .setMessage("User does not exist. Please check the username and password are correct or create an account.")
+                            .setCancelable(true)
+                            .setPositiveButton("Ok",
+                                DialogInterface.OnClickListener { dialog, id ->
 
-                        alertDialogBuilder.setPositiveButton(android.R.string.ok) { _, _ ->
-                            Toast.makeText(
-                                applicationContext,
-                                android.R.string.ok, Toast.LENGTH_SHORT
-                            ).show()
-                        }
+                                })
+                        // Create the AlertDialog object and return it
+                        alertDialogBuilder.create()
+
 
                         val alert1: AlertDialog = alertDialogBuilder.create()
                         alert1.show()
+
+                        // Get the current app screen width and height
+                        val mDisplayMetrics = windowManager.currentWindowMetrics
+                        val mDisplayWidth = mDisplayMetrics.bounds.width()
+                        val mDisplayHeight = mDisplayMetrics.bounds.height()
+
+                        // Generate custom width and height and
+                        // add to the dialog attributes
+                        // we multiplied the width and height by 0.5,
+                        // meaning reducing the size to 50%
+                        val mLayoutParams = WindowManager.LayoutParams()
+                        mLayoutParams.width = (mDisplayWidth * 0.8f).toInt()
+                        mLayoutParams.height = (mDisplayHeight * 0.3f).toInt()
+                        alert1.window?.attributes = mLayoutParams
                     }
                 }
             }
