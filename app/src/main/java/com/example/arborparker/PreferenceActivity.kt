@@ -1,6 +1,7 @@
 package com.example.arborparker
 
 import android.content.Intent
+import android.content.res.Configuration
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
@@ -12,6 +13,13 @@ import androidx.appcompat.app.AppCompatDelegate
 import com.example.arborparker.network.UserPreferencesInfo
 
 class PreferenceActivity : AppCompatActivity() {
+
+
+    // checks if dark mode was activated
+    private fun isDarkModeOn(): Boolean {
+        val currentNightMode = resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK
+        return currentNightMode == Configuration.UI_MODE_NIGHT_YES
+    }
 
     // on below line we are creating
     // a variable for our button
@@ -29,44 +37,80 @@ class PreferenceActivity : AppCompatActivity() {
         var toggle_theme = findViewById(R.id.switchtheme) as Switch
 
         val apiNetwork = MainActivityViewModel()
+        var allowStairs = 0
+        var colorTheme = "Day"
         apiNetwork.getUserInfoById(id) {
             Log.d("DEBUG", "Get user id function runs" + id)
-            var allowStairs = 0
-            var colorTheme = "Day"
             if (it != null && it.isNotEmpty()) {
-                allowStairs = it.first().allowStairs ?: 0
-                colorTheme = it.first().colorTheme ?: "Day"
+                allowStairs = it[0].allowStairs ?: 0
+                colorTheme = it[0].colorTheme ?: "Day"
                 Log.d("DEBUG", "allowStairs: " + allowStairs)
                 Log.d("DEBUG", "colorTheme: " + colorTheme)
-                toggle_stairs.isChecked = allowStairs != 0
-                toggle_theme.isChecked = colorTheme != "Day"
+
+
+                // sets darkmode switch on if selected already
+                if (isDarkModeOn()) {
+                    toggle_theme.text = "Disable dark mode"
+                    toggle_theme.isChecked = true
+                }
+
+                //toggle_stairs.isChecked = allowStairs != 0
+                //toggle_theme.isChecked = colorTheme != "Day"
             } else {
                 Log.d("DEBUG", "Error getting user information")
-                toggle_stairs.isChecked = false
+                // toggle_stairs.isChecked = false
                 toggle_theme.isChecked = false
             }
         }
 
-        btn_map.setOnClickListener {
-            startActivity(Intent(this, MapsActivity::class.java));
+        // sets the switches to the correct position from database at the start
+
+        //toggle_stairs.isChecked = allowStairs != 0
+        //toggle_theme.isChecked = colorTheme != "Day"
+        //Log.d("DEBUG", "allowStairs: " + allowStairs)
+        //Log.d("DEBUG", "colorTheme: " + colorTheme)
+
+
+
+        /*
+
+        if (allowStairs == 0) {
+            toggle_stairs.isChecked = false
+        }
+        else {
+            toggle_stairs.isChecked = true
         }
 
-        toggle_stairs.setOnClickListener {
-            updateDatabase(toggle_stairs, toggle_theme, apiNetwork)
-            startActivity(Intent(this, MapsActivity::class.java));
+        if (colorTheme == "Day") {
+            toggle_theme.isChecked = false
         }
+        else {
+            toggle_theme.isChecked = true
+        }
+
+         */
+
+        btn_map.setOnClickListener {
+            updateDatabase(toggle_stairs, toggle_theme, apiNetwork)
+            startActivity(Intent(this, MapsActivity::class.java))
+        }
+
+
+
 
         // set the switch to listen on checked change
         toggle_theme.setOnClickListener {
-            updateDatabase(toggle_stairs, toggle_theme, apiNetwork)
+
             // if the button is checked, i.e., towards the right or enabled
             // enable dark mode, change the text to disable dark mode
             // else keep the switch text to enable dark mode
             if (toggle_theme.isChecked) {
+                colorTheme = "Night"
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
                 toggle_theme.text = "Disable dark mode"
             } else {
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+                colorTheme = "Day"
                 toggle_theme.text = "Enable dark mode"
             }
         }
@@ -75,9 +119,12 @@ class PreferenceActivity : AppCompatActivity() {
     private fun updateDatabase(toggle_stairs: Switch, toggle_theme: Switch, apiNetwork: MainActivityViewModel) {
         var allowStairs = 0
         var colorTheme = "Day"
+
+        /*
         if (toggle_stairs.isChecked) {
             allowStairs = 1
         }
+        */
         if (toggle_theme.isChecked) {
             colorTheme = "Night"
         }
