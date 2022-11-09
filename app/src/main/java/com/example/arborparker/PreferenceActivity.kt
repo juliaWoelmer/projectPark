@@ -54,7 +54,7 @@ class PreferenceActivity : AppCompatActivity() {
                     toggle_theme.isChecked = true
                 }
 
-                //toggle_stairs.isChecked = allowStairs != 0
+                toggle_stairs.isChecked = allowStairs != 0
                 //toggle_theme.isChecked = colorTheme != "Day"
             } else {
                 Log.d("DEBUG", "Error getting user information")
@@ -120,11 +120,11 @@ class PreferenceActivity : AppCompatActivity() {
         var allowStairs = 0
         var colorTheme = "Day"
 
-        /*
+
         if (toggle_stairs.isChecked) {
             allowStairs = 1
         }
-        */
+
         if (toggle_theme.isChecked) {
             colorTheme = "Night"
         }
