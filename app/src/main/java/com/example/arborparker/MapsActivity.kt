@@ -453,7 +453,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         val zoomLevel = 12.0f
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(arbor, zoomLevel))
         // Add GeoJson Layer containing parking spots
-        checkForSpotOccupied()
+//        checkForSpotOccupied()
         setUpClusterer()
         filterMapSpotsAndDisplay()
         //allow zoom widget
