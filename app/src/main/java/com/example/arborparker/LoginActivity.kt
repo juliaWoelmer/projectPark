@@ -6,6 +6,7 @@ import android.widget.*
 import android.content.Intent
 import android.util.Log
 import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatDelegate
 import com.example.arborparker.MainActivityViewModel.Companion.user_id
 import timber.log.Timber
 
@@ -91,6 +92,13 @@ class LoginActivity : AppCompatActivity() {
 
                         val alert1: AlertDialog = alertDialogBuilder.create()
                         alert1.show()
+
+                        // sets users theme preferences
+                        if (it[0].colorTheme == "Night") {
+                            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+                        } else {
+                            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+                        }
 
                         // takes user to map screen
                         startActivity(Intent(this, MapsActivity::class.java))

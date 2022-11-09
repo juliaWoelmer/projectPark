@@ -1,12 +1,15 @@
 package com.example.arborparker.dropinui
 
+import android.app.Dialog
 import android.content.Context
+import android.content.DialogInterface
 import android.content.Intent
 import android.location.Location
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.annotation.DrawableRes
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.example.arborparker.MapsActivity
 import com.example.arborparker.dropinui.CustomActionButtonsActivity
@@ -115,7 +118,77 @@ class RequestRouteWithNavigationViewActivity : AppCompatActivity(), OnMapLongCli
 
         override fun onFinalDestinationArrival(routeProgress: RouteProgress) {
             // do something when the user reaches the final destination
+            val alert1: AlertDialog = showAlertParkingSpot() as AlertDialog
+            alert1.show()
         }
+    }
+
+    private fun showAlertParkingSpot(): Dialog {
+        return this?.let {
+            val builder = AlertDialog.Builder(this@RequestRouteWithNavigationViewActivity)
+            builder.setTitle("You have arrived at the parking spot.")
+            builder.setMessage("Are you able to park in the parking spot?")
+                .setPositiveButton("Yes",
+                    DialogInterface.OnClickListener { dialog, id ->
+                        // proceed to show walking route
+                        //finish();
+                    })
+                .setNegativeButton("No",
+                    DialogInterface.OnClickListener { dialog, id ->
+                        // show no dialog
+                        val alert2: AlertDialog = showAlertParkingSpotNo() as AlertDialog
+                        alert2.show()
+                        //finish();
+                    })
+            // Create the AlertDialog object and return it
+            builder.create()
+        } ?: throw IllegalStateException("Activity cannot be null")
+    }
+    private fun showAlertParkingSpotNo(): Dialog {
+        return this?.let {
+            val builder = AlertDialog.Builder(this@RequestRouteWithNavigationViewActivity)
+            builder.setTitle("Why not?")
+            builder.setItems(arrayOf<String>("Spot is already taken", "Spot is obstructed", "Someone is illegally parked in the spot"),
+                DialogInterface.OnClickListener { dialog, which ->
+                    //
+                    if (which == 0){ //spot is already taken
+                        // reroute to new parking spot
+                        //finish();
+                    }
+                    else if (which == 1){ //spot is obstructed
+                        // contact appropriate authorities and reroute to new parking spot
+                        //finish();
+                    }
+                    else{ //someone is illegally parked
+                        // contact appropriate authorities and reroute to new parking spot
+                        //finish();
+                    }
+                })
+            // Create the AlertDialog object and return it
+            builder.create()
+        } ?: throw IllegalStateException("Activity cannot be null")
+    }
+    private fun showAlertDestinationArrival(): Dialog {
+        return this?.let {
+            val builder = AlertDialog.Builder(this@RequestRouteWithNavigationViewActivity)
+            builder.setTitle("You have arrived at your destination")
+                .setPositiveButton("Close",
+                    DialogInterface.OnClickListener { dialog, id ->
+                        // delete dialog
+                        finish();
+                    })
+                /*.setNeutralButton("Add to favorites",
+                    DialogInterface.OnClickListener { dialog, id ->
+                        // add the destination to favorites
+                    })*/
+                .setNegativeButton("Report an issue",
+                    DialogInterface.OnClickListener { dialog, id ->
+                        // shown a form for issues
+                        finish();
+                    })
+            // Create the AlertDialog object and return it
+            builder.create()
+        } ?: throw IllegalStateException("Activity cannot be null")
     }
 
 
@@ -173,7 +246,6 @@ class RequestRouteWithNavigationViewActivity : AppCompatActivity(), OnMapLongCli
         MapboxNavigationApp.current()?.registerLocationObserver(locationObserver)
         MapboxNavigationApp.current()?.registerArrivalObserver(arrivalObserver)
         requestRoutes(MapsActivity.UserPoint, MapsActivity.SpotPoint)
-
     }
 
     override fun onDestroy() {
