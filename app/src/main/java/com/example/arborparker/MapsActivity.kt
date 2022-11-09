@@ -65,6 +65,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
     private lateinit var lines: Pair<Polyline, Polyline>
     private lateinit var destination: Place
     companion object {
+        var SpotID = ""
         var DestPoint = Point.fromLngLat(0.0, 0.0) as Point
         var SpotPoint = Point.fromLngLat(0.0, 0.0) as Point
         var UserPoint = Point.fromLngLat(-83.732124, 42.279594) as Point
@@ -404,6 +405,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
                 }
                 lines.first.remove()
                 lines.second.remove()
+                SpotID = spot.title.toString()
                 SpotPoint = Point.fromLngLat(spot.position.longitude, spot.position.latitude) as Point
                 // Get Directions From API
                 var res_driv = (getDirections(userLocation, spot.position, "driving"))
