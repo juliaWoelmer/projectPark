@@ -453,7 +453,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         val zoomLevel = 12.0f
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(arbor, zoomLevel))
         // Add GeoJson Layer containing parking spots
-//        checkForSpotOccupied()
+        checkForSpotOccupied()
         setUpClusterer()
         filterMapSpotsAndDisplay()
         //allow zoom widget
@@ -509,6 +509,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
                 Log.d("DEBUG", "Error getting spots occupied by user with user_id $user_id")
             }
         }
+        Log.d("DEBUG", "Testing to see if rest of function executes")
     }
 
 
