@@ -54,7 +54,11 @@ class PreferenceActivity : AppCompatActivity() {
                     toggle_theme.isChecked = true
                 }
 
+<<<<<<< HEAD
                 //toggle_stairs.isChecked = allowStairs != 0
+=======
+                toggle_stairs.isChecked = allowStairs != 0
+>>>>>>> 22aefbf99be0dc2769c4266137ebefba706b8f12
                 //toggle_theme.isChecked = colorTheme != "Day"
             } else {
                 Log.d("DEBUG", "Error getting user information")
@@ -120,11 +124,19 @@ class PreferenceActivity : AppCompatActivity() {
         var allowStairs = 0
         var colorTheme = "Day"
 
+<<<<<<< HEAD
         /*
         if (toggle_stairs.isChecked) {
             allowStairs = 1
         }
         */
+=======
+
+        if (toggle_stairs.isChecked) {
+            allowStairs = 1
+        }
+
+>>>>>>> 22aefbf99be0dc2769c4266137ebefba706b8f12
         if (toggle_theme.isChecked) {
             colorTheme = "Night"
         }

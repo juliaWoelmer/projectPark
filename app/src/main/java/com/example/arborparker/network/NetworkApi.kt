@@ -7,6 +7,12 @@ interface NetworkApi {
     @GET("/spots")
     suspend fun getSpots(): List<Spot>
 
+    @GET("/spots/occupied-by/{id}")
+    fun getSpotsOccupiedByUser(@Path("id") id: Int): Call<List<SpotJustId>>
+
+    @PUT("/spots/{id}/set-open-state")
+    fun editSpotAvailability(@Path("id") id: Int, @Body spotWithUser: SpotWithUser): Call<RowsAffected>
+
     // Get user info by id
     @GET("/user/{id}")
     fun getUserInfoById(@Path("id") id: Int): Call<List<UserInfo>>

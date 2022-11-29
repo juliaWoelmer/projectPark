@@ -6,11 +6,13 @@ import android.content.DialogInterface
 import android.content.Intent
 import android.location.Location
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.annotation.DrawableRes
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import com.example.arborparker.MainActivityViewModel
 import com.example.arborparker.MapsActivity
 import com.example.arborparker.dropinui.CustomActionButtonsActivity
 import com.example.arborparker.R
@@ -33,6 +35,8 @@ import com.mapbox.navigation.core.trip.session.LocationObserver
 import com.mapbox.navigation.dropin.NavigationView
 import com.mapbox.navigation.dropin.map.MapViewObserver
 import com.example.arborparker.databinding.MapboxActivityRequestRouteNavigationViewBinding
+import com.example.arborparker.network.SpotWithUser
+import com.mapbox.api.directions.v5.DirectionsCriteria
 import com.mapbox.navigation.base.trip.model.RouteLegProgress
 import com.mapbox.navigation.base.trip.model.RouteProgress
 import com.mapbox.navigation.core.arrival.ArrivalObserver
@@ -68,6 +72,10 @@ class RequestRouteWithNavigationViewActivity : AppCompatActivity(), OnMapLongCli
 
     private var lastLocation: Location? = null
     private lateinit var binding: MapboxActivityRequestRouteNavigationViewBinding
+    // stores the users id
+    var user_id: Int = MainActivityViewModel.user_id
+    // stores the users id
+    var spotId: Int = MapsActivity.SpotID.toInt()
 
     /**
      * Gets notified with location updates.
@@ -122,6 +130,25 @@ class RequestRouteWithNavigationViewActivity : AppCompatActivity(), OnMapLongCli
             alert1.show()
         }
     }
+    /**
+     * Gets notified with arrival updates.
+     */
+    private val arrivalObserver2 = object : ArrivalObserver {
+
+        override fun onWaypointArrival(routeProgress: RouteProgress) {
+            // do something when the user arrives at a waypoint
+        }
+
+        override fun onNextRouteLegStart(routeLegProgress: RouteLegProgress) {
+            // do something when the user starts a new leg
+        }
+
+        override fun onFinalDestinationArrival(routeProgress: RouteProgress) {
+            // do something when the user reaches the final destination
+            val alert1: AlertDialog = showAlertDestinationArrival() as AlertDialog
+            alert1.show()
+        }
+    }
 
     private fun showAlertParkingSpot(): Dialog {
         return this?.let {
@@ -130,7 +157,22 @@ class RequestRouteWithNavigationViewActivity : AppCompatActivity(), OnMapLongCli
             builder.setMessage("Are you able to park in the parking spot?")
                 .setPositiveButton("Yes",
                     DialogInterface.OnClickListener { dialog, id ->
+                        // Set spot as occupied by user in database
+                        val apiNetwork = MainActivityViewModel()
+                        val spotWithUser = SpotWithUser(false, user_id)
+                        apiNetwork.editSpotAvailability(spotId, spotWithUser) {
+                            if (it != null) {
+                                Log.d("DEBUG", "Success editing spot availability")
+                                Log.d("DEBUG", "User_id " + user_id + " occupied spot " + spotId)
+                                Log.d("DEBUG", "Rows affected: " + it.rowsAffected)
+                            } else {
+                                Log.d("DEBUG", "Error editing spot availability")
+                            }
+                        }
                         // proceed to show walking route
+                        MapboxNavigationApp.current()?.unregisterArrivalObserver(arrivalObserver)
+                        MapboxNavigationApp.current()?.registerArrivalObserver(arrivalObserver2)
+                        requestRoutes(MapsActivity.SpotPoint, MapsActivity.DestPoint, DirectionsCriteria.PROFILE_WALKING)
                         //finish();
                     })
                 .setNegativeButton("No",
@@ -254,6 +296,7 @@ class RequestRouteWithNavigationViewActivity : AppCompatActivity(), OnMapLongCli
         binding.navigationView.unregisterMapObserver(mapViewObserver)
         MapboxNavigationApp.current()?.unregisterLocationObserver(locationObserver)
         MapboxNavigationApp.current()?.unregisterArrivalObserver(arrivalObserver)
+        MapboxNavigationApp.current()?.unregisterArrivalObserver(arrivalObserver2)
     }
 
     // Action button
@@ -280,11 +323,11 @@ class RequestRouteWithNavigationViewActivity : AppCompatActivity(), OnMapLongCli
     }
 
     // Nav
-    private fun requestRoutes(origin: Point, destination: Point) {
+    private fun requestRoutes(origin: Point, destination: Point, nav_mode: String = DirectionsCriteria.PROFILE_DRIVING_TRAFFIC) {
         MapboxNavigationApp.current()!!.requestRoutes(
             routeOptions = RouteOptions
                 .builder()
-                .applyDefaultNavigationOptions()
+                .applyDefaultNavigationOptions(nav_mode)
                 .applyLanguageAndVoiceUnitOptions(this)
                 .coordinatesList(listOf(origin, destination))
                 .alternatives(true)
