@@ -8,7 +8,6 @@ import android.widget.EditText
 
 
 class ReportIssueActivity : AppCompatActivity() {
-
     lateinit var etIssue: EditText
 
     // stores the users id
@@ -19,28 +18,15 @@ class ReportIssueActivity : AppCompatActivity() {
         setContentView(R.layout.activity_report_issue)
         viewInitializations()
 
-        var btn_update = findViewById(R.id.btn_update) as Button
-
-        btn_update.setOnClickListener {
-            if(validateInput()){
-                startActivity(Intent(this, MapsActivity::class.java));
-            }
-        }
+        var btn_upload = findViewById(R.id.btn_upload) as Button
     }
 
 
     fun viewInitializations() {
         etIssue = findViewById(R.id.et_issue)
-        // To show back button in actionbar
-        // supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
 
-    // Checking if the input in form is valid
-    fun validateInput(): Boolean {
-        if (etIssue.text.toString().equals("")) {
-            etIssue.setError("Please enter the issue")
-            return false
-        }
-        return true
+    fun performReportIssue() {
+        startActivity(Intent(this, MapsActivity::class.java));
     }
 }
