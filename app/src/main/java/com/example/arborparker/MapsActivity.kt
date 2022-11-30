@@ -584,7 +584,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
                 .setPositiveButton("Yes",
                     DialogInterface.OnClickListener { dialog, id ->
                         // set spot as open
-                        val spotWithUser = SpotWithUser(true, user_id)
+                        val spotWithUser = SpotWithUser(true, null)
                         apiNetwork.editSpotAvailability(spotId, spotWithUser) {
                             if (it != null) {
                                 Log.d("DEBUG", "Success editing spot availability")
