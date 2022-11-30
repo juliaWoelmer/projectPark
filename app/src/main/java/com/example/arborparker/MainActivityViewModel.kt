@@ -36,17 +36,13 @@ class MainActivityViewModel : ViewModel() {
                     onResult(null)
                 }
                 override fun onResponse( call: Call<List<SpotJustId>>, response: Response<List<SpotJustId>>) {
-                    Log.d("DEBUG", "getSpotsOccupiedByUser Success")
+                    Log.d("DEBUG", "Success")
                     Log.d("DEBUG", "id " + id)
                     Log.d("DEBUG", "Response raw " + response.raw())
                     Log.d("DEBUG", "Response error " + response.errorBody())
                     Log.d("DEBUG", "Response success " + response.isSuccessful)
                     Log.d("DEBUG", "Response body " + response.body())
                     Log.d("DEBUG", "url " + response.raw().request.url)
-
-                    val occupied_spots = response.body()
-                    onResult(occupied_spots)
-
                 }
             }
         )
