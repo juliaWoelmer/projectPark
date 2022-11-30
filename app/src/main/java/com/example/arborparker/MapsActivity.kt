@@ -580,7 +580,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
     private fun showAlertParkingSpotLeaving(spotId: Int, apiNetwork: MainActivityViewModel): Dialog {
         return this?.let {
             val builder = AlertDialog.Builder(this)
-            builder.setTitle("Are you leaving?")
+            builder.setTitle("Have you left your parking spot?")
                 .setPositiveButton("Yes",
                     DialogInterface.OnClickListener { dialog, id ->
                         // set spot as open
