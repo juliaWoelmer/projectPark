@@ -186,7 +186,6 @@ class RequestRouteWithNavigationViewActivity : AppCompatActivity(), OnMapLongCli
             builder.setTitle("Why not?")
             builder.setItems(arrayOf<String>("Spot is already taken", "Spot is obstructed", "Someone is illegally parked in the spot"),
                 DialogInterface.OnClickListener { dialog, which ->
-                    //
                     if (which == 0){ //spot is already taken
                         // reroute to new parking spot
                         //finish();
