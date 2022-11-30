@@ -10,6 +10,7 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat.startActivity
 import com.example.arborparker.MainActivityViewModel.Companion.user_id
 import com.example.arborparker.network.User
 import timber.log.Timber
@@ -37,9 +38,9 @@ class CreateProfileActivity : AppCompatActivity() {
 
             // error handling for empty text boxes
             if (usernametxt.isEmpty()) {
-            get_user_name.error = "username is required"
-            // get_user_name.error.requestFocus()
-            return@setOnClickListener
+                get_user_name.error = "username is required"
+                // get_user_name.error.requestFocus()
+                return@setOnClickListener
             }
 
             if (passwordtxt.isEmpty()) {
@@ -49,55 +50,60 @@ class CreateProfileActivity : AppCompatActivity() {
             }
 
             val userInfo = User(
-                                username = usernametxt,
-                                password = passwordtxt)
+                username = usernametxt,
+                password = passwordtxt
+            )
 
             // adds user
             val apiNetwork = MainActivityViewModel()
-            apiNetwork.addUser(userInfo) {
-                if (it != null) {
-                    // it = newly added user parsed as response
-                    // it?.id = newly added user ID
-
-                    //set public variable
-                    user_id = it.id
-
-                    Log.d("DEBUG", "Create user id " + user_id)
-
-                    val alertDialogBuilder = AlertDialog.Builder(this)
-                    alertDialogBuilder.setTitle("Welcome")
-                        .setMessage("Welcome " + userInfo.username)
-                        .setCancelable(true)
-                        .setPositiveButton("Ok",
-                            DialogInterface.OnClickListener { dialog, id ->
-                                // takes user to map screen
-                                startActivity(Intent(this, MapsActivity::class.java))
-
-                            })
-                    // Create the AlertDialog object and return it
-                    alertDialogBuilder.create()
+            apiNetwork.getUserInfoByUsername(userInfo.username) {
+                if (it != null && it.isEmpty()) {
 
 
-                    val alert1: AlertDialog = alertDialogBuilder.create()
-                    alert1.show()
+                    apiNetwork.addUser(userInfo) {
+                        if (it != null) {
+                            // it = newly added user parsed as response
+                            // it?.id = newly added user ID
 
-                    // Get the current app screen width and height
-                    val mDisplayMetrics = windowManager.currentWindowMetrics
-                    val mDisplayWidth = mDisplayMetrics.bounds.width()
-                    val mDisplayHeight = mDisplayMetrics.bounds.height()
+                            //set public variable
+                            user_id = it.id
 
-                    // Generate custom width and height and
-                    // add to the dialog attributes
-                    // we multiplied the width and height by 0.5,
-                    // meaning reducing the size to 50%
-                    val mLayoutParams = WindowManager.LayoutParams()
-                    mLayoutParams.width = (mDisplayWidth * 0.7f).toInt()
-                    mLayoutParams.height = (mDisplayHeight * 0.25f).toInt()
-                    alert1.window?.attributes = mLayoutParams
+                            Log.d("DEBUG", "Create user id " + user_id)
+
+                            val alertDialogBuilder = AlertDialog.Builder(this)
+                            alertDialogBuilder.setTitle("Welcome")
+                                .setMessage("Welcome " + userInfo.username)
+                                .setCancelable(true)
+                                .setPositiveButton("Ok",
+                                    DialogInterface.OnClickListener { dialog, id ->
+                                        // takes user to map screen
+                                        startActivity(Intent(this, MapsActivity::class.java))
+
+                                    })
+                            // Create the AlertDialog object and return it
+                            alertDialogBuilder.create()
 
 
+                            val alert1: AlertDialog = alertDialogBuilder.create()
+                            alert1.show()
+
+                            // Get the current app screen width and height
+                            val mDisplayMetrics = windowManager.currentWindowMetrics
+                            val mDisplayWidth = mDisplayMetrics.bounds.width()
+                            val mDisplayHeight = mDisplayMetrics.bounds.height()
+
+                            // Generate custom width and height and
+                            // add to the dialog attributes
+                            // we multiplied the width and height by 0.5,
+                            // meaning reducing the size to 50%
+                            val mLayoutParams = WindowManager.LayoutParams()
+                            mLayoutParams.width = (mDisplayWidth * 0.7f).toInt()
+                            mLayoutParams.height = (mDisplayHeight * 0.25f).toInt()
+                            alert1.window?.attributes = mLayoutParams
+                        }
+                    }
                 } else {
-                    Timber.d("Error registering new user")
+                    Log.d("DEBUG","Error registering new user")
 
                     // error handling for when user already exists
                     // still fixing errors
@@ -134,7 +140,6 @@ class CreateProfileActivity : AppCompatActivity() {
                 }
 
             }
-
         }
 
         btn_backtologin.setOnClickListener {

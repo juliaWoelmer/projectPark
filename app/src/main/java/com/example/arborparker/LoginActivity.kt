@@ -87,8 +87,7 @@ class LoginActivity : AppCompatActivity() {
                                     .setCancelable(true)
                                     .setPositiveButton("Ok",
                                         DialogInterface.OnClickListener { dialog, id ->
-<<<<<<< HEAD
-=======
+
 
                                             // sets users theme preferences
                                             if (it[0].colorTheme == "Night") {
@@ -97,7 +96,6 @@ class LoginActivity : AppCompatActivity() {
                                                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
                                             }
 
->>>>>>> 22aefbf99be0dc2769c4266137ebefba706b8f12
                                             // takes user to map screen
                                             startActivity(Intent(this, MapsActivity::class.java))
 
@@ -123,15 +121,12 @@ class LoginActivity : AppCompatActivity() {
                         mLayoutParams.height = (mDisplayHeight * 0.25f).toInt()
                         alert1.window?.attributes = mLayoutParams
 
-<<<<<<< HEAD
                         // sets users theme preferences
                         if (it[0].colorTheme == "Night") {
                             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
                         } else {
                             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
                         }
-=======
->>>>>>> 22aefbf99be0dc2769c4266137ebefba706b8f12
 
 
                     } else {
