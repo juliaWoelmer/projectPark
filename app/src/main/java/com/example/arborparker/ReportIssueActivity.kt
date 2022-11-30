@@ -1,13 +1,10 @@
-package com.example.arborparker.dropinui
+package com.example.arborparker
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
-import com.example.arborparker.MainActivityViewModel
-import com.example.arborparker.MapsActivity
-import com.example.arborparker.R
 
 
 class ReportIssueActivity : AppCompatActivity() {

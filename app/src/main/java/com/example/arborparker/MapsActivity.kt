@@ -374,6 +374,11 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
             startActivity(Intent(this, RequestRouteWithNavigationViewActivity::class.java))
         }
 
+        var btn_issue = findViewById(R.id.btn_issue) as Button
+        btn_issue.setOnClickListener {
+            startActivity(Intent(this, ReportIssueActivity::class.java))
+        }
+
         // sets up the autocomplete places search
         // Initialize the SDK with the Google Maps Platform API key
         Places.initialize(this, BuildConfig.MAPS_API_KEY)
@@ -617,11 +622,6 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
                     DialogInterface.OnClickListener { dialog, id ->
                         // add the destination to favorites
                     })*/
-                .setNegativeButton("Report an issue",
-                    DialogInterface.OnClickListener { dialog, id ->
-                        // shown a form for issues
-                        finish();
-                    })
             // Create the AlertDialog object and return it
             builder.create()
         } ?: throw IllegalStateException("Activity cannot be null")
