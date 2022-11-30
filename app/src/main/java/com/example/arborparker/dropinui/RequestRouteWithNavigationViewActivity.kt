@@ -306,7 +306,8 @@ class RequestRouteWithNavigationViewActivity : AppCompatActivity(), OnMapLongCli
             )
             containerView.setPadding(10.dp, 13.dp, 10.dp, 13.dp)
             setOnClickListener {
-                startActivity(Intent(this@RequestRouteWithNavigationViewActivity, MapsActivity::class.java))
+                //startActivity(Intent(this@RequestRouteWithNavigationViewActivity, MapsActivity::class.java))
+                finish()
             }
         }
     }
