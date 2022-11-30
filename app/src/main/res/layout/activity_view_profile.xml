@@ -139,7 +139,7 @@
     </ScrollView>
 
     <Button
-        android:id="@+id/btn_map"
+        android:id="@+id/btn_logout"
         style="?android:attr/borderlessButtonStyle"
         android:layout_width="136dp"
         android:layout_height="48dp"
@@ -147,7 +147,7 @@
         android:layout_marginBottom="5dp"
         android:background="@color/design_default_color_primary"
         android:elevation="2dp"
-        android:text="Back to Map"
+        android:text="Logout"
         android:textAllCaps="false"
         android:textColor="#FFFFFF"
         android:textSize="15sp"
