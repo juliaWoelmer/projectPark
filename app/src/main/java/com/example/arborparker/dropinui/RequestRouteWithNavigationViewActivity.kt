@@ -12,11 +12,8 @@ import android.widget.Toast
 import androidx.annotation.DrawableRes
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import com.example.arborparker.MainActivityViewModel
-import com.example.arborparker.MapsActivity
+import com.example.arborparker.*
 import com.example.arborparker.dropinui.CustomActionButtonsActivity
-import com.example.arborparker.R
-import com.example.arborparker.ViewProfileActivity
 import com.mapbox.api.directions.v5.models.RouteOptions
 import com.mapbox.geojson.Point
 import com.mapbox.maps.MapView
@@ -226,6 +223,7 @@ class RequestRouteWithNavigationViewActivity : AppCompatActivity(), OnMapLongCli
                 .setNegativeButton("Report an issue",
                     DialogInterface.OnClickListener { dialog, id ->
                         // shown a form for issues
+                        // startActivity(Intent(this, ReportIssueActivity::class.java))
                         finish();
                     })
             // Create the AlertDialog object and return it
