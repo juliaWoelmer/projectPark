@@ -134,6 +134,25 @@
                 app:layout_constraintTop_toBottomOf="@+id/layout_email"
                 app:layout_constraintWidth_percent="0.7" />
 
+            <Button
+                android:id="@+id/btn_back"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="137dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="140dp"
+                android:layout_marginTop="477dp"
+                android:layout_marginEnd="141dp"
+                android:background="@color/design_default_color_primary"
+                android:elevation="2dp"
+                android:text="Back to Map"
+                android:textAllCaps="false"
+                android:textColor="#FFFFFF"
+                android:textSize="15sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintWidth_percent="0.7" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </ScrollView>
@@ -145,15 +164,16 @@
         android:layout_height="48dp"
         android:layout_marginStart="137dp"
         android:layout_marginEnd="138dp"
+        android:layout_marginBottom="5dp"
         android:background="@color/design_default_color_primary"
         android:elevation="2dp"
         android:text="Logout"
         android:textAllCaps="false"
         android:textColor="#FFFFFF"
         android:textSize="15sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintWidth_percent="0.7"
-        tools:layout_editor_absoluteY="758dp" />
+        app:layout_constraintWidth_percent="0.7" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
