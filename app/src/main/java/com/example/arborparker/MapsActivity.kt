@@ -618,14 +618,29 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
                     DialogInterface.OnClickListener { dialog, id ->
                         // add the destination to favorites
                     })*/
-                .setNegativeButton("Report an issue",
+                /*.setNegativeButton("Report an issue",
                     DialogInterface.OnClickListener { dialog, id ->
                         // shown a form for issues
+                        finish();
+                    })*/
+            // Create the AlertDialog object and return it
+            builder.create()
+        } ?: throw IllegalStateException("Activity cannot be null")
+    }
+
+    private fun showAlertDestinationNotSelected(): Dialog {
+        return this?.let {
+            val builder = AlertDialog.Builder(this)
+            builder.setTitle("You have not selected a destination yet.")
+                .setNeutralButton("Ok",
+                    DialogInterface.OnClickListener { dialog, id ->
+                        // delete dialog
                         finish();
                     })
             // Create the AlertDialog object and return it
             builder.create()
         } ?: throw IllegalStateException("Activity cannot be null")
     }
+}
 
 }
