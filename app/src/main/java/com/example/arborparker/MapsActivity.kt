@@ -641,6 +641,5 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
             builder.create()
         } ?: throw IllegalStateException("Activity cannot be null")
     }
-}
 
 }
