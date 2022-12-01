@@ -42,6 +42,8 @@ import com.mapbox.navigation.dropin.infopanel.InfoPanelBinder
 import com.mapbox.navigation.dropin.navigationview.NavigationViewListener
 import com.mapbox.navigation.ui.base.view.MapboxExtendableButton
 import com.mapbox.navigation.utils.internal.ifNonNull
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
 
 /**
  * The example demonstrates how to use [MapboxNavigationApp] to request routes outside [NavigationView]
@@ -156,7 +158,10 @@ class RequestRouteWithNavigationViewActivity : AppCompatActivity(), OnMapLongCli
                     DialogInterface.OnClickListener { dialog, id ->
                         // Set spot as occupied by user in database
                         val apiNetwork = MainActivityViewModel()
-                        val spotWithUser = SpotWithUser(false, user_id)
+                        val currentTime = LocalDateTime.now()
+                        val timeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")
+                        val currentTimeFormatted = currentTime.format(timeFormatter).toString()
+                        val spotWithUser = SpotWithUser(false, user_id, currentTimeFormatted)
                         apiNetwork.editSpotAvailability(spotId, spotWithUser) {
                             if (it != null) {
                                 Log.d("DEBUG", "Success editing spot availability")
@@ -191,17 +196,20 @@ class RequestRouteWithNavigationViewActivity : AppCompatActivity(), OnMapLongCli
                 DialogInterface.OnClickListener { dialog, which ->
                     //
                     if (which == 0){ //spot is already taken
-                        // reroute to new parking spot
+                        // Mark spot as not open with current time as timeLastOccupied
                         //finish();
                     }
                     else if (which == 1){ //spot is obstructed
-                        // contact appropriate authorities and reroute to new parking spot
+                        // Mark spot as not open with timeLastOccupied = null
+                        // Display message "Thank you, the proper authorities have been notified"
                         //finish();
                     }
                     else{ //someone is illegally parked
-                        // contact appropriate authorities and reroute to new parking spot
+                        // Mark spot as not open with current time as timeLastOccupied
+                        // Display message "Thank you, the proper authorities have been notified"
                         //finish();
                     }
+                    // reroute to new parking spot
                 })
             // Create the AlertDialog object and return it
             builder.create()
