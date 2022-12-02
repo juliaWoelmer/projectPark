@@ -33,28 +33,17 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"/>
 
-
-            <Switch
-                android:id="@+id/switchstairs"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="10dp"
-                android:text="Allow Stairs"
-                android:textSize="24sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/title"/>
-
             <!--Create a switch-->
             <Switch
                 android:id="@+id/switchtheme"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="10dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/switchstairs"
+                app:layout_constraintTop_toBottomOf="@+id/title"
                 android:text="Enable dark mode"
                 android:textSize="24sp"
                 tools:ignore="UseSwitchCompatOrMaterialXml" />

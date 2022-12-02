@@ -144,24 +144,4 @@
 
     </ScrollView>
 
-    <Button
-        android:id="@+id/btn_back"
-        style="?android:attr/borderlessButtonStyle"
-        android:layout_width="136dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="137dp"
-        android:layout_marginEnd="138dp"
-        android:layout_marginBottom="16dp"
-        android:background="@color/design_default_color_primary"
-        android:elevation="2dp"
-        android:text="Back"
-        android:textAllCaps="false"
-        android:textColor="#FFFFFF"
-        android:textSize="15sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintWidth_percent="0.7" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>

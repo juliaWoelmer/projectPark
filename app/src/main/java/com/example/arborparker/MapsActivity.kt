@@ -359,6 +359,11 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
             .findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
 
+        var btn_help = findViewById(R.id.btn_help) as Button
+        btn_help.setOnClickListener {
+            startActivity(Intent(this, HelpActivity::class.java))
+        }
+
         var btn_profile = findViewById(R.id.btn_profile) as Button
         btn_profile.setOnClickListener {
             startActivity(Intent(this, ViewProfileActivity::class.java))
