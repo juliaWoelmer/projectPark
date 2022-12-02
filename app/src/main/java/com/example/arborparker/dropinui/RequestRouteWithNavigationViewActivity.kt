@@ -262,16 +262,6 @@ class RequestRouteWithNavigationViewActivity : AppCompatActivity(), OnMapLongCli
                         // delete dialog
                         finish();
                     })
-                /*.setNeutralButton("Add to favorites",
-                    DialogInterface.OnClickListener { dialog, id ->
-                        // add the destination to favorites
-                    })*/
-                .setNegativeButton("Report an issue",
-                    DialogInterface.OnClickListener { dialog, id ->
-                        // shown a form for issues
-                        // startActivity(Intent(this, ReportIssueActivity::class.java))
-                        finish();
-                    })
             // Create the AlertDialog object and return it
             builder.create()
         } ?: throw IllegalStateException("Activity cannot be null")
