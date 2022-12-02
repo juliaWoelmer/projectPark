@@ -194,27 +194,65 @@ class RequestRouteWithNavigationViewActivity : AppCompatActivity(), OnMapLongCli
             builder.setTitle("Why not?")
             builder.setItems(arrayOf<String>("Spot is already taken", "Spot is obstructed", "Someone is illegally parked in the spot"),
                 DialogInterface.OnClickListener { dialog, which ->
-                    //
+                    val apiNetwork = MainActivityViewModel()
+                    var spotWithUser = SpotWithUser(false, null, null)
+                    var alertAuthorities = false
+                    val currentTime = LocalDateTime.now()
+                    val timeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")
+                    val currentTimeFormatted = currentTime.format(timeFormatter).toString()
                     if (which == 0){ //spot is already taken
-                        // Mark spot as not open with current time as timeLastOccupied
-                        //finish();
+                        // Mark spot as not open with current time as timeLastOccupied and userid as null
+                        spotWithUser = SpotWithUser(false, null, currentTimeFormatted)
                     }
                     else if (which == 1){ //spot is obstructed
-                        // Mark spot as not open with timeLastOccupied = null
-                        // Display message "Thank you, the proper authorities have been notified"
-                        //finish();
+                        // Mark spot as not open with timeLastOccupied = null and userid as null
+                        spotWithUser = SpotWithUser(false, null, null)
+                        alertAuthorities = true
                     }
                     else{ //someone is illegally parked
-                        // Mark spot as not open with current time as timeLastOccupied
-                        // Display message "Thank you, the proper authorities have been notified"
-                        //finish();
+                        // Mark spot as not open with current time as timeLastOccupied and userId as null
+                        spotWithUser = SpotWithUser(false, null, currentTimeFormatted)
+                        alertAuthorities = true
                     }
-                    // reroute to new parking spot
+                    editIssueSpot(apiNetwork, spotWithUser)
+                    val rerouteAlert: AlertDialog = showAlertReroute(alertAuthorities) as AlertDialog
+                    rerouteAlert.show()
                 })
             // Create the AlertDialog object and return it
             builder.create()
         } ?: throw IllegalStateException("Activity cannot be null")
     }
+
+    private fun editIssueSpot(apiNetwork: MainActivityViewModel, spotWithUser: SpotWithUser) {
+        apiNetwork.editSpotAvailability(spotId, spotWithUser) {
+            if (it != null) {
+                Log.d("DEBUG", "Success editing spot availability of issue spot")
+                Log.d("DEBUG", "Occupied spot " + spotId)
+                Log.d("DEBUG", "Rows affected: " + it.rowsAffected)
+            } else {
+                Log.d("DEBUG", "Error editing spot availability of issue spot")
+            }
+        }
+    }
+
+    private fun showAlertReroute(alertAuthorities: Boolean): Dialog {
+        return this?.let {
+            val builder = AlertDialog.Builder(this@RequestRouteWithNavigationViewActivity)
+            if (alertAuthorities) {
+                builder.setTitle("Thank you, the proper authorities have been notified")
+            }
+            builder.setMessage("You will be rerouted to the closest available spot")
+                .setPositiveButton("Ok",
+                    DialogInterface.OnClickListener { dialog, id ->
+                        // reroute to new parking spot
+
+                        //finish();
+                    })
+            // Create the AlertDialog object and return it
+            builder.create()
+        } ?: throw IllegalStateException("Activity cannot be null")
+    }
+
     private fun showAlertDestinationArrival(): Dialog {
         return this?.let {
             val builder = AlertDialog.Builder(this@RequestRouteWithNavigationViewActivity)
