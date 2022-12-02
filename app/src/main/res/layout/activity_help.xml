@@ -8,15 +8,12 @@
     android:theme="@android:style/Theme.Translucent.NoTitleBar"
     tools:context=".HelpActivity">
 
-    <TextView
+    <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        android:layout_marginStart="32dp"
-        android:layout_marginBottom="759dp"
-        android:text="Help"
-        android:textColor="@android:color/white"
+        android:src="@drawable/help_text"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
