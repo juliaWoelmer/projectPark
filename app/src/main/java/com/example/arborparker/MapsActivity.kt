@@ -54,6 +54,10 @@ import com.example.arborparker.network.SpotWithUser
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import com.mapbox.geojson.Point
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
+import java.time.temporal.ChronoUnit
+import java.time.temporal.ChronoUnit.SECONDS
 
 
 private const val TAG = "MyLogTag"
@@ -473,7 +477,32 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         val viewModel = ViewModelProvider(this).get(MainActivityViewModel::class.java)
         viewModel.getSpots()
         viewModel.spotList.observe(this, Observer {
-            val spotHash = it.map{it.id to it.isOpen}.toMap()
+            val currentTime = LocalDateTime.now()
+            var spotIdsToBeOpened: MutableList<Int> = ArrayList()
+            val spotHash = it.map{it.id to it.isOpen}.toMap().toMutableMap()
+            it.forEach { spot ->
+                if (spot.timeLastOccupied != null) {
+                    var spotTimeLastOccupied = LocalDateTime.parse(spot.timeLastOccupied!!.dropLast(5))
+                    var secondsSinceLastOccupied = ChronoUnit.SECONDS.between(spotTimeLastOccupied, currentTime)
+                    if (secondsSinceLastOccupied > 86400) {
+                        spotIdsToBeOpened.add(spot.id)
+                    }
+                }
+            }
+            spotIdsToBeOpened.forEach { spotId ->
+                spotHash[spotId] = true
+                val apiNetwork = MainActivityViewModel()
+                val spotWithUser = SpotWithUser(true, null, null)
+                apiNetwork.editSpotAvailability(spotId, spotWithUser) {
+                    if (it != null) {
+                        Log.d("DEBUG", "Success editing spot availability due to timeout")
+                        Log.d("DEBUG", "Spot at " + spotId + " is now open")
+                        Log.d("DEBUG", "Rows affected: " + it.rowsAffected)
+                    } else {
+                        Log.d("DEBUG", "Error editing spot availability")
+                    }
+                }
+            }
             val closedSpots = layer.features.filter { feature ->
                 val spotId = feature.getProperty("SpotId").toInt()
                 !(spotHash[spotId] ?: false)
