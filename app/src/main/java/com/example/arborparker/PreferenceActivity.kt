@@ -34,14 +34,18 @@ class PreferenceActivity : AppCompatActivity() {
 
         var btn_map = findViewById(R.id.btn_map) as Button
         var toggle_theme = findViewById(R.id.switchtheme) as Switch
+        var toggle_vanAccessible = findViewById(R.id.switchvan) as Switch
 
         val apiNetwork = MainActivityViewModel()
         var colorTheme = "Day"
+        var isVanAccessibleRequired = false
         apiNetwork.getUserInfoById(id) {
             Log.d("DEBUG", "Get user id function runs" + id)
             if (it != null && it.isNotEmpty()) {
                 colorTheme = it[0].colorTheme ?: "Day"
+                isVanAccessibleRequired = it[0].vanAccessible
                 Log.d("DEBUG", "colorTheme: " + colorTheme)
+                Log.d("DEBUG", "vanAccessible: " + isVanAccessibleRequired)
 
 
                 // sets darkmode switch on if selected already
@@ -50,14 +54,16 @@ class PreferenceActivity : AppCompatActivity() {
                     toggle_theme.isChecked = true
                 }
                 //toggle_theme.isChecked = colorTheme != "Day"
+                toggle_vanAccessible.isChecked = isVanAccessibleRequired
             } else {
                 Log.d("DEBUG", "Error getting user information")
                 toggle_theme.isChecked = false
+                toggle_vanAccessible.isChecked = false
             }
         }
 
         btn_map.setOnClickListener {
-            updateDatabase(toggle_theme, apiNetwork)
+            updateDatabase(toggle_theme, toggle_vanAccessible, apiNetwork)
             startActivity(Intent(this, MapsActivity::class.java))
         }
 
@@ -66,7 +72,6 @@ class PreferenceActivity : AppCompatActivity() {
 
         // set the switch to listen on checked change
         toggle_theme.setOnClickListener {
-
             // if the button is checked, i.e., towards the right or enabled
             // enable dark mode, change the text to disable dark mode
             // else keep the switch text to enable dark mode
@@ -79,10 +84,11 @@ class PreferenceActivity : AppCompatActivity() {
                 colorTheme = "Day"
                 toggle_theme.text = "Enable dark mode"
             }
+            var toggle_vanAccessible = findViewById(R.id.switchvan) as Switch
         }
     }
 
-    private fun updateDatabase(toggle_theme: Switch, apiNetwork: MainActivityViewModel) {
+    private fun updateDatabase(toggle_theme: Switch, toggle_vanAccessible: Switch, apiNetwork: MainActivityViewModel) {
         var colorTheme = "Day"
 
         if (toggle_theme.isChecked) {
@@ -90,7 +96,7 @@ class PreferenceActivity : AppCompatActivity() {
         }
         Log.d("DEBUG", "Going to try setting preferences to following")
         Log.d("DEBUG", "colorTheme: " + colorTheme)
-        var userPreferencesInfo = UserPreferencesInfo(id, colorTheme)
+        var userPreferencesInfo = UserPreferencesInfo(id, colorTheme, toggle_vanAccessible.isChecked)
         apiNetwork.editUserPreferences(id, userPreferencesInfo) {
             if (it != null) {
                 Log.d("DEBUG", "Success editing user preferences")

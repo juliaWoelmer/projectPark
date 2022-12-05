@@ -479,54 +479,65 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         viewModel.spotList.observe(this, Observer {
             val currentTime = LocalDateTime.now()
             var spotIdsToBeOpened: MutableList<Int> = ArrayList()
+            var spotIdsNotVanAccessible: MutableList<Int> = ArrayList()
             val spotHash = it.map{it.id to it.isOpen}.toMap().toMutableMap()
-            it.forEach { spot ->
-                if (spot.timeLastOccupied != null) {
-                    var spotTimeLastOccupied = LocalDateTime.parse(spot.timeLastOccupied!!.dropLast(5))
-                    var secondsSinceLastOccupied = ChronoUnit.SECONDS.between(spotTimeLastOccupied, currentTime)
-                    if (secondsSinceLastOccupied > 86400) {
-                        spotIdsToBeOpened.add(spot.id)
+            val apiNetwork = MainActivityViewModel()
+            apiNetwork.getUserInfoById(user_id) { user ->
+                var isVanAccessibleRequired = user!!.first().vanAccessible
+                it.forEach { spot ->
+                    if (spot.timeLastOccupied != null) {
+                        var spotTimeLastOccupied = LocalDateTime.parse(spot.timeLastOccupied!!.dropLast(5))
+                        var secondsSinceLastOccupied = ChronoUnit.SECONDS.between(spotTimeLastOccupied, currentTime)
+                        if (secondsSinceLastOccupied > 86400) {
+                            spotIdsToBeOpened.add(spot.id)
+                        }
+                    }
+                    if (!spot.vanAccessible && isVanAccessibleRequired) {
+                        spotIdsNotVanAccessible.add(spot.id)
                     }
                 }
-            }
-            spotIdsToBeOpened.forEach { spotId ->
-                spotHash[spotId] = true
-                val apiNetwork = MainActivityViewModel()
-                val spotWithUser = SpotWithUser(true, null, null)
-                apiNetwork.editSpotAvailability(spotId, spotWithUser) {
-                    if (it != null) {
-                        Log.d("DEBUG", "Success editing spot availability due to timeout")
-                        Log.d("DEBUG", "Spot at " + spotId + " is now open")
-                        Log.d("DEBUG", "Rows affected: " + it.rowsAffected)
-                    } else {
-                        Log.d("DEBUG", "Error editing spot availability")
+                spotIdsToBeOpened.forEach { spotId ->
+                    spotHash[spotId] = true
+                    val spotWithUser = SpotWithUser(true, null, null)
+                    apiNetwork.editSpotAvailability(spotId, spotWithUser) {
+                        if (it != null) {
+                            Log.d("DEBUG", "Success editing spot availability due to timeout")
+                            Log.d("DEBUG", "Spot at " + spotId + " is now open")
+                            Log.d("DEBUG", "Rows affected: " + it.rowsAffected)
+                        } else {
+                            Log.d("DEBUG", "Error editing spot availability")
+                        }
                     }
                 }
+                spotIdsNotVanAccessible.forEach { spotId ->
+                    spotHash[spotId] = false
+                }
+                val closedSpots = layer.features.filter { feature ->
+                    val spotId = feature.getProperty("SpotId").toInt()
+                    !(spotHash[spotId] ?: false)
+                }
+                for (closedSpot in closedSpots) {
+                    layer.removeFeature(closedSpot)
+                }
+                col = mutableSetOf<MyItem>()
+                for (feature in layer.features) {
+                    val geo = feature.geometry.geometryObject.toString()
+                    val latlong = geo.substring(10).dropLast(1).split(",".toRegex()).toTypedArray()
+                    val lat = latlong[0].toDouble()
+                    val lng = latlong[1].toDouble()
+                    val id = feature.getProperty("SpotId")
+                    val offsetItem =
+                        MyItem(lat, lng, id, "Snippet")
+                    //col.addItem(offsetItem)
+                    col.add(offsetItem)
+                }
+                clusterManager.addItems(col)
+                val zoom = mMap.cameraPosition.zoom
+                val latLng = mMap.cameraPosition.target
+                val newZoom = zoom + 0.0001f
+                mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng,newZoom))
             }
-            val closedSpots = layer.features.filter { feature ->
-                val spotId = feature.getProperty("SpotId").toInt()
-                !(spotHash[spotId] ?: false)
-            }
-            for (closedSpot in closedSpots) {
-                layer.removeFeature(closedSpot)
-            }
-            col = mutableSetOf<MyItem>()
-            for (feature in layer.features) {
-                val geo = feature.geometry.geometryObject.toString()
-                val latlong = geo.substring(10).dropLast(1).split(",".toRegex()).toTypedArray()
-                val lat = latlong[0].toDouble()
-                val lng = latlong[1].toDouble()
-                val id = feature.getProperty("SpotId")
-                val offsetItem =
-                    MyItem(lat, lng, id, "Snippet")
-                //col.addItem(offsetItem)
-                col.add(offsetItem)
-            }
-            clusterManager.addItems(col)
-            val zoom = mMap.cameraPosition.zoom
-            val latLng = mMap.cameraPosition.target
-            val newZoom = zoom + 0.0001f
-            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng,newZoom))
+
         })
     }
 
