@@ -16,7 +16,7 @@ class MainActivityViewModel : ViewModel() {
 
     // public user id
     companion object {
-        var user_id: Int = 0
+        var user_id: Int? = null
     }
 
     val spotList: MutableLiveData<List<Spot>> = MutableLiveData()
