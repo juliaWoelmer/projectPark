@@ -541,7 +541,6 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         val viewModel = ViewModelProvider(this).get(MainActivityViewModel::class.java)
         viewModel.getSpots()
         viewModel.spotList.observe(this, Observer {
-            val currentTime = LocalDateTime.now()
             var spotIdsToBeOpened: MutableList<Int> = ArrayList()
             var spotIdsNotVanAccessible: MutableList<Int> = ArrayList()
             val spotHash = it.map{it.id to it.isOpen}.toMap().toMutableMap()
@@ -549,12 +548,8 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
             apiNetwork.getUserInfoById(user_id) { user ->
                 var isVanAccessibleRequired = user!!.first().vanAccessible
                 it.forEach { spot ->
-                    if (spot.timeLastOccupied != null) {
-                        var spotTimeLastOccupied = LocalDateTime.parse(spot.timeLastOccupied!!.dropLast(5))
-                        var secondsSinceLastOccupied = ChronoUnit.SECONDS.between(spotTimeLastOccupied, currentTime)
-                        if (secondsSinceLastOccupied > 86400) {
-                            spotIdsToBeOpened.add(spot.id)
-                        }
+                    if (hasItBeen24Hrs(spot.timeLastOccupied)) {
+                        spotIdsToBeOpened.add(spot.id)
                     }
                     if (!spot.vanAccessible && isVanAccessibleRequired) {
                         spotIdsNotVanAccessible.add(spot.id)
@@ -613,12 +608,27 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
             if (it != null && it.isNotEmpty()) {
                 val spotId = it.first().spotId
                 val alert: AlertDialog = showAlertParkingSpotLeaving(spotId, apiNetwork) as AlertDialog
-                alert.show()
+                val timeLastOccupied = it.first().timeLastOccupied
+                if (!hasItBeen24Hrs(timeLastOccupied)) {
+                    alert.show()
+                }
             } else if (it == null) {
                 Log.d("DEBUG", "Error getting spots occupied by user with user_id $user_id")
             }
         }
         Log.d("DEBUG", "Testing to see if rest of function executes")
+    }
+
+    private fun hasItBeen24Hrs(timeLastOccupied: String?): Boolean {
+        val currentTime = LocalDateTime.now()
+        if (timeLastOccupied != null) {
+            var spotTimeLastOccupied = LocalDateTime.parse(timeLastOccupied!!.dropLast(5))
+            var secondsSinceLastOccupied = ChronoUnit.SECONDS.between(spotTimeLastOccupied, currentTime)
+            if (secondsSinceLastOccupied > 86400) {
+                return true
+            }
+        }
+        return false
     }
 
 
