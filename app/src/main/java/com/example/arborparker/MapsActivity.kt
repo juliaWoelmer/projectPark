@@ -46,6 +46,9 @@ import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
 import java.util.concurrent.TimeUnit
 import android.content.Intent
+import android.location.Address
+import android.location.Geocoder
+import android.view.WindowManager
 import android.widget.Button
 import com.example.arborparker.dropinui.NavigationViewActivity
 import com.example.arborparker.dropinui.RequestRouteWithNavigationViewActivity
@@ -58,6 +61,8 @@ import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 import java.time.temporal.ChronoUnit
 import java.time.temporal.ChronoUnit.SECONDS
+import kotlin.math.log
+import java.io.IOException
 
 
 private const val TAG = "MyLogTag"
@@ -352,6 +357,96 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         return line
     }
 
+    private fun getZipcode(lat: Double, long: Double): String {
+        // add warning if the postal code is outside north campus
+        // Initializing Geocoder
+        val mGeocoder = Geocoder(applicationContext)
+        var addressString= ""
+
+
+        try {
+            val addressList: List<Address>? = mGeocoder.getFromLocation(lat, long, 1)
+
+            // use your lat, long value here
+            if (addressList != null && addressList.isNotEmpty()) {
+                val address = addressList[0]
+                val sb = StringBuilder()
+                /*
+                for (i in 0 until address.maxAddressLineIndex) {
+                    sb.append(address.getAddressLine(i)).append("\n")
+                    Log.d("DEBUG", "Addressline: " + sb)
+                }
+                 */
+
+                // Various Parameters of an Address are appended
+                // to generate a complete Address
+                /*
+                if (address.premises != null) {
+                    sb.append(address.premises).append(", ")
+                    Log.d("DEBUG", "Premises: " + sb)
+                }
+                 */
+
+                //sb.append(address.subAdminArea).append("\n")
+                //sb.append(address.locality).append(", ")
+                //sb.append(address.adminArea).append(", ")
+                //sb.append(address.countryName).append(", ")
+                Log.d("DEBUG", "Sb: " + sb)
+                sb.append(address.postalCode)
+
+                // StringBuilder sb is converted into a string
+                // and this value is assigned to the
+                // initially declared addressString string.
+                addressString = sb.toString()
+
+                Log.d("DEBUG", "postal:" + addressString)
+            }
+        } catch (e: IOException) {
+            Toast.makeText(applicationContext,"Unable connect to Geocoder",Toast.LENGTH_LONG).show()
+        }
+        return addressString
+    }
+
+    private fun zipcodeWarning(zipcode: String) {
+
+        val zipcode_int = zipcode.toInt()
+
+        // check if zipcode is on north campus
+        if (zipcode_int > 48109 || zipcode_int < 48103) {
+            // creates the warning
+            val alertDialogBuilder = AlertDialog.Builder(this)
+            alertDialogBuilder.setTitle("Warning")
+                .setMessage("The destination you selected is outside the University of Michigan " +
+                        "North Campus. Our app currently only supports accessible parking on " +
+                        "North Campus. Please select a closer destination.")
+                .setCancelable(true)
+                .setPositiveButton("Ok",
+                    DialogInterface.OnClickListener { dialog, id ->
+
+                    })
+            // Create the AlertDialog object and return it
+            alertDialogBuilder.create()
+
+            val alert1: AlertDialog = alertDialogBuilder.create()
+            alert1.show()
+
+            // Get the current app screen width and height
+            val mDisplayMetrics = windowManager.currentWindowMetrics
+            val mDisplayWidth = mDisplayMetrics.bounds.width()
+            val mDisplayHeight = mDisplayMetrics.bounds.height()
+
+            /*
+            // Generate custom width and height and add to the dialog attributes
+            // we multiplied the width and height by 0.5, meaning reducing the size to 50%
+            val mLayoutParams = WindowManager.LayoutParams()
+            mLayoutParams.width = (mDisplayWidth * 0.8f).toInt()
+            mLayoutParams.height = (mDisplayHeight * 0.5f).toInt()
+            alert1.window?.attributes = mLayoutParams
+            */
+
+        }
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -433,6 +528,12 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
                 Log.i(TAG, "Place: ${place.name}, ${place.id}, ${place.latLng}")
                 Log.i(TAG, "Spot: ${spot.title}, ${spot.position}")
+
+
+                // warning if zipcode is out of bounds
+                zipcodeWarning(getZipcode(DestPoint.latitude(), DestPoint.longitude()))
+
+
             }
 
             override fun onError(status: Status) {
