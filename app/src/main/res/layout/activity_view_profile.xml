@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:text="View Profile Information"
-        android:textColor="#000"
+        android:textColor="?android:textColorPrimary"
         android:textSize="26sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -62,7 +62,7 @@
                     android:background="#00000000"
                     android:padding="10dp"
                     android:text="Cameron"
-                    android:textColor="#000000"
+                    android:textColor="?android:textColorPrimary"
                     android:textColorHint="#808080"
                     android:textSize="15sp" />
             </com.google.android.material.textfield.TextInputLayout>
@@ -86,7 +86,7 @@
                     android:background="#00000000"
                     android:padding="10dp"
                     android:text="Fassett"
-                    android:textColor="#000000"
+                    android:textColor="?android:textColorPrimary"
                     android:textColorHint="#808080"
                     android:textSize="15sp" />
             </com.google.android.material.textfield.TextInputLayout>
@@ -111,7 +111,7 @@
                     android:inputType="textEmailAddress"
                     android:padding="10dp"
                     android:text="camfass@gmail.com"
-                    android:textColor="#000000"
+                    android:textColor="?android:textColorPrimary"
                     android:textColorHint="#808080"
                     android:textSize="15sp" />
             </com.google.android.material.textfield.TextInputLayout>
@@ -134,16 +134,36 @@
                 app:layout_constraintTop_toBottomOf="@+id/layout_email"
                 app:layout_constraintWidth_percent="0.7" />
 
+            <Button
+                android:id="@+id/btn_logout"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="137dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="140dp"
+                android:layout_marginTop="477dp"
+                android:layout_marginEnd="141dp"
+                android:background="@color/design_default_color_primary"
+                android:elevation="2dp"
+                android:text="Logout"
+                android:textAllCaps="false"
+                android:textColor="#FFFFFF"
+                android:textSize="15sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintWidth_percent="0.7" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </ScrollView>
 
     <Button
-        android:id="@+id/btn_map"
+        android:id="@+id/btn_back"
         style="?android:attr/borderlessButtonStyle"
         android:layout_width="136dp"
         android:layout_height="48dp"
-        android:layout_marginEnd="132dp"
+        android:layout_marginStart="137dp"
+        android:layout_marginEnd="138dp"
         android:layout_marginBottom="5dp"
         android:background="@color/design_default_color_primary"
         android:elevation="2dp"
@@ -153,6 +173,7 @@
         android:textSize="15sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintWidth_percent="0.7" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

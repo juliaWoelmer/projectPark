@@ -24,10 +24,16 @@ class ViewProfileActivity : AppCompatActivity() {
             startActivity(Intent(this, EditProfileActivity::class.java));
         }
 
-        var btn_map = findViewById(R.id.btn_map) as Button
+        var btn_back = findViewById(R.id.btn_back) as Button
 
-        btn_map.setOnClickListener {
+        btn_back.setOnClickListener {
             startActivity(Intent(this, MapsActivity::class.java));
+        }
+
+        var btn_logout = findViewById(R.id.btn_logout) as Button
+
+        btn_logout.setOnClickListener {
+            startActivity(Intent(this, LoginActivity::class.java));
         }
 
         val apiNetwork = MainActivityViewModel()

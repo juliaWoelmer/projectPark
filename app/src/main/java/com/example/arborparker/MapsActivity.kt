@@ -54,6 +54,10 @@ import com.example.arborparker.network.SpotWithUser
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import com.mapbox.geojson.Point
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
+import java.time.temporal.ChronoUnit
+import java.time.temporal.ChronoUnit.SECONDS
 
 
 private const val TAG = "MyLogTag"
@@ -359,6 +363,11 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
             .findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
 
+        var btn_help = findViewById(R.id.btn_help) as Button
+        btn_help.setOnClickListener {
+            startActivity(Intent(this, HelpActivity::class.java))
+        }
+
         var btn_profile = findViewById(R.id.btn_profile) as Button
         btn_profile.setOnClickListener {
             startActivity(Intent(this, ViewProfileActivity::class.java))
@@ -468,7 +477,32 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         val viewModel = ViewModelProvider(this).get(MainActivityViewModel::class.java)
         viewModel.getSpots()
         viewModel.spotList.observe(this, Observer {
-            val spotHash = it.map{it.id to it.isOpen}.toMap()
+            val currentTime = LocalDateTime.now()
+            var spotIdsToBeOpened: MutableList<Int> = ArrayList()
+            val spotHash = it.map{it.id to it.isOpen}.toMap().toMutableMap()
+            it.forEach { spot ->
+                if (spot.timeLastOccupied != null) {
+                    var spotTimeLastOccupied = LocalDateTime.parse(spot.timeLastOccupied!!.dropLast(5))
+                    var secondsSinceLastOccupied = ChronoUnit.SECONDS.between(spotTimeLastOccupied, currentTime)
+                    if (secondsSinceLastOccupied > 86400) {
+                        spotIdsToBeOpened.add(spot.id)
+                    }
+                }
+            }
+            spotIdsToBeOpened.forEach { spotId ->
+                spotHash[spotId] = true
+                val apiNetwork = MainActivityViewModel()
+                val spotWithUser = SpotWithUser(true, null, null)
+                apiNetwork.editSpotAvailability(spotId, spotWithUser) {
+                    if (it != null) {
+                        Log.d("DEBUG", "Success editing spot availability due to timeout")
+                        Log.d("DEBUG", "Spot at " + spotId + " is now open")
+                        Log.d("DEBUG", "Rows affected: " + it.rowsAffected)
+                    } else {
+                        Log.d("DEBUG", "Error editing spot availability")
+                    }
+                }
+            }
             val closedSpots = layer.features.filter { feature ->
                 val spotId = feature.getProperty("SpotId").toInt()
                 !(spotHash[spotId] ?: false)
@@ -580,11 +614,11 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
     private fun showAlertParkingSpotLeaving(spotId: Int, apiNetwork: MainActivityViewModel): Dialog {
         return this?.let {
             val builder = AlertDialog.Builder(this)
-            builder.setTitle("Are you leaving?")
+            builder.setTitle("Have you left your parking spot?")
                 .setPositiveButton("Yes",
                     DialogInterface.OnClickListener { dialog, id ->
                         // set spot as open
-                        val spotWithUser = SpotWithUser(true, user_id)
+                        val spotWithUser = SpotWithUser(true, null, null)
                         apiNetwork.editSpotAvailability(spotId, spotWithUser) {
                             if (it != null) {
                                 Log.d("DEBUG", "Success editing spot availability")
@@ -618,9 +652,23 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
                     DialogInterface.OnClickListener { dialog, id ->
                         // add the destination to favorites
                     })*/
-                .setNegativeButton("Report an issue",
+                /*.setNegativeButton("Report an issue",
                     DialogInterface.OnClickListener { dialog, id ->
                         // shown a form for issues
+                        finish();
+                    })*/
+            // Create the AlertDialog object and return it
+            builder.create()
+        } ?: throw IllegalStateException("Activity cannot be null")
+    }
+
+    private fun showAlertDestinationNotSelected(): Dialog {
+        return this?.let {
+            val builder = AlertDialog.Builder(this)
+            builder.setTitle("You have not selected a destination yet.")
+                .setNeutralButton("Ok",
+                    DialogInterface.OnClickListener { dialog, id ->
+                        // delete dialog
                         finish();
                     })
             // Create the AlertDialog object and return it

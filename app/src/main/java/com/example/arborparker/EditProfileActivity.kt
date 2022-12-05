@@ -28,9 +28,6 @@ class EditProfileActivity : AppCompatActivity() {
 
         var btn_update = findViewById(R.id.btn_update) as Button
 
-        //btn_update.setOnClickListener {
-        //    startActivity(Intent(this, ViewProfileActivity::class.java));
-        //}
     }
 
 

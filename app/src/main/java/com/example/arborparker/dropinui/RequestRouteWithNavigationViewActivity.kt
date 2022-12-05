@@ -12,11 +12,8 @@ import android.widget.Toast
 import androidx.annotation.DrawableRes
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import com.example.arborparker.MainActivityViewModel
-import com.example.arborparker.MapsActivity
+import com.example.arborparker.*
 import com.example.arborparker.dropinui.CustomActionButtonsActivity
-import com.example.arborparker.R
-import com.example.arborparker.ViewProfileActivity
 import com.mapbox.api.directions.v5.models.RouteOptions
 import com.mapbox.geojson.Point
 import com.mapbox.maps.MapView
@@ -45,6 +42,8 @@ import com.mapbox.navigation.dropin.infopanel.InfoPanelBinder
 import com.mapbox.navigation.dropin.navigationview.NavigationViewListener
 import com.mapbox.navigation.ui.base.view.MapboxExtendableButton
 import com.mapbox.navigation.utils.internal.ifNonNull
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
 
 /**
  * The example demonstrates how to use [MapboxNavigationApp] to request routes outside [NavigationView]
@@ -159,7 +158,10 @@ class RequestRouteWithNavigationViewActivity : AppCompatActivity(), OnMapLongCli
                     DialogInterface.OnClickListener { dialog, id ->
                         // Set spot as occupied by user in database
                         val apiNetwork = MainActivityViewModel()
-                        val spotWithUser = SpotWithUser(false, user_id)
+                        val currentTime = LocalDateTime.now()
+                        val timeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")
+                        val currentTimeFormatted = currentTime.format(timeFormatter).toString()
+                        val spotWithUser = SpotWithUser(false, user_id, currentTimeFormatted)
                         apiNetwork.editSpotAvailability(spotId, spotWithUser) {
                             if (it != null) {
                                 Log.d("DEBUG", "Success editing spot availability")
@@ -192,24 +194,65 @@ class RequestRouteWithNavigationViewActivity : AppCompatActivity(), OnMapLongCli
             builder.setTitle("Why not?")
             builder.setItems(arrayOf<String>("Spot is already taken", "Spot is obstructed", "Someone is illegally parked in the spot"),
                 DialogInterface.OnClickListener { dialog, which ->
-                    //
+                    val apiNetwork = MainActivityViewModel()
+                    var spotWithUser = SpotWithUser(false, null, null)
+                    var alertAuthorities = false
+                    val currentTime = LocalDateTime.now()
+                    val timeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")
+                    val currentTimeFormatted = currentTime.format(timeFormatter).toString()
                     if (which == 0){ //spot is already taken
-                        // reroute to new parking spot
-                        //finish();
+                        // Mark spot as not open with current time as timeLastOccupied and userid as null
+                        spotWithUser = SpotWithUser(false, null, currentTimeFormatted)
                     }
                     else if (which == 1){ //spot is obstructed
-                        // contact appropriate authorities and reroute to new parking spot
-                        //finish();
+                        // Mark spot as not open with timeLastOccupied = null and userid as null
+                        spotWithUser = SpotWithUser(false, null, null)
+                        alertAuthorities = true
                     }
                     else{ //someone is illegally parked
-                        // contact appropriate authorities and reroute to new parking spot
-                        //finish();
+                        // Mark spot as not open with current time as timeLastOccupied and userId as null
+                        spotWithUser = SpotWithUser(false, null, currentTimeFormatted)
+                        alertAuthorities = true
                     }
+                    editIssueSpot(apiNetwork, spotWithUser)
+                    val rerouteAlert: AlertDialog = showAlertReroute(alertAuthorities) as AlertDialog
+                    rerouteAlert.show()
                 })
             // Create the AlertDialog object and return it
             builder.create()
         } ?: throw IllegalStateException("Activity cannot be null")
     }
+
+    private fun editIssueSpot(apiNetwork: MainActivityViewModel, spotWithUser: SpotWithUser) {
+        apiNetwork.editSpotAvailability(spotId, spotWithUser) {
+            if (it != null) {
+                Log.d("DEBUG", "Success editing spot availability of issue spot")
+                Log.d("DEBUG", "Occupied spot " + spotId)
+                Log.d("DEBUG", "Rows affected: " + it.rowsAffected)
+            } else {
+                Log.d("DEBUG", "Error editing spot availability of issue spot")
+            }
+        }
+    }
+
+    private fun showAlertReroute(alertAuthorities: Boolean): Dialog {
+        return this?.let {
+            val builder = AlertDialog.Builder(this@RequestRouteWithNavigationViewActivity)
+            if (alertAuthorities) {
+                builder.setTitle("Thank you, the proper authorities have been notified")
+            }
+            builder.setMessage("You will be rerouted to the closest available spot")
+                .setPositiveButton("Ok",
+                    DialogInterface.OnClickListener { dialog, id ->
+                        // reroute to new parking spot
+
+                        //finish();
+                    })
+            // Create the AlertDialog object and return it
+            builder.create()
+        } ?: throw IllegalStateException("Activity cannot be null")
+    }
+
     private fun showAlertDestinationArrival(): Dialog {
         return this?.let {
             val builder = AlertDialog.Builder(this@RequestRouteWithNavigationViewActivity)
@@ -217,15 +260,6 @@ class RequestRouteWithNavigationViewActivity : AppCompatActivity(), OnMapLongCli
                 .setPositiveButton("Close",
                     DialogInterface.OnClickListener { dialog, id ->
                         // delete dialog
-                        finish();
-                    })
-                /*.setNeutralButton("Add to favorites",
-                    DialogInterface.OnClickListener { dialog, id ->
-                        // add the destination to favorites
-                    })*/
-                .setNegativeButton("Report an issue",
-                    DialogInterface.OnClickListener { dialog, id ->
-                        // shown a form for issues
                         finish();
                     })
             // Create the AlertDialog object and return it
@@ -308,7 +342,8 @@ class RequestRouteWithNavigationViewActivity : AppCompatActivity(), OnMapLongCli
             )
             containerView.setPadding(10.dp, 13.dp, 10.dp, 13.dp)
             setOnClickListener {
-                startActivity(Intent(this@RequestRouteWithNavigationViewActivity, MapsActivity::class.java))
+                //startActivity(Intent(this@RequestRouteWithNavigationViewActivity, MapsActivity::class.java))
+                finish()
             }
         }
     }
