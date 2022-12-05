@@ -26,7 +26,7 @@ class PreferenceActivity : AppCompatActivity() {
     lateinit var settingsBtn: Button
 
     // stores the users id
-    var id: Int = MainActivityViewModel.user_id
+    var id: Int = MainActivityViewModel.user_id!!
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

@@ -12,7 +12,7 @@ import com.example.arborparker.MainActivityViewModel.Companion.user_id
 class ViewProfileActivity : AppCompatActivity() {
 
     // stores the users id
-    var id: Int = user_id
+    var id: Int = user_id!!
 
     override fun onCreate(savedInstanceState: Bundle?) {
         Log.d("DEBUG", "ViewProfileActivity onCreate fxn runs")
@@ -33,11 +33,15 @@ class ViewProfileActivity : AppCompatActivity() {
         var btn_logout = findViewById(R.id.btn_logout) as Button
 
         btn_logout.setOnClickListener {
+
+            // set user id to null so its no longer connected to database
+            user_id = null
+
             startActivity(Intent(this, LoginActivity::class.java));
         }
 
         val apiNetwork = MainActivityViewModel()
-        apiNetwork.getUserInfoById(id) {
+        apiNetwork.getUserInfoById(id!!) {
             Log.d("DEBUG", "Testing public user id " + id)
             val etFirstName: TextView = findViewById<TextView>(R.id.et_first_name)
             val etLastName: TextView = findViewById<TextView>(R.id.et_last_name)

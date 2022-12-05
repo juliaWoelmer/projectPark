@@ -64,7 +64,7 @@ private const val TAG = "MyLogTag"
 
 class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
-    var user_id: Int = MainActivityViewModel.user_id
+    var user_id: Int = MainActivityViewModel.user_id!!
     private lateinit var mMap: GoogleMap
     private lateinit var binding: ActivityMapsBinding
     private lateinit var col: MutableSet<MyItem>
