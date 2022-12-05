@@ -430,20 +430,6 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
             val alert1: AlertDialog = alertDialogBuilder.create()
             alert1.show()
 
-            // Get the current app screen width and height
-            val mDisplayMetrics = windowManager.currentWindowMetrics
-            val mDisplayWidth = mDisplayMetrics.bounds.width()
-            val mDisplayHeight = mDisplayMetrics.bounds.height()
-
-            /*
-            // Generate custom width and height and add to the dialog attributes
-            // we multiplied the width and height by 0.5, meaning reducing the size to 50%
-            val mLayoutParams = WindowManager.LayoutParams()
-            mLayoutParams.width = (mDisplayWidth * 0.8f).toInt()
-            mLayoutParams.height = (mDisplayHeight * 0.5f).toInt()
-            alert1.window?.attributes = mLayoutParams
-            */
-
         }
     }
 
