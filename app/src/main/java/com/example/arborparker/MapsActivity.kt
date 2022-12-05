@@ -46,6 +46,9 @@ import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
 import java.util.concurrent.TimeUnit
 import android.content.Intent
+import android.location.Address
+import android.location.Geocoder
+import android.view.WindowManager
 import android.widget.Button
 import com.example.arborparker.dropinui.NavigationViewActivity
 import com.example.arborparker.dropinui.RequestRouteWithNavigationViewActivity
@@ -58,6 +61,8 @@ import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 import java.time.temporal.ChronoUnit
 import java.time.temporal.ChronoUnit.SECONDS
+import kotlin.math.log
+import java.io.IOException
 
 
 private const val TAG = "MyLogTag"
@@ -352,6 +357,59 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         return line
     }
 
+    private fun getZipcode(lat: Double, long: Double): String {
+        // add warning if the postal code is outside north campus
+        // Initializing Geocoder
+        val mGeocoder = Geocoder(applicationContext)
+        var addressString= ""
+
+
+        try {
+            val addressList: List<Address>? = mGeocoder.getFromLocation(lat, long, 1)
+
+            // use your lat, long value here
+            if (addressList != null && addressList.isNotEmpty()) {
+                val address = addressList[0]
+                val sb = StringBuilder()
+
+                sb.append(address.postalCode)
+
+                addressString = sb.toString()
+
+                Log.d("DEBUG", "postal:" + addressString)
+            }
+        } catch (e: IOException) {
+            Toast.makeText(applicationContext,"Unable connect to Geocoder",Toast.LENGTH_LONG).show()
+        }
+        return addressString
+    }
+
+    private fun zipcodeWarning(zipcode: String) {
+
+        val zipcode_int = zipcode.toInt()
+
+        // check if zipcode is on north campus
+        if (zipcode_int > 48109 || zipcode_int < 48103) {
+            // creates the warning
+            val alertDialogBuilder = AlertDialog.Builder(this)
+            alertDialogBuilder.setTitle("Warning")
+                .setMessage("The destination you selected is outside the University of Michigan " +
+                        "North Campus. Our app currently only supports accessible parking on " +
+                        "North Campus. Please select a closer destination.")
+                .setCancelable(true)
+                .setPositiveButton("Ok",
+                    DialogInterface.OnClickListener { dialog, id ->
+
+                    })
+            // Create the AlertDialog object and return it
+            alertDialogBuilder.create()
+
+            val alert1: AlertDialog = alertDialogBuilder.create()
+            alert1.show()
+
+        }
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -433,6 +491,12 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
                 Log.i(TAG, "Place: ${place.name}, ${place.id}, ${place.latLng}")
                 Log.i(TAG, "Spot: ${spot.title}, ${spot.position}")
+
+
+                // warning if zipcode is out of bounds
+                zipcodeWarning(getZipcode(DestPoint.latitude(), DestPoint.longitude()))
+
+
             }
 
             override fun onError(status: Status) {
@@ -477,6 +541,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         val viewModel = ViewModelProvider(this).get(MainActivityViewModel::class.java)
         viewModel.getSpots()
         viewModel.spotList.observe(this, Observer {
+            val currentTime = LocalDateTime.now()
             var spotIdsToBeOpened: MutableList<Int> = ArrayList()
             var spotIdsNotVanAccessible: MutableList<Int> = ArrayList()
             val spotHash = it.map{it.id to it.isOpen}.toMap().toMutableMap()
@@ -484,8 +549,12 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
             apiNetwork.getUserInfoById(user_id) { user ->
                 var isVanAccessibleRequired = user!!.first().vanAccessible
                 it.forEach { spot ->
-                    if (hasItBeen24Hrs(spot.timeLastOccupied)) {
-                        spotIdsToBeOpened.add(spot.id)
+                    if (spot.timeLastOccupied != null) {
+                        var spotTimeLastOccupied = LocalDateTime.parse(spot.timeLastOccupied!!.dropLast(5))
+                        var secondsSinceLastOccupied = ChronoUnit.SECONDS.between(spotTimeLastOccupied, currentTime)
+                        if (secondsSinceLastOccupied > 86400) {
+                            spotIdsToBeOpened.add(spot.id)
+                        }
                     }
                     if (!spot.vanAccessible && isVanAccessibleRequired) {
                         spotIdsNotVanAccessible.add(spot.id)
@@ -544,27 +613,12 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
             if (it != null && it.isNotEmpty()) {
                 val spotId = it.first().spotId
                 val alert: AlertDialog = showAlertParkingSpotLeaving(spotId, apiNetwork) as AlertDialog
-                val timeLastOccupied = it.first().timeLastOccupied
-                if (!hasItBeen24Hrs(timeLastOccupied)) {
-                    alert.show()
-                }
+                alert.show()
             } else if (it == null) {
                 Log.d("DEBUG", "Error getting spots occupied by user with user_id $user_id")
             }
         }
         Log.d("DEBUG", "Testing to see if rest of function executes")
-    }
-
-    private fun hasItBeen24Hrs(timeLastOccupied: String?): Boolean {
-        val currentTime = LocalDateTime.now()
-        if (timeLastOccupied != null) {
-            var spotTimeLastOccupied = LocalDateTime.parse(timeLastOccupied!!.dropLast(5))
-            var secondsSinceLastOccupied = ChronoUnit.SECONDS.between(spotTimeLastOccupied, currentTime)
-            if (secondsSinceLastOccupied > 86400) {
-                return true
-            }
-        }
-        return false
     }
 
 
