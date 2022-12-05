@@ -371,32 +371,9 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
             if (addressList != null && addressList.isNotEmpty()) {
                 val address = addressList[0]
                 val sb = StringBuilder()
-                /*
-                for (i in 0 until address.maxAddressLineIndex) {
-                    sb.append(address.getAddressLine(i)).append("\n")
-                    Log.d("DEBUG", "Addressline: " + sb)
-                }
-                 */
 
-                // Various Parameters of an Address are appended
-                // to generate a complete Address
-                /*
-                if (address.premises != null) {
-                    sb.append(address.premises).append(", ")
-                    Log.d("DEBUG", "Premises: " + sb)
-                }
-                 */
-
-                //sb.append(address.subAdminArea).append("\n")
-                //sb.append(address.locality).append(", ")
-                //sb.append(address.adminArea).append(", ")
-                //sb.append(address.countryName).append(", ")
-                Log.d("DEBUG", "Sb: " + sb)
                 sb.append(address.postalCode)
 
-                // StringBuilder sb is converted into a string
-                // and this value is assigned to the
-                // initially declared addressString string.
                 addressString = sb.toString()
 
                 Log.d("DEBUG", "postal:" + addressString)
