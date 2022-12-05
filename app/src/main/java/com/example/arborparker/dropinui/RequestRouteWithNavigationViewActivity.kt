@@ -72,7 +72,7 @@ class RequestRouteWithNavigationViewActivity : AppCompatActivity(), OnMapLongCli
     private var lastLocation: Location? = null
     private lateinit var binding: MapboxActivityRequestRouteNavigationViewBinding
     // stores the users id
-    var user_id: Int = MainActivityViewModel.user_id
+    var user_id: Int = MainActivityViewModel.user_id!!
     // stores the users id
     var spotId: Int = MapsActivity.SpotID.toInt()
 
