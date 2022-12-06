@@ -80,6 +80,9 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         var DestPoint = Point.fromLngLat(0.0, 0.0) as Point
         var SpotPoint = Point.fromLngLat(0.0, 0.0) as Point
         var UserPoint = Point.fromLngLat(-83.732124, 42.279594) as Point
+        //var AllSpotsHash = MutableSet<Pair<Int, LatLng>>
+        var AllSpotsHash : HashMap<Int, LatLng>
+                = HashMap<Int, LatLng> ()
     }
     // FusedLocationProviderClient - Main class for receiving location updates.
     private lateinit var mFusedLocationClient: FusedLocationProviderClient
@@ -560,6 +563,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
                     if (!spot.vanAccessible && isVanAccessibleRequired) {
                         spotIdsNotVanAccessible.add(spot.id)
                     }
+                    //AllSpotsHash[spot.id] = LatLng(0.0, 0.0)
                 }
                 spotIdsToBeOpened.forEach { spotId ->
                     spotHash[spotId] = true
@@ -577,6 +581,14 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
                 spotIdsNotVanAccessible.forEach { spotId ->
                     spotHash[spotId] = false
                 }
+                for (feature in layer.features) {
+                    val geo = feature.geometry.geometryObject.toString()
+                    val latlong = geo.substring(10).dropLast(1).split(",".toRegex()).toTypedArray()
+                    val lat = latlong[0].toDouble()
+                    val lng = latlong[1].toDouble()
+                    val id = feature.getProperty("SpotId")
+                    AllSpotsHash[id.toInt()] = LatLng(lat, lng)
+                }
                 val closedSpots = layer.features.filter { feature ->
                     val spotId = feature.getProperty("SpotId").toInt()
                     !(spotHash[spotId] ?: false)
@@ -586,13 +598,9 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
                 }
                 col = mutableSetOf<MyItem>()
                 for (feature in layer.features) {
-                    val geo = feature.geometry.geometryObject.toString()
-                    val latlong = geo.substring(10).dropLast(1).split(",".toRegex()).toTypedArray()
-                    val lat = latlong[0].toDouble()
-                    val lng = latlong[1].toDouble()
                     val id = feature.getProperty("SpotId")
                     val offsetItem =
-                        MyItem(lat, lng, id, "Snippet")
+                        MyItem(AllSpotsHash[id.toInt()]!!.latitude, AllSpotsHash[id.toInt()]!!.longitude, id, "Snippet")
                     //col.addItem(offsetItem)
                     col.add(offsetItem)
                 }
