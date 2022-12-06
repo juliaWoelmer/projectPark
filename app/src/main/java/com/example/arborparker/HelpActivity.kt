@@ -15,7 +15,8 @@ class HelpActivity : AppCompatActivity() {
         var btn_ok = findViewById(com.example.arborparker.R.id.btn_ok) as Button
 
         btn_ok.setOnClickListener {
-            startActivity(Intent(this, MapsActivity::class.java));
+            //startActivity(Intent(this, MapsActivity::class.java));
+            finish()
         }
     }
 }
