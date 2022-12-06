@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Button
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatDelegate
 import com.example.arborparker.MainActivityViewModel.Companion.user_id
 
 
@@ -33,6 +34,9 @@ class ViewProfileActivity : AppCompatActivity() {
         var btn_logout = findViewById(R.id.btn_logout) as Button
 
         btn_logout.setOnClickListener {
+
+            // reset the app to day mode
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
 
             // set user id to null so its no longer connected to database
             user_id = null
