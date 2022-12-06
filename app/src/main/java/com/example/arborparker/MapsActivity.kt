@@ -438,7 +438,13 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
         var btn_nav = findViewById(R.id.btn_nav) as Button
         btn_nav.setOnClickListener {
-            startActivity(Intent(this, RequestRouteWithNavigationViewActivity::class.java))
+            if (this::destination.isInitialized) {
+                startActivity(Intent(this, RequestRouteWithNavigationViewActivity::class.java))
+            }
+            else {
+                val rerouteAlert: AlertDialog = showAlertDestinationNotSelected() as AlertDialog
+                rerouteAlert.show()
+            }
         }
 
         // sets up the autocomplete places search
@@ -754,7 +760,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
                 .setNeutralButton("Ok",
                     DialogInterface.OnClickListener { dialog, id ->
                         // delete dialog
-                        finish();
+                        //finish();
                     })
             // Create the AlertDialog object and return it
             builder.create()
