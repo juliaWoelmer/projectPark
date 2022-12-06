@@ -65,7 +65,7 @@ class PreferenceActivity : AppCompatActivity() {
 
         btn_map.setOnClickListener {
             updateDatabase(toggle_theme, toggle_vanAccessible, apiNetwork)
-            //startActivity(Intent(this, MapsActivity::class.java))
+            startActivity(Intent(this, MapsActivity::class.java))
             finish()
         }
 
