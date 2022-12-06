@@ -10,6 +10,7 @@ import android.widget.Switch
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.compose.ui.input.key.Key.Companion.D
 import com.example.arborparker.network.UserPreferencesInfo
 
 class PreferenceActivity : AppCompatActivity() {
@@ -40,7 +41,7 @@ class PreferenceActivity : AppCompatActivity() {
         var colorTheme = "Day"
         var isVanAccessibleRequired = false
         apiNetwork.getUserInfoById(id) {
-            Log.d("DEBUG", "Get user id function runs" + id)
+            Log.d("DEBUG", "Get user id function runs in preferences " + id)
             if (it != null && it.isNotEmpty()) {
                 colorTheme = it[0].colorTheme ?: "Day"
                 isVanAccessibleRequired = it[0].vanAccessible
@@ -68,35 +69,54 @@ class PreferenceActivity : AppCompatActivity() {
         }
 
 
-
-
         // set the switch to listen on checked change
         toggle_theme.setOnClickListener {
             // if the button is checked, i.e., towards the right or enabled
             // enable dark mode, change the text to disable dark mode
             // else keep the switch text to enable dark mode
+            updateDatabase(toggle_theme, toggle_vanAccessible, apiNetwork)
             if (toggle_theme.isChecked) {
                 colorTheme = "Night"
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
                 toggle_theme.text = "Disable dark mode"
+                Log.d("DEBUG", "Night Mode On")
             } else {
-                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
                 colorTheme = "Day"
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
                 toggle_theme.text = "Enable dark mode"
+                Log.d("DEBUG", "Night Mode Off")
             }
-            var toggle_vanAccessible = findViewById(R.id.switchvan) as Switch
+
+        }
+
+        toggle_vanAccessible.setOnClickListener {
+            updateDatabase(toggle_theme, toggle_vanAccessible, apiNetwork)
+            if (toggle_vanAccessible.isChecked) {
+                isVanAccessibleRequired = true
+                Log.d("DEBUG", "Van Access Required")
+            }
+            else {
+                isVanAccessibleRequired = false
+                Log.d("DEBUG", "Van Access Not Required")
+            }
         }
     }
 
     private fun updateDatabase(toggle_theme: Switch, toggle_vanAccessible: Switch, apiNetwork: MainActivityViewModel) {
         var colorTheme = "Day"
+        var isVanAccessibleRequired = false
 
         if (toggle_theme.isChecked) {
             colorTheme = "Night"
         }
+
+        if (toggle_vanAccessible.isChecked) {
+            isVanAccessibleRequired = true
+        }
+
         Log.d("DEBUG", "Going to try setting preferences to following")
         Log.d("DEBUG", "colorTheme: " + colorTheme)
-        var userPreferencesInfo = UserPreferencesInfo(id, colorTheme, toggle_vanAccessible.isChecked)
+        var userPreferencesInfo = UserPreferencesInfo(id, colorTheme, isVanAccessibleRequired)
         apiNetwork.editUserPreferences(id, userPreferencesInfo) {
             if (it != null) {
                 Log.d("DEBUG", "Success editing user preferences")
