@@ -81,6 +81,7 @@ class LoginActivity : AppCompatActivity() {
 
                         Log.d("DEBUG", "Create user id " + user_id)
 
+
                                 val alertDialogBuilder = AlertDialog.Builder(this)
                         alertDialogBuilder.setTitle("Welcome")
                                     .setMessage("Welcome " + it[0].username)
@@ -120,13 +121,6 @@ class LoginActivity : AppCompatActivity() {
                         mLayoutParams.width = (mDisplayWidth * 0.7f).toInt()
                         mLayoutParams.height = (mDisplayHeight * 0.25f).toInt()
                         alert1.window?.attributes = mLayoutParams
-
-                        // sets users theme preferences
-                        if (it[0].colorTheme == "Night") {
-                            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-                        } else {
-                            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-                        }
 
 
                     } else {
