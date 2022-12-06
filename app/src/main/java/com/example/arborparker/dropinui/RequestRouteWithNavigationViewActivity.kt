@@ -278,25 +278,33 @@ class RequestRouteWithNavigationViewActivity : AppCompatActivity(), OnMapLongCli
 
 
     private fun reroute() {
-        lateinit var col: MutableSet<LatLngItem>
-        val viewModel = ViewModelProvider(this).get(MainActivityViewModel::class.java)
+        var col: MutableSet<LatLngItem> = mutableSetOf<LatLngItem>()
+        val viewModel = ViewModelProvider(this@RequestRouteWithNavigationViewActivity)[MainActivityViewModel::class.java]
         viewModel.getSpots()
 
-        viewModel.spotList.observe(this, Observer {
+        viewModel.spotList.observe(this@RequestRouteWithNavigationViewActivity, Observer {
             val apiNetwork = MainActivityViewModel()
+
+            val spotHash = it.map{it.id to it.isOpen}.toMap().toMutableMap()
             apiNetwork.getUserInfoById(user_id) { user ->
                 var isVanAccessibleRequired = user!!.first().vanAccessible
                 it.forEach { spot ->
-                    if (spot.isOpen) {
-                        if ((isVanAccessibleRequired && spot.vanAccessible)
-                            || !isVanAccessibleRequired) {
-
-                            val offsetItem =
-                                LatLngItem(MapsActivity.AllSpotsHash[spot.id]!!.latitude, MapsActivity.AllSpotsHash[spot.id]!!.longitude, spot.id.toString(), "Snippet")
-                            //col.addItem(offsetItem)
-                            col.add(offsetItem)
+                    if (!spot.vanAccessible && isVanAccessibleRequired) {
+                        spotHash[spot.id] = false
                     }
-                    }
+                }
+            }
+            for ((key, value) in spotHash) {
+                if (value) {
+                    val offsetItem =
+                        LatLngItem(
+                            MapsActivity.AllSpotsHash[key]!!.latitude,
+                            MapsActivity.AllSpotsHash[key]!!.longitude,
+                            key.toString(),
+                            "Snippet"
+                        )
+                    //col.addItem(offsetItem)
+                    col.add(offsetItem)
                 }
             }
         })
@@ -314,6 +322,7 @@ class RequestRouteWithNavigationViewActivity : AppCompatActivity(), OnMapLongCli
             }
         }
         val ReSpotPoint = Point.fromLngLat(spot.position.longitude, spot.position.latitude)
+
         requestRoutes(MapsActivity.UserPoint, ReSpotPoint)
     }
 
