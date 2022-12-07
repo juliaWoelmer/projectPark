@@ -758,11 +758,6 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
                             }
                         }
                     })
-                .setNegativeButton("No",
-                    DialogInterface.OnClickListener { dialog, id ->
-                        // nothing
-                        finish();
-                    })
             // Create the AlertDialog object and return it
             builder.create()
         } ?: throw IllegalStateException("Activity cannot be null")
