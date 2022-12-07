@@ -223,9 +223,8 @@ class RequestRouteWithNavigationViewActivity : AppCompatActivity(), OnMapLongCli
                         spotWithUser = SpotWithUser(false, null, currentTimeFormatted)
                         alertAuthorities = true
                     }
-                    editIssueSpot(apiNetwork, spotWithUser)
-                    val rerouteAlert: AlertDialog = showAlertReroute(alertAuthorities) as AlertDialog
-                    rerouteAlert.show()
+                    editIssueSpot(apiNetwork, spotWithUser, alertAuthorities)
+
 
                 })
             // Create the AlertDialog object and return it
@@ -233,9 +232,11 @@ class RequestRouteWithNavigationViewActivity : AppCompatActivity(), OnMapLongCli
         } ?: throw IllegalStateException("Activity cannot be null")
     }
 
-    private fun editIssueSpot(apiNetwork: MainActivityViewModel, spotWithUser: SpotWithUser) {
+    private fun editIssueSpot(apiNetwork: MainActivityViewModel, spotWithUser: SpotWithUser, alertAuthorities: Boolean = false) {
         apiNetwork.editSpotAvailability(spotId, spotWithUser) {
             if (it != null) {
+                val rerouteAlert: AlertDialog = showAlertReroute(alertAuthorities) as AlertDialog
+                rerouteAlert.show()
                 Log.d("DEBUG", "Success editing spot availability of issue spot")
                 Log.d("DEBUG", "Occupied spot " + spotId)
                 Log.d("DEBUG", "Rows affected: " + it.rowsAffected)
@@ -335,6 +336,7 @@ class RequestRouteWithNavigationViewActivity : AppCompatActivity(), OnMapLongCli
                     spot = item
                 }
             }
+            spotId = spot.title!!.toInt()
             var ReUserPoint = NavSpotPoint
             NavSpotPoint = Point.fromLngLat(spot.position.longitude, spot.position.latitude)
             ifNonNull(lastLocation) {

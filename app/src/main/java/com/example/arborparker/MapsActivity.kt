@@ -694,51 +694,6 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         //addItems()
     }
 
-    private fun showAlertParkingSpot(): Dialog {
-        return this?.let {
-            val builder = AlertDialog.Builder(this)
-            builder.setTitle("You have arrived at the parking spot.")
-            builder.setMessage("Are you able to park in the parking spot?")
-                .setPositiveButton("Yes",
-                    DialogInterface.OnClickListener { dialog, id ->
-                        // proceed to show walking route
-                        finish();
-                    })
-                .setNegativeButton("No",
-                    DialogInterface.OnClickListener { dialog, id ->
-                        // show no dialog
-                        showAlertParkingSpotNo()
-                        finish();
-                    })
-            // Create the AlertDialog object and return it
-            builder.create()
-        } ?: throw IllegalStateException("Activity cannot be null")
-    }
-
-    private fun showAlertParkingSpotNo(): Dialog {
-        return this?.let {
-            val builder = AlertDialog.Builder(this)
-            builder.setTitle("Why not?")
-            builder.setItems(arrayOf<String>("Spot is already taken", "Spot is obstructed", "Someone is illegally parked in the spot"),
-                DialogInterface.OnClickListener { dialog, which ->
-                    //
-                    if (which == 0){ //spot is already taken
-                        // reroute to new parking spot
-                        finish();
-                    }
-                    else if (which == 1){ //spot is obstructed
-                        // contact appropriate authorities and reroute to new parking spot
-                        finish();
-                    }
-                    else{ //someone is illegally parked
-                        // contact appropriate authorities and reroute to new parking spot
-                        finish();
-                    }
-                })
-            // Create the AlertDialog object and return it
-            builder.create()
-        } ?: throw IllegalStateException("Activity cannot be null")
-    }
 
     private fun showAlertParkingSpotLeaving(spotId: Int, apiNetwork: MainActivityViewModel): Dialog {
         return this?.let {
@@ -758,29 +713,6 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
                             }
                         }
                     })
-            // Create the AlertDialog object and return it
-            builder.create()
-        } ?: throw IllegalStateException("Activity cannot be null")
-    }
-
-    private fun showAlertDestinationArrival(): Dialog {
-        return this?.let {
-            val builder = AlertDialog.Builder(this)
-            builder.setTitle("You have arrived at your destination")
-                .setPositiveButton("Close",
-                    DialogInterface.OnClickListener { dialog, id ->
-                        // delete dialog
-                        finish();
-                    })
-                /*.setNeutralButton("Add to favorites",
-                    DialogInterface.OnClickListener { dialog, id ->
-                        // add the destination to favorites
-                    })*/
-                /*.setNegativeButton("Report an issue",
-                    DialogInterface.OnClickListener { dialog, id ->
-                        // shown a form for issues
-                        finish();
-                    })*/
             // Create the AlertDialog object and return it
             builder.create()
         } ?: throw IllegalStateException("Activity cannot be null")
