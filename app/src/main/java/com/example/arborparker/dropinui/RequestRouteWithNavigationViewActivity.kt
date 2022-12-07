@@ -83,8 +83,8 @@ class RequestRouteWithNavigationViewActivity : AppCompatActivity(), OnMapLongCli
     var user_id: Int = MainActivityViewModel.user_id!!
     // stores the users id
     var spotId: Int = MapsActivity.SpotID.toInt()
-    private var NavDestLL = LatLng(MapsActivity.DestPoint.latitude(), MapsActivity.DestPoint.latitude())
-
+    private var NavDestLL = LatLng(MapsActivity.DestPoint.latitude(), MapsActivity.DestPoint.longitude())
+    private var NavSpotPoint = MapsActivity.SpotPoint
     /**
      * Gets notified with location updates.
      *
@@ -183,7 +183,7 @@ class RequestRouteWithNavigationViewActivity : AppCompatActivity(), OnMapLongCli
                         // proceed to show walking route
                         MapboxNavigationApp.current()?.unregisterArrivalObserver(arrivalObserver)
                         MapboxNavigationApp.current()?.registerArrivalObserver(arrivalObserver2)
-                        requestRoutes(MapsActivity.SpotPoint, MapsActivity.DestPoint, DirectionsCriteria.PROFILE_WALKING)
+                        requestRoutes(NavSpotPoint, MapsActivity.DestPoint, DirectionsCriteria.PROFILE_WALKING)
                         //finish();
                     })
                 .setNegativeButton("No",
@@ -335,12 +335,12 @@ class RequestRouteWithNavigationViewActivity : AppCompatActivity(), OnMapLongCli
                     spot = item
                 }
             }
-            val ReSpotPoint = Point.fromLngLat(spot.position.longitude, spot.position.latitude)
-            var ReUserPoint = MapsActivity.UserPoint
+            var ReUserPoint = NavSpotPoint
+            NavSpotPoint = Point.fromLngLat(spot.position.longitude, spot.position.latitude)
             ifNonNull(lastLocation) {
                 ReUserPoint = Point.fromLngLat(it.longitude, it.latitude)
             }
-            requestRoutes(ReUserPoint, ReSpotPoint)
+            requestRoutes(ReUserPoint, NavSpotPoint)
         })
     }
 
