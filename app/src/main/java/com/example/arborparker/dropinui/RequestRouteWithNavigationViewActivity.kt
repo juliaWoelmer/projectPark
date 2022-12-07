@@ -12,6 +12,8 @@ import android.widget.Toast
 import androidx.annotation.DrawableRes
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import com.example.arborparker.*
 import com.example.arborparker.dropinui.CustomActionButtonsActivity
 import com.mapbox.api.directions.v5.models.RouteOptions
@@ -33,6 +35,11 @@ import com.mapbox.navigation.dropin.NavigationView
 import com.mapbox.navigation.dropin.map.MapViewObserver
 import com.example.arborparker.databinding.MapboxActivityRequestRouteNavigationViewBinding
 import com.example.arborparker.network.SpotWithUser
+import com.google.android.gms.maps.GoogleMap
+import com.google.android.gms.maps.model.LatLng
+import com.google.maps.android.SphericalUtil
+import com.google.maps.android.data.geojson.GeoJsonLayer
+import com.mapbox.android.gestures.Utils
 import com.mapbox.api.directions.v5.DirectionsCriteria
 import com.mapbox.navigation.base.trip.model.RouteLegProgress
 import com.mapbox.navigation.base.trip.model.RouteProgress
@@ -44,6 +51,7 @@ import com.mapbox.navigation.ui.base.view.MapboxExtendableButton
 import com.mapbox.navigation.utils.internal.ifNonNull
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
+import java.time.temporal.ChronoUnit
 
 /**
  * The example demonstrates how to use [MapboxNavigationApp] to request routes outside [NavigationView]
@@ -75,6 +83,7 @@ class RequestRouteWithNavigationViewActivity : AppCompatActivity(), OnMapLongCli
     var user_id: Int = MainActivityViewModel.user_id!!
     // stores the users id
     var spotId: Int = MapsActivity.SpotID.toInt()
+    private var NavDestLL = LatLng(MapsActivity.DestPoint.latitude(), MapsActivity.DestPoint.latitude())
 
     /**
      * Gets notified with location updates.
@@ -217,6 +226,7 @@ class RequestRouteWithNavigationViewActivity : AppCompatActivity(), OnMapLongCli
                     editIssueSpot(apiNetwork, spotWithUser)
                     val rerouteAlert: AlertDialog = showAlertReroute(alertAuthorities) as AlertDialog
                     rerouteAlert.show()
+
                 })
             // Create the AlertDialog object and return it
             builder.create()
@@ -235,6 +245,18 @@ class RequestRouteWithNavigationViewActivity : AppCompatActivity(), OnMapLongCli
         }
     }
 
+    fun hasItBeen24Hrs(timeLastOccupied: String?): Boolean {
+        val currentTime = LocalDateTime.now()
+        if (timeLastOccupied != null) {
+            var spotTimeLastOccupied = LocalDateTime.parse(timeLastOccupied!!.dropLast(5))
+            var secondsSinceLastOccupied = ChronoUnit.SECONDS.between(spotTimeLastOccupied, currentTime)
+            if (secondsSinceLastOccupied > 86400) {
+                return true
+            }
+        }
+        return false
+    }
+
     private fun showAlertReroute(alertAuthorities: Boolean): Dialog {
         return this?.let {
             val builder = AlertDialog.Builder(this@RequestRouteWithNavigationViewActivity)
@@ -244,13 +266,82 @@ class RequestRouteWithNavigationViewActivity : AppCompatActivity(), OnMapLongCli
             builder.setMessage("You will be rerouted to the closest available spot")
                 .setPositiveButton("Ok",
                     DialogInterface.OnClickListener { dialog, id ->
-                        // reroute to new parking spot
-
+                        //get new available spots
+                        reroute()
                         //finish();
                     })
+
             // Create the AlertDialog object and return it
             builder.create()
         } ?: throw IllegalStateException("Activity cannot be null")
+    }
+
+
+    private fun reroute() {
+        //var col: MutableSet<LatLngItem> = mutableSetOf<LatLngItem>()
+        val viewModel = ViewModelProvider(this@RequestRouteWithNavigationViewActivity)[MainActivityViewModel::class.java]
+        viewModel.getSpots()
+
+        viewModel.spotList.observe(this@RequestRouteWithNavigationViewActivity, Observer {
+            var spotIdsToBeOpened: MutableList<Int> = ArrayList()
+            val apiNetwork = MainActivityViewModel()
+            var col: MutableSet<LatLngItem> = mutableSetOf<LatLngItem>()
+            val spotHash = it.map{it.id to it.isOpen}.toMap().toMutableMap()
+            apiNetwork.getUserInfoById(user_id) { user ->
+                var isVanAccessibleRequired = user!!.first().vanAccessible
+                it.forEach { spot ->
+                    if (hasItBeen24Hrs(spot.timeLastOccupied)) {
+                        spotIdsToBeOpened.add(spot.id)
+                    }
+                    if (!spot.vanAccessible && isVanAccessibleRequired) {
+                        spotHash[spot.id] = false
+                    }
+                }
+            }
+            spotIdsToBeOpened.forEach { spotId ->
+                spotHash[spotId] = true
+                val spotWithUser = SpotWithUser(true, null, null)
+                apiNetwork.editSpotAvailability(spotId, spotWithUser) {
+                    if (it != null) {
+                        Log.d("DEBUG", "Success editing spot availability due to timeout")
+                        Log.d("DEBUG", "Spot at " + spotId + " is now open")
+                        Log.d("DEBUG", "Rows affected: " + it.rowsAffected)
+                    } else {
+                        Log.d("DEBUG", "Error editing spot availability")
+                    }
+                }
+            }
+            for ((key, value) in spotHash) {
+                if (value) {
+                    val offsetItem =
+                        LatLngItem(
+                            MapsActivity.AllSpotsHash[key]!!.latitude,
+                            MapsActivity.AllSpotsHash[key]!!.longitude,
+                            key.toString(),
+                            "Snippet"
+                        )
+                    //col.addItem(offsetItem)
+                    col.add(offsetItem)
+                }
+            }
+            var min: Double
+            var spot: LatLngItem
+            min = SphericalUtil.computeDistanceBetween(NavDestLL, col.elementAt(0).getPosition())
+            spot = col.elementAt(0)
+            for (item in col) {
+                val distance = SphericalUtil.computeDistanceBetween(NavDestLL, item.getPosition())
+                if (distance < min) {
+                    min = distance
+                    spot = item
+                }
+            }
+            val ReSpotPoint = Point.fromLngLat(spot.position.longitude, spot.position.latitude)
+            var ReUserPoint = MapsActivity.UserPoint
+            ifNonNull(lastLocation) {
+                ReUserPoint = Point.fromLngLat(it.longitude, it.latitude)
+            }
+            requestRoutes(ReUserPoint, ReSpotPoint)
+        })
     }
 
     private fun showAlertDestinationArrival(): Dialog {
@@ -347,7 +438,7 @@ class RequestRouteWithNavigationViewActivity : AppCompatActivity(), OnMapLongCli
             }
         }
     }
-    private val Number.dp get() = com.mapbox.android.gestures.Utils.dpToPx(toFloat()).toInt()
+    private val Number.dp get() = Utils.dpToPx(toFloat()).toInt()
 
     // Nav
     override fun onMapLongClick(point: Point): Boolean {
