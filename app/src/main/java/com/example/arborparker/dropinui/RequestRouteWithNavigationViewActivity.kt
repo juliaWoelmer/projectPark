@@ -278,19 +278,36 @@ class RequestRouteWithNavigationViewActivity : AppCompatActivity(), OnMapLongCli
 
 
     private fun reroute() {
-        var col: MutableSet<LatLngItem> = mutableSetOf<LatLngItem>()
+        //var col: MutableSet<LatLngItem> = mutableSetOf<LatLngItem>()
         val viewModel = ViewModelProvider(this@RequestRouteWithNavigationViewActivity)[MainActivityViewModel::class.java]
         viewModel.getSpots()
 
         viewModel.spotList.observe(this@RequestRouteWithNavigationViewActivity, Observer {
+            var spotIdsToBeOpened: MutableList<Int> = ArrayList()
             val apiNetwork = MainActivityViewModel()
-
+            var col: MutableSet<LatLngItem> = mutableSetOf<LatLngItem>()
             val spotHash = it.map{it.id to it.isOpen}.toMap().toMutableMap()
             apiNetwork.getUserInfoById(user_id) { user ->
                 var isVanAccessibleRequired = user!!.first().vanAccessible
                 it.forEach { spot ->
+                    if (hasItBeen24Hrs(spot.timeLastOccupied)) {
+                        spotIdsToBeOpened.add(spot.id)
+                    }
                     if (!spot.vanAccessible && isVanAccessibleRequired) {
                         spotHash[spot.id] = false
+                    }
+                }
+            }
+            spotIdsToBeOpened.forEach { spotId ->
+                spotHash[spotId] = true
+                val spotWithUser = SpotWithUser(true, null, null)
+                apiNetwork.editSpotAvailability(spotId, spotWithUser) {
+                    if (it != null) {
+                        Log.d("DEBUG", "Success editing spot availability due to timeout")
+                        Log.d("DEBUG", "Spot at " + spotId + " is now open")
+                        Log.d("DEBUG", "Rows affected: " + it.rowsAffected)
+                    } else {
+                        Log.d("DEBUG", "Error editing spot availability")
                     }
                 }
             }
@@ -307,23 +324,24 @@ class RequestRouteWithNavigationViewActivity : AppCompatActivity(), OnMapLongCli
                     col.add(offsetItem)
                 }
             }
-        })
-
-        // reroute to new parking spot
-        var min: Double
-        var spot: LatLngItem
-        min = SphericalUtil.computeDistanceBetween(NavDestLL, col.elementAt(0).getPosition())
-        spot = col.elementAt(0)
-        for (item in col) {
-            val distance = SphericalUtil.computeDistanceBetween(NavDestLL, item.getPosition())
-            if (distance < min) {
-                min = distance
-                spot = item
+            var min: Double
+            var spot: LatLngItem
+            min = SphericalUtil.computeDistanceBetween(NavDestLL, col.elementAt(0).getPosition())
+            spot = col.elementAt(0)
+            for (item in col) {
+                val distance = SphericalUtil.computeDistanceBetween(NavDestLL, item.getPosition())
+                if (distance < min) {
+                    min = distance
+                    spot = item
+                }
             }
-        }
-        val ReSpotPoint = Point.fromLngLat(spot.position.longitude, spot.position.latitude)
-
-        requestRoutes(MapsActivity.UserPoint, ReSpotPoint)
+            val ReSpotPoint = Point.fromLngLat(spot.position.longitude, spot.position.latitude)
+            var ReUserPoint = MapsActivity.UserPoint
+            ifNonNull(lastLocation) {
+                ReUserPoint = Point.fromLngLat(it.longitude, it.latitude)
+            }
+            requestRoutes(ReUserPoint, ReSpotPoint)
+        })
     }
 
     private fun showAlertDestinationArrival(): Dialog {
