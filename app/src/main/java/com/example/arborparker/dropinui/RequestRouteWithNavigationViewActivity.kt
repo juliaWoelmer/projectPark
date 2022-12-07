@@ -299,54 +299,54 @@ class RequestRouteWithNavigationViewActivity : AppCompatActivity(), OnMapLongCli
                         spotIdsNotVanAccessible.add(spot.id)
                     }
                 }
-            }
-            spotIdsToBeOpened.forEach { spotId ->
-                spotHash[spotId] = true
-                val spotWithUser = SpotWithUser(true, null, null)
-                apiNetwork.editSpotAvailability(spotId, spotWithUser) {
-                    if (it != null) {
-                        Log.d("DEBUG", "Success editing spot availability due to timeout")
-                        Log.d("DEBUG", "Spot at " + spotId + " is now open")
-                        Log.d("DEBUG", "Rows affected: " + it.rowsAffected)
-                    } else {
-                        Log.d("DEBUG", "Error editing spot availability")
+                spotIdsToBeOpened.forEach { spotId ->
+                    spotHash[spotId] = true
+                    val spotWithUser = SpotWithUser(true, null, null)
+                    apiNetwork.editSpotAvailability(spotId, spotWithUser) {
+                        if (it != null) {
+                            Log.d("DEBUG", "Success editing spot availability due to timeout")
+                            Log.d("DEBUG", "Spot at " + spotId + " is now open")
+                            Log.d("DEBUG", "Rows affected: " + it.rowsAffected)
+                        } else {
+                            Log.d("DEBUG", "Error editing spot availability")
+                        }
                     }
                 }
-            }
-            spotIdsNotVanAccessible.forEach { spotId ->
-                spotHash[spotId] = false
-            }
-            for ((key, value) in spotHash) {
-                if (value) {
-                    val offsetItem =
-                        LatLngItem(
-                            MapsActivity.AllSpotsHash[key]!!.latitude,
-                            MapsActivity.AllSpotsHash[key]!!.longitude,
-                            key.toString(),
-                            "Snippet"
-                        )
-                    //col.addItem(offsetItem)
-                    col.add(offsetItem)
+                spotIdsNotVanAccessible.forEach { spotId ->
+                    spotHash[spotId] = false
                 }
-            }
-            var min: Double
-            var spot: LatLngItem
-            min = SphericalUtil.computeDistanceBetween(NavDestLL, col.elementAt(0).getPosition())
-            spot = col.elementAt(0)
-            for (item in col) {
-                val distance = SphericalUtil.computeDistanceBetween(NavDestLL, item.getPosition())
-                if (distance < min) {
-                    min = distance
-                    spot = item
+                for ((key, value) in spotHash) {
+                    if (value) {
+                        val offsetItem =
+                            LatLngItem(
+                                MapsActivity.AllSpotsHash[key]!!.latitude,
+                                MapsActivity.AllSpotsHash[key]!!.longitude,
+                                key.toString(),
+                                "Snippet"
+                            )
+                        //col.addItem(offsetItem)
+                        col.add(offsetItem)
+                    }
                 }
+                var min: Double
+                var spot: LatLngItem
+                min = SphericalUtil.computeDistanceBetween(NavDestLL, col.elementAt(0).getPosition())
+                spot = col.elementAt(0)
+                for (item in col) {
+                    val distance = SphericalUtil.computeDistanceBetween(NavDestLL, item.getPosition())
+                    if (distance < min) {
+                        min = distance
+                        spot = item
+                    }
+                }
+                spotId = spot.title!!.toInt()
+                var ReUserPoint = NavSpotPoint
+                NavSpotPoint = Point.fromLngLat(spot.position.longitude, spot.position.latitude)
+                ifNonNull(lastLocation) {
+                    ReUserPoint = Point.fromLngLat(it.longitude, it.latitude)
+                }
+                requestRoutes(ReUserPoint, NavSpotPoint)
             }
-            spotId = spot.title!!.toInt()
-            var ReUserPoint = NavSpotPoint
-            NavSpotPoint = Point.fromLngLat(spot.position.longitude, spot.position.latitude)
-            ifNonNull(lastLocation) {
-                ReUserPoint = Point.fromLngLat(it.longitude, it.latitude)
-            }
-            requestRoutes(ReUserPoint, NavSpotPoint)
         })
     }
 
