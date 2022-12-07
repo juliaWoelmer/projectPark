@@ -28,8 +28,8 @@ class ViewProfileActivity : AppCompatActivity() {
         var btn_back = findViewById(R.id.btn_back) as Button
 
         btn_back.setOnClickListener {
+            startActivity(Intent(this, MapsActivity::class.java));
             finish()
-            //startActivity(Intent(this, MapsActivity::class.java));
         }
 
         var btn_logout = findViewById(R.id.btn_logout) as Button

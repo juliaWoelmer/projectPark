@@ -88,11 +88,11 @@ class EditProfileActivity : AppCompatActivity() {
                 if (it != null) {
                     Log.d("DEBUG", "Success editing user profile")
                     Log.d("DEBUG", "Rows affected: " + it.rowsAffected)
+                    startActivity(Intent(this, ViewProfileActivity::class.java));
                 } else {
                     Log.d("DEBUG", "Error editing user profile")
                 }
             }
-            startActivity(Intent(this, ViewProfileActivity::class.java));
         }
     }
 

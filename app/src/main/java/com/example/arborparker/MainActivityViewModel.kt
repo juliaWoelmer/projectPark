@@ -156,6 +156,7 @@ class MainActivityViewModel : ViewModel() {
                     Log.d("DEBUG", "Response success " + response.isSuccessful)
                     Log.d("DEBUG", "Response body " + response.body())
                     Log.d("DEBUG", "url " + response.raw().request.url)
+                    onResult(response.body())
                 }
             }
         )
@@ -176,6 +177,7 @@ class MainActivityViewModel : ViewModel() {
                     Log.d("DEBUG", "Response success " + response.isSuccessful)
                     Log.d("DEBUG", "Response body " + response.body())
                     Log.d("DEBUG", "url " + response.raw().request.url)
+                    onResult(response.body())
                 }
             }
         )
