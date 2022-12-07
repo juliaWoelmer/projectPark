@@ -351,6 +351,7 @@ class RequestRouteWithNavigationViewActivity : AppCompatActivity(), OnMapLongCli
                 .setPositiveButton("Close",
                     DialogInterface.OnClickListener { dialog, id ->
                         // delete dialog
+                        startActivity(Intent(this, MapsActivity::class.java));
                         finish();
                     })
             // Create the AlertDialog object and return it
