@@ -245,7 +245,7 @@ class RequestRouteWithNavigationViewActivity : AppCompatActivity(), OnMapLongCli
         }
     }
 
-    fun hasItBeen24Hrs(timeLastOccupied: String?): Boolean {
+    private fun hasItBeen24Hrs(timeLastOccupied: String?): Boolean {
         val currentTime = LocalDateTime.now()
         if (timeLastOccupied != null) {
             var spotTimeLastOccupied = LocalDateTime.parse(timeLastOccupied!!.dropLast(5))
@@ -403,7 +403,7 @@ class RequestRouteWithNavigationViewActivity : AppCompatActivity(), OnMapLongCli
         binding.navigationView.customizeViewBinders {
             customActionButtons = listOf(
                 ActionButtonDescription(
-                    customActionButton(R.drawable.mapbox_ic_settings),
+                    customActionButton(R.drawable.home),
                     ActionButtonDescription.Position.START
                 )
             )
@@ -433,7 +433,7 @@ class RequestRouteWithNavigationViewActivity : AppCompatActivity(), OnMapLongCli
             )
             containerView.setPadding(10.dp, 13.dp, 10.dp, 13.dp)
             setOnClickListener {
-                //startActivity(Intent(this@RequestRouteWithNavigationViewActivity, MapsActivity::class.java))
+                startActivity(Intent(this@RequestRouteWithNavigationViewActivity, MapsActivity::class.java))
                 finish()
             }
         }
