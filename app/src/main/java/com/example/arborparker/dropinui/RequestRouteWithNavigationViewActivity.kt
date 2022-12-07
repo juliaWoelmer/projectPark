@@ -285,6 +285,7 @@ class RequestRouteWithNavigationViewActivity : AppCompatActivity(), OnMapLongCli
 
         viewModel.spotList.observe(this@RequestRouteWithNavigationViewActivity, Observer {
             var spotIdsToBeOpened: MutableList<Int> = ArrayList()
+            var spotIdsNotVanAccessible: MutableList<Int> = ArrayList()
             val apiNetwork = MainActivityViewModel()
             var col: MutableSet<LatLngItem> = mutableSetOf<LatLngItem>()
             val spotHash = it.map{it.id to it.isOpen}.toMap().toMutableMap()
@@ -295,7 +296,7 @@ class RequestRouteWithNavigationViewActivity : AppCompatActivity(), OnMapLongCli
                         spotIdsToBeOpened.add(spot.id)
                     }
                     if (!spot.vanAccessible && isVanAccessibleRequired) {
-                        spotHash[spot.id] = false
+                        spotIdsNotVanAccessible.add(spot.id)
                     }
                 }
             }
@@ -311,6 +312,9 @@ class RequestRouteWithNavigationViewActivity : AppCompatActivity(), OnMapLongCli
                         Log.d("DEBUG", "Error editing spot availability")
                     }
                 }
+            }
+            spotIdsNotVanAccessible.forEach { spotId ->
+                spotHash[spotId] = false
             }
             for ((key, value) in spotHash) {
                 if (value) {
