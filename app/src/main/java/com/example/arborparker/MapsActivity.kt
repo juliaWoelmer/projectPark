@@ -97,7 +97,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
     private lateinit var locationCallback: LocationCallback
 
     // This will store current location info
-    //private var currentLocation: LatLng = LatLng(42.279594, -83.732124)
+    //private var currentLocation: LatLng = LatLng(42.279594, -83.732124)42.2933181697, -83.7156057358
     private var userLocation: LatLng = LatLng(42.279594, -83.732124)
     // Initializing other items
     // from layout file
@@ -491,6 +491,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
                 SpotID = spot.title.toString()
                 SpotPoint = Point.fromLngLat(spot.position.longitude, spot.position.latitude) as Point
+                UserPoint = Point.fromLngLat(userLocation.longitude, userLocation.latitude)
                 // Get Directions From API
                 var res_driv = (getDirections(userLocation, spot.position, "driving"))
                 //Thread.sleep(0.01.toLong())
