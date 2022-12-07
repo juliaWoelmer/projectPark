@@ -74,6 +74,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
     private lateinit var binding: ActivityMapsBinding
     private lateinit var col: MutableSet<MyItem>
     private lateinit var lines: Pair<Polyline, Polyline>
+    private lateinit var markers: Triple<Marker, Marker, Marker>
     private lateinit var destination: Place
     companion object {
         var SpotID = ""
@@ -483,6 +484,11 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
                 }
                 lines.first.remove()
                 lines.second.remove()
+                markers.first.remove()
+                markers.second.remove()
+                markers.third.remove()
+                clusterManager.removeItems(col)
+
                 SpotID = spot.title.toString()
                 SpotPoint = Point.fromLngLat(spot.position.longitude, spot.position.latitude) as Point
                 // Get Directions From API
@@ -490,6 +496,23 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
                 //Thread.sleep(0.01.toLong())
                 var res_walk = getDirections(destination.latLng, spot.position, "walking")
                 lines = Pair(drawPolyLine(res_driv, Color.BLUE), drawPolyLine(res_walk, Color.RED))
+
+                val mark_1 = mMap.addMarker(
+                    MarkerOptions()
+                        .position(userLocation)
+                        .title("Start")
+                )!!
+                val mark_2 = mMap.addMarker(
+                    MarkerOptions()
+                        .position(destination.latLng)
+                        .title("Destination")
+                )!!
+                val mark_3 = mMap.addMarker(
+                    MarkerOptions()
+                        .position(spot.position)
+                        .title("Parking Spot")
+                )!!
+                markers = Triple(mark_1, mark_2, mark_3)
                 val builder = LatLngBounds.Builder()
                 builder.include(userLocation)
                 builder.include(destination.latLng)
@@ -530,6 +553,13 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         lines = Pair(mMap.addPolyline(PolylineOptions()), mMap.addPolyline(PolylineOptions()))
         lines.first.remove()
         lines.second.remove()
+        val temp_mark = mMap.addMarker(
+            MarkerOptions().position(userLocation).title("Start")
+        )!!
+        markers = Triple(temp_mark, temp_mark, temp_mark)
+        markers.first.remove()
+        markers.second.remove()
+        markers.third.remove()
         // Add a marker in Ann Arbor and move the camera
         val arbor = LatLng(42.279594, -83.732124)
         val zoomLevel = 12.0f
